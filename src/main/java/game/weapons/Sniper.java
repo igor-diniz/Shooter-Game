@@ -1,8 +1,9 @@
 package game.weapons;
 
 public class Sniper extends Weapon {
-    protected Sniper(int damage, int range) {
-        super(damage, range);
+
+    public Sniper(int damage, int range, int ammo) {
+        super(damage, range, ammo);
     }
 
     @Override

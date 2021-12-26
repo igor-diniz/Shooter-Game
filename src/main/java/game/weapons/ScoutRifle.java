@@ -1,8 +1,9 @@
 package game.weapons;
 
-public class ScoutRifle extends Weapon {
-    protected ScoutRifle(int damage, int range) {
-        super(damage, range);
+public class ScoutRifle extends PrimaryWeapon {
+
+    public ScoutRifle(int damage, int range, int ammo) {
+        super(damage, range, ammo);
     }
 
     @Override

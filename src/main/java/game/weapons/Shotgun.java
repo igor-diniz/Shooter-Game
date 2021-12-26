@@ -1,14 +1,15 @@
-/*package game.weapons;
+package game.weapons;
 
-public class Shotgun extends Weapon {
-    protected Shotgun(int damage, int range) {
-        super(damage, range);
+public class Shotgun extends SpecialWeapon {
+    public Shotgun(int damage, int range, int ammo) {
+        super(damage, range, ammo);
     }
-    private int xAoE; //AoE stands for Area of Effect
-    private int yAoE;
+
+    //private int xAoE; //AoE stands for Area of Effect
+   // private int yAoE;
 
     @Override
     public void shoot() {
 
     }
-}*/
+}

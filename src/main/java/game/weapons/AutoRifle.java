@@ -1,12 +1,14 @@
 package game.weapons;
 
-public class AutoRifle extends Weapon {
-    protected AutoRifle(int damage, int range) {
-        super(damage, range);
+public class AutoRifle extends PrimaryWeapon {
+
+
+    public AutoRifle(int damage, int range, int ammo) {
+        super(damage, range, ammo);
     }
 
     @Override
     public void shoot() {
-
+        decreaseAmmo();
     }
 }

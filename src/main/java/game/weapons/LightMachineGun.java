@@ -1,8 +1,9 @@
 package game.weapons;
 
-public class LightMachineGun extends Weapon {
-    protected LightMachineGun(int damage, int range) {
-        super(damage, range);
+public class LightMachineGun extends HeavyWeapon {
+
+    public LightMachineGun(int damage, int range, int ammo) {
+        super(damage, range, ammo);
     }
 
     @Override

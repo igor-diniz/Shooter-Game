@@ -1,5 +1,6 @@
 import game.Player
 import game.Position
+import game.weapons.AutoRifle
 import spock.lang.Specification
 class PlayerTest extends Specification
 {
@@ -34,7 +35,8 @@ class PlayerTest extends Specification
     {
         given:
         Player player = new Player(new Position(10,10))
-        int ammo = player.getUsingWeapon.getAmmo()
+        player.setPrimaryWeapon(new AutoRifle(1,5,30))
+        int ammo = player.getUsingWeapon().getAmmo()
         when:
         player.shoot()
         then:
