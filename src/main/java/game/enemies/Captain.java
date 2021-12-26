@@ -1,6 +1,5 @@
 package game.enemies;
 
-import game.Enemy;
 import game.Position;
 
 public class Captain extends Enemy {

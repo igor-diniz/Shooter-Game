@@ -1,5 +1,7 @@
 package game;
 
+import game.weapons.Weapon;
+
 import java.util.ArrayList;
 import java.util.List;
 

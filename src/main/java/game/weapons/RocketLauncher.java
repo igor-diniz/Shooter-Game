@@ -1,7 +1,5 @@
 package game.weapons;
 
-import game.Weapon;
-
 public class RocketLauncher extends Weapon {
     protected RocketLauncher(int damage, int range) {
         super(damage, range);

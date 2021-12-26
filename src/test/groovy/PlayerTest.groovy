@@ -30,5 +30,17 @@ class PlayerTest extends Specification
         player2.getPosition() == new Position(11,11)
     }
 
+    def 'Player Shoot'()
+    {
+        given:
+        Player player = new Player(new Position(10,10))
+        int ammo = player.getUsingWeapon.getAmmo()
+        when:
+        player.shoot()
+        then:
+        player.getUsingWeapon().getAmmo() == ammo -1
+    }
+
+
 }
 

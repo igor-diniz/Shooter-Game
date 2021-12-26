@@ -1,10 +1,12 @@
-package game;
+package game.enemies;
 
-public class Enemy {
+import game.Position;
+
+public abstract class Enemy {
     private int health;
     private Position position;
 
-    public Enemy(int health, Position position){
+    public Enemy(int health, Position position){ //which enemy he is will determine his health
         this.health = health;
         this.position = position;
     }

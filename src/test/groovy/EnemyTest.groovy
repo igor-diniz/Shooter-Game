@@ -1,10 +1,10 @@
-import game.Enemy
+import game.enemies.Dreg
 import game.Position
 import spock.lang.Specification
 class EnemyTest extends Specification {
     def 'Enemy Creation'() {
         given:
-        Enemy enemy = new Enemy(1,new Position(3,3));
+        Dreg enemy = new Dreg(1,new Position(3,3));
 
         when:
         def health = enemy.getHealth()
@@ -14,8 +14,8 @@ class EnemyTest extends Specification {
 
     def 'Moving Enemy'() {
         given:
-        Enemy enemy1 = new Enemy(1,new Position(10,10));
-        Enemy enemy2 = new Enemy(1,new Position(10,10));
+        Dreg enemy1 = new Dreg(1,new Position(10,10));
+        Dreg enemy2 = new Dreg(1,new Position(10,10));
         when:
         enemy1.moveUp()
         enemy1.moveRight()

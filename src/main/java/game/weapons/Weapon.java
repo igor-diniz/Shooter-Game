@@ -1,10 +1,10 @@
-package game;
+package game.weapons;
 
 public abstract class Weapon
 {
     private int damage;
     private int range;
-    private int projectileVelocity;
+    //private int projectileVelocity;
 
     protected Weapon(int damage,int range)
     {

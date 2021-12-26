@@ -1,6 +1,4 @@
-package game.weapons;
-
-import game.Weapon;
+/*package game.weapons;
 
 public class Shotgun extends Weapon {
     protected Shotgun(int damage, int range) {
@@ -13,4 +11,4 @@ public class Shotgun extends Weapon {
     public void shoot() {
 
     }
-}
+}*/
