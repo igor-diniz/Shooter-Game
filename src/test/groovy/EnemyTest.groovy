@@ -1,11 +1,12 @@
+import fate.Enemy
 import spock.lang.Specification
-class EnemyTest {
+class EnemyTest extends Specification {
     def 'Enemy Creation'() {
         given:
         Enemy enemy = new Enemy(1);
 
         when:
-        def health = player.getHealth()
+        def health = enemy.getHealth()
         then:
         health == 1
     }
