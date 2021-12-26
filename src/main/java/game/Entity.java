@@ -1,4 +1,4 @@
-package fate;
+package game;
 
 public class Entity
 {
