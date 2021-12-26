@@ -1,3 +1,5 @@
+import fate.Player
+import fate.Position
 import spock.lang.Specification
 class PlayerTest extends Specification
 {

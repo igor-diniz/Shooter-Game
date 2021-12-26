@@ -1,9 +1,10 @@
 import fate.Enemy
+import fate.Position
 import spock.lang.Specification
 class EnemyTest extends Specification {
     def 'Enemy Creation'() {
         given:
-        Enemy enemy = new Enemy(1);
+        Enemy enemy = new Enemy(1,new Position(3,3));
 
         when:
         def health = enemy.getHealth()
@@ -13,11 +14,15 @@ class EnemyTest extends Specification {
 
     def 'Moving Enemy'() {
         given:
-        Enemy enemy = new Enemy(1);
-
+        Enemy enemy1 = new Enemy(1,new Position(10,10));
+        Enemy enemy2 = new Enemy(1,new Position(10,10));
         when:
-        def health = enemy.getHealth()
+        enemy1.moveUp()
+        enemy1.moveLeft()
+        enemy2.moveRight()
+        enemy2.moveDown()
         then:
-        health == 1
+        enemy1.getPosition() == new Position(9,9)
+        enemy2.getPosition() == new Position(11,11)
     }
 }

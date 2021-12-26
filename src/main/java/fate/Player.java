@@ -1,3 +1,5 @@
+package fate;
+
 import java.util.ArrayList;
 import java.util.List;
 

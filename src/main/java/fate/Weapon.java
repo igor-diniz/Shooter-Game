@@ -1,3 +1,6 @@
+package fate;
+
+
 public abstract class Weapon
 {
     private int damage;

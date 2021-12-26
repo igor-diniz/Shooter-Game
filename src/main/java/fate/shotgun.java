@@ -1,3 +1,6 @@
+package fate;
+
+
 public class shotgun extends Weapon{
     protected shotgun(int damage, int range) {
         super(damage, range);
