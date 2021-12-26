@@ -10,4 +10,14 @@ class EnemyTest extends Specification {
         then:
         health == 1
     }
+
+    def 'Moving Enemy'() {
+        given:
+        Enemy enemy = new Enemy(1);
+
+        when:
+        def health = enemy.getHealth()
+        then:
+        health == 1
+    }
 }
