@@ -13,27 +13,23 @@ public class Player
         weapons = new ArrayList<>();
     }
 
-    public int getHealth() {
-        return health;
-    }
+    public void moveUp() { position.moveUp(); }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
+    public void moveDown() { position.moveDown();}
 
-    public List<Weapon> getWeapons() {
-        return weapons;
-    }
+    public void moveLeft() { position.moveLeft(); }
 
-    public void setWeapons(List<Weapon> weapons) {
-        this.weapons = weapons;
-    }
+    public void moveRight() { position.moveRight();}
 
-    public Position getPosition() {
-        return position;
-    }
+    public int getHealth() { return health; }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
+    public void setHealth(int health) { this.health = health;}
+
+    public List<Weapon> getWeapons() { return weapons;}
+
+    public void setWeapons(List<Weapon> weapons) { this.weapons = weapons;}
+
+    public Position getPosition() { return position;}
+
+    public void setPosition(Position position) { this.position = position; }
 }
