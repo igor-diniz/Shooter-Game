@@ -1,5 +1,7 @@
 package game.weapons;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
+
 public class Shotgun extends SpecialWeapon {
     public Shotgun(int damage, int range, int ammo) {
         super(damage, range, ammo);
@@ -9,7 +11,7 @@ public class Shotgun extends SpecialWeapon {
    // private int yAoE;
 
     @Override
-    public void shoot() {
+    public void draw(TextGraphics graphics) {
 
     }
 }

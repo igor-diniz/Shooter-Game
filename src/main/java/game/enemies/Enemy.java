@@ -1,8 +1,13 @@
 package game.enemies;
 
+import game.Bullet;
+import game.Entity;
 import game.Position;
 
-public abstract class Enemy {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Enemy implements Entity {
     private int health;
     private Position position;
 

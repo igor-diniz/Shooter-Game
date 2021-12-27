@@ -1,6 +1,6 @@
 import game.Player
 import game.Position
-import game.weapons.AutoRifle
+import game.weapons.HandCannon
 import spock.lang.Specification
 class PlayerTest extends Specification
 {
@@ -9,10 +9,8 @@ class PlayerTest extends Specification
         Player player = new Player(new Position(10,10));
 
         when:
-        def weaponQuantity = player.getWeapons().size()
         def health = player.getHealth()
         then:
-        weaponQuantity == 0
         health == 1
         player.getPosition() == new Position(10,10)
     }
@@ -35,7 +33,7 @@ class PlayerTest extends Specification
     {
         given:
         Player player = new Player(new Position(10,10))
-        player.setPrimaryWeapon(new AutoRifle(1,5,30))
+        player.setPrimaryWeapon(new HandCannon(1,5,30))
         int ammo = player.getUsingWeapon().getAmmo()
         when:
         player.shoot()

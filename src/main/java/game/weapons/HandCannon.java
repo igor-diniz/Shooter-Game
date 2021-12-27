@@ -1,5 +1,7 @@
 package game.weapons;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
+
 public class HandCannon extends PrimaryWeapon{
 
 
@@ -8,7 +10,7 @@ public class HandCannon extends PrimaryWeapon{
     }
 
     @Override
-    public void shoot() {
+    public void draw(TextGraphics graphics) {
 
     }
 }

@@ -1,13 +1,19 @@
 package game;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import game.weapons.*;
 
-public class Player
+import java.util.ArrayList;
+import java.util.List;
+
+public class Player implements Entity
 {
     private int health;
-    private PrimaryWeapon primaryWeapon = new AutoRifle(1,5,10);
+    private PrimaryWeapon primaryWeapon = new HandCannon(1,5,10);
     private SpecialWeapon specialWeapon = new Shotgun(3,2,8);
-    private HeavyWeapon heavyWeapon = new LightMachineGun(2,6,30);
+    private HeavyWeapon heavyWeapon = new RocketLauncher(2,6,30);
+    private List<Bullet> bullets;
     private Position position;
     private int weaponInUse;
     Player(Position position)
@@ -15,6 +21,7 @@ public class Player
         this.position = position;
         this.health = 1;
         weaponInUse = 0;
+        bullets = new ArrayList<Bullet>();
     }
 
     public void shoot()
@@ -87,5 +94,11 @@ public class Player
 
     public void setSpecialWeapon(SpecialWeapon specialWeapon) {
         this.specialWeapon = specialWeapon;
+    }
+
+    @Override
+    public void draw(TextGraphics graphics)
+    {
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "X");
     }
 }
