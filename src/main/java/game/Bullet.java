@@ -10,6 +10,11 @@ public class Bullet implements Entity{
 
     @Override
     public void draw(TextGraphics graphics) {
-        //range--
+        //do something
+        range--;
+    }
+
+    public int getRange() {
+        return range;
     }
 }
