@@ -13,7 +13,6 @@ public class Player implements Entity
     private PrimaryWeapon primaryWeapon = new HandCannon(1,5,10);
     private SpecialWeapon specialWeapon = new Shotgun(3,2,8);
     private HeavyWeapon heavyWeapon = new RocketLauncher(2,6,30);
-    private List<Bullet> bullets;
     private Position position;
     private int weaponInUse;
     Player(Position position)
@@ -21,7 +20,6 @@ public class Player implements Entity
         this.position = position;
         this.health = 3;
         weaponInUse = 0;
-        bullets = new ArrayList<Bullet>();
     }
 
     public void shoot()
@@ -40,6 +38,12 @@ public class Player implements Entity
         }
     }
     public void setWeaponInUse(int index) {weaponInUse = index;}
+
+    public void getDamaged(int damage)
+    {
+        if(health > damage) health -= damage;
+        else health = 0;
+    }
 
     public Weapon getUsingWeapon()
     {
