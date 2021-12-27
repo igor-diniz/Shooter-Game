@@ -2,7 +2,7 @@ import game.Player
 import game.enemies.Dreg
 import game.Position
 import spock.lang.Specification
-class EnemyTest extends Specification {
+class DregTest extends Specification {
     def 'Enemy Creation'() {
         given:
         Dreg enemy = new Dreg(1,new Position(3,3));
@@ -30,14 +30,14 @@ class EnemyTest extends Specification {
     def 'Get Damaged'()
     {
         given:
-        Dreg dreg = new Dreg(new Position(10,10))
-        Dreg dreg1 = new Dreg(new Position(10,10))
+        Dreg dreg = new Dreg(2,new Position(10,10))
+        Dreg dreg1 = new Dreg(2,new Position(10,10))
         when:
         dreg.getDamaged(1)
         dreg1.getDamaged(2)
         then:
         dreg.getHealth() == 1
-        player1.getHealth() == 0
+        dreg1.getHealth() == 0
 
     }
 }

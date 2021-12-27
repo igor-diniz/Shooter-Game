@@ -1,7 +1,7 @@
 import game.weapons.Shotgun
 import spock.lang.Specification
 
-class WeaponTest extends Specification
+class ShotgunTest extends Specification
 {
     def 'Shotgun Test'()
     {

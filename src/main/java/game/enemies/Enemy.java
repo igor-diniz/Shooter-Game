@@ -16,6 +16,11 @@ public abstract class Enemy implements Entity {
         this.position = position;
     }
 
+    public void getDamaged(int damage)
+    {
+        if(health > damage) health -= damage;
+        else health = 0;
+    }
 
     public int getHealth() {return health;}
 

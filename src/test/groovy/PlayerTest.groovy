@@ -11,7 +11,7 @@ class PlayerTest extends Specification
         when:
         def health = player.getHealth()
         then:
-        health == 1
+        health == 3
         player.getPosition() == new Position(10,10)
     }
     def 'Move Player'()
