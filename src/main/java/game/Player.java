@@ -19,7 +19,7 @@ public class Player implements Entity
     Player(Position position)
     {
         this.position = position;
-        this.health = 1;
+        this.health = 3;
         weaponInUse = 0;
         bullets = new ArrayList<Bullet>();
     }
