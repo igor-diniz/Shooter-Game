@@ -14,13 +14,19 @@ public abstract class Weapon implements Entity
     private List<Bullet> bullets;
     //private int projectileVelocity;
 
-    protected Weapon(int damage,int range,int ammo)
+    protected Weapon()
     {
-        this.damage = damage;
-        this.range = range;
-        this.ammo = ammo;
+        this.damage = getDamage();
+        this.range = getRange();
+        this.ammo = getStartAmmo();
         bullets = new ArrayList<Bullet>();
     }
+
+    protected abstract int getDamage();
+
+    protected abstract int getRange();
+
+    protected abstract int getStartAmmo();
 
     public void shoot() {
         if(ammo > 0) {

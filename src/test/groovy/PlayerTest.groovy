@@ -33,7 +33,7 @@ class PlayerTest extends Specification
     {
         given:
         Player player = new Player(new Position(10,10))
-        player.setPrimaryWeapon(new HandCannon(1,5,30))
+        player.setPrimaryWeapon(new HandCannon())
         int ammo = player.getUsingWeapon().getAmmo()
         when:
         player.shoot()

@@ -5,7 +5,7 @@ import spock.lang.Specification
 class DregTest extends Specification {
     def 'Enemy Creation'() {
         given:
-        Dreg enemy = new Dreg(1,new Position(3,3));
+        Dreg enemy = new Dreg(new Position(3,3));
 
         when:
         def health = enemy.getHealth()
@@ -15,8 +15,8 @@ class DregTest extends Specification {
 
     def 'Moving Enemy'() {
         given:
-        Dreg enemy1 = new Dreg(1,new Position(10,10));
-        Dreg enemy2 = new Dreg(1,new Position(10,10));
+        Dreg enemy1 = new Dreg(new Position(10,10));
+        Dreg enemy2 = new Dreg(new Position(10,10));
         when:
         enemy1.moveUp()
         enemy1.moveRight()
@@ -30,13 +30,13 @@ class DregTest extends Specification {
     def 'Get Damaged'()
     {
         given:
-        Dreg dreg = new Dreg(2,new Position(10,10))
-        Dreg dreg1 = new Dreg(2,new Position(10,10))
+        Dreg dreg = new Dreg(new Position(10,10))
+        Dreg dreg1 = new Dreg(new Position(10,10))
         when:
         dreg.getDamaged(1)
         dreg1.getDamaged(2)
         then:
-        dreg.getHealth() == 1
+        dreg.getHealth() == 0
         dreg1.getHealth() == 0
 
     }

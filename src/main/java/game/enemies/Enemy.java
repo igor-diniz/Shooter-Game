@@ -1,19 +1,18 @@
 package game.enemies;
 
-import game.Bullet;
 import game.Entity;
 import game.Position;
-
-import java.util.ArrayList;
-import java.util.List;
+import game.weapons.Weapon;
 
 public abstract class Enemy implements Entity {
     private int health;
     private Position position;
+    private Weapon weapon;
 
-    public Enemy(int health, Position position){ //which enemy he is will determine his health
-        this.health = health;
+    public Enemy(Position position){ //which enemy he is will determine his health
+        this.health = generateHealth();
         this.position = position;
+        this.weapon = generateWeapon();
     }
 
     public void getDamaged(int damage)
@@ -21,6 +20,10 @@ public abstract class Enemy implements Entity {
         if(health > damage) health -= damage;
         else health = 0;
     }
+
+    protected abstract int generateHealth();
+
+    protected abstract Weapon generateWeapon();
 
     public int getHealth() {return health;}
 

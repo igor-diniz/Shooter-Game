@@ -10,9 +10,9 @@ import java.util.List;
 public class Player implements Entity
 {
     private int health;
-    private PrimaryWeapon primaryWeapon = new HandCannon(1,5,10);
-    private SpecialWeapon specialWeapon = new Shotgun(3,2,8);
-    private HeavyWeapon heavyWeapon = new RocketLauncher(2,6,30);
+    private PrimaryWeapon primaryWeapon = new HandCannon();
+    private SpecialWeapon specialWeapon = new Shotgun();
+    private HeavyWeapon heavyWeapon = new RocketLauncher();
     private Position position;
     private int weaponInUse;
     Player(Position position)

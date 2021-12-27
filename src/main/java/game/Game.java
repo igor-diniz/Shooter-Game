@@ -1,44 +1,28 @@
 package game;
 
-
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
 
-
+import java.io.IOException;
 
 public class Game
 {
-    private final int NUM_ROWS;
-    private final int NUM_COLUMNS;
-    private Player player;
-    private char level[][];
     private Screen screen;
-    public Game(int numRows,int numColumns)
-    {
-        NUM_ROWS = numRows;
-        player = new Player(new Position(10,10));
-        NUM_COLUMNS = numColumns;
-        level = new char[NUM_ROWS][NUM_COLUMNS];
-        for(int i = 0; i< NUM_ROWS; i++)
-        {
-            for(int j = 0; j< NUM_COLUMNS; j++)
-            {
-                level[i][j] = 'x';
-            }
-        }
+    private Level level;
+    public Game(int numRows,int numColumns) throws IOException {
+        level = new Level(numRows,numColumns);
+        Terminal terminal = new DefaultTerminalFactory().createTerminal(); //reused from hero
+        screen = new TerminalScreen(terminal);
+        screen.setCursorPosition(null);
+        screen.startScreen();
+        screen.doResizeIfNecessary();
+        TerminalSize terminalSize = new TerminalSize(numColumns,numRows);
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
     }
 
-    public int getNumRows()
-    {
-        return NUM_ROWS;
-    }
-
-    public int getNumColumns()
-    {
-        return NUM_COLUMNS;
-    }
-
-    public char getCharacterAt(int row,int column)
-    {
-        return level[row][column];
-    }
 }

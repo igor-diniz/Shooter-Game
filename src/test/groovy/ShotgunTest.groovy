@@ -6,13 +6,14 @@ class ShotgunTest extends Specification
     def 'Shotgun Test'()
     {
         given:
-        Shotgun shotgun = new Shotgun(3,2,10)
-        Shotgun shotgun1 = new Shotgun(3,2,0)
+        Shotgun shotgun = new Shotgun()
+        Shotgun shotgun1 = new Shotgun()
         when:
         shotgun.shoot()
         shotgun1.shoot()
+        shotgun1.shoot()
         then:
-        shotgun.getAmmo() == 9
-        shotgun1.getAmmo() == 0
+        shotgun.getAmmo() == 7
+        shotgun1.getAmmo() == 6
     }
 }
