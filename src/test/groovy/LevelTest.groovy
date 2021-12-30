@@ -1,6 +1,7 @@
 import game.Level
 import game.Player
 import game.Position
+import game.Wall
 import game.enemies.Dreg
 import game.enemies.Enemy
 import spock.lang.Specification
@@ -34,7 +35,7 @@ class LevelTest extends Specification
         List<Wall> wallList = new ArrayList<Wall>()
         for(int i = 0; i < level.getNumRows();i++)
         {
-            walllist.add(new Wall(new Position(0,i)))
+            wallList.add(new Wall(new Position(0,i)))
             walllist.add(new Wall(new Position(level.getNumRows()-1,i)))
         }
         for(int i = 0; i < level.getNumColumns(); i++)

@@ -22,6 +22,11 @@ public class Player implements Entity
         weaponInUse = 0;
     }
 
+    public char getCharacter()
+    {
+        //
+    }
+
     public void shoot()
     {
         switch(weaponInUse)

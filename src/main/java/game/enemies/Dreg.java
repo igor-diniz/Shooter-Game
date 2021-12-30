@@ -24,4 +24,9 @@ public class Dreg extends Enemy {
     protected Weapon generateWeapon() {
         return new HandCannon();
     }
+
+    public char getCharacter()
+    {
+
+    }
 }

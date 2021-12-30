@@ -40,4 +40,9 @@ public class Level
     {
         return level[row][column];
     }
+
+    public void generateEntitys(Player player,List<Enemy> enemyList, List<Wall> wallList)
+    {
+
+    }
 }
