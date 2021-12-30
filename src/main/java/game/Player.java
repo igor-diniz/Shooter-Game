@@ -1,31 +1,29 @@
 package game;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import game.weapons.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements Entity
+public class Player extends Entity
 {
     private int health;
-    private PrimaryWeapon primaryWeapon = new HandCannon();
-    private SpecialWeapon specialWeapon = new Shotgun();
-    private HeavyWeapon heavyWeapon = new RocketLauncher();
-    private Position position;
+    private Weapon primaryWeapon = new HandCannon();
+    private Weapon specialWeapon = new Shotgun();
+    private Weapon heavyWeapon = new RocketLauncher();
     private int weaponInUse;
-    private final char character = 'H';
+    private List<Bullet> bullets;
     Player(Position position)
     {
-        this.position = position;
+        super(position);
         this.health = 3;
         weaponInUse = 0;
+        bullets = new ArrayList<Bullet>();
     }
 
-    public char getCharacter()
-    {
-        return character;
+    @Override
+    protected char generateCharacter() {
+        return 'H';
     }
 
     public void shoot()
@@ -33,16 +31,18 @@ public class Player implements Entity
         switch(weaponInUse)
         {
             case 0:
-                primaryWeapon.shoot();
+                if(primaryWeapon.shoot()) bullets.add(new Bullet(getPosition(),primaryWeapon.getRange()));;
                 break;
             case 1:
-                specialWeapon.shoot();
+                if(specialWeapon.shoot()) bullets.add(new Bullet(getPosition(), specialWeapon.getRange()));;
                 break;
             case 2:
-                heavyWeapon.shoot();
+                if(heavyWeapon.shoot()) bullets.add(new Bullet(getPosition(),heavyWeapon.getRange()));
                 break;
         }
     }
+
+
     public void setWeaponInUse(int index) {weaponInUse = index;}
 
     public void getDamaged(int damage)
@@ -66,49 +66,31 @@ public class Player implements Entity
         }
     }
 
-    public void moveUp() { position.moveUp(); }
-
-    public void moveDown() { position.moveDown();}
-
-    public void moveLeft() { position.moveLeft(); }
-
-    public void moveRight() { position.moveRight();}
-
     public int getHealth() { return health; }
 
     public void setHealth(int health) { this.health = health;}
 
-    public Position getPosition() { return position;}
-
-    public void setPosition(Position position) { this.position = position; }
-
-    public HeavyWeapon getHeavyWeapon() {
+    public Weapon getHeavyWeapon() {
         return heavyWeapon;
     }
 
-    public void setHeavyWeapon(HeavyWeapon heavyWeapon) {
+    public void setHeavyWeapon(Weapon heavyWeapon) {
         this.heavyWeapon = heavyWeapon;
     }
 
-    public SpecialWeapon getSpecialWeapon() {
+    public Weapon getSpecialWeapon() {
         return specialWeapon;
     }
 
-    public PrimaryWeapon getPrimaryWeapon() {
+    public Weapon getPrimaryWeapon() {
         return primaryWeapon;
     }
 
-    public void setPrimaryWeapon(PrimaryWeapon primaryWeapon) {
+    public void setPrimaryWeapon(Weapon primaryWeapon) {
         this.primaryWeapon = primaryWeapon;
     }
 
-    public void setSpecialWeapon(SpecialWeapon specialWeapon) {
+    public void setSpecialWeapon(Weapon specialWeapon) {
         this.specialWeapon = specialWeapon;
-    }
-
-    @Override
-    public void draw(TextGraphics graphics)
-    {
-        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "X");
     }
 }

@@ -1,21 +1,23 @@
 package game.weapons;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import game.Player;
 
-public class RocketLauncher extends HeavyWeapon {
+public class RocketLauncher extends Weapon {
     //private int xAoE; //AoE stands for Area of Effect
     //private int yAoE;
 
     public RocketLauncher() {
+
     }
 
     @Override
-    protected int getDamage() {
+    protected int generateDamage() {
         return 5;
     }
 
     @Override
-    protected int getRange() {
+    protected int generateRange() {
         return 3;
     }
 
@@ -25,7 +27,7 @@ public class RocketLauncher extends HeavyWeapon {
     }
 
     @Override
-    public void draw(TextGraphics graphics) {
-
+    protected char generateCharacter() {
+        return 'R';
     }
 }

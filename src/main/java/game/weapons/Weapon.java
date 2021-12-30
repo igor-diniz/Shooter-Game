@@ -1,38 +1,33 @@
 package game.weapons;
-
-import game.Bullet;
-import game.Entity;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class Weapon implements Entity
+public abstract class Weapon
 {
-    private int damage;
-    private int range;
+    private final char character;
+    private final int damage;
+    private final int range;
     private int ammo;
-    private List<Bullet> bullets;
     //private int projectileVelocity;
 
     protected Weapon()
     {
-        this.damage = getDamage();
-        this.range = getRange();
+        this.damage = generateDamage();
+        this.range = generateRange();
         this.ammo = getStartAmmo();
-        bullets = new ArrayList<Bullet>();
+        this.character = generateCharacter();
     }
+    protected abstract char generateCharacter();
 
-    protected abstract int getDamage();
+    protected abstract int generateDamage();
 
-    protected abstract int getRange();
+    protected abstract int generateRange();
 
     protected abstract int getStartAmmo();
 
-    public void shoot() {
+    public boolean shoot() {
         if(ammo > 0) {
             decreaseAmmo();
-            bullets.add(new Bullet(range));
+            return true;
         }
+        return false;
     }
 
     public void decreaseAmmo()
@@ -43,4 +38,16 @@ public abstract class Weapon implements Entity
     public int getAmmo(){return ammo;}
 
     public void setAmmo(int ammo) {this.ammo = ammo;}
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public char getCharacter() {
+        return character;
+    }
 }

@@ -4,15 +4,14 @@ import game.Entity;
 import game.Position;
 import game.weapons.Weapon;
 
-public abstract class Enemy implements Entity {
+public abstract class Enemy extends Entity {
     private int health;
-    private Position position;
     private Weapon weapon;
     private final char character;
 
-    public Enemy(Position position){ //which enemy he is will determine his health
+    public Enemy(Position position){
+        super(position);
         this.health = generateHealth();
-        this.position = position;
         this.weapon = generateWeapon();
         this.character = generateCharacter();
     }
@@ -21,8 +20,6 @@ public abstract class Enemy implements Entity {
     {
         return character;
     }
-
-    protected abstract char generateCharacter();
 
     public void getDamaged(int damage)
     {
@@ -40,17 +37,6 @@ public abstract class Enemy implements Entity {
 
     public void setHealth(int newHealth) {health = newHealth;}
 
-    public void moveUp() { position.moveUp(); }
-
-    public void moveDown() { position.moveDown();}
-
-    public void moveLeft() { position.moveLeft(); }
-
-    public void moveRight() { position.moveRight();}
-
-    public Position getPosition() { return position;}
-
-    public void setPosition(Position position) { this.position = position; }
 
 }
 

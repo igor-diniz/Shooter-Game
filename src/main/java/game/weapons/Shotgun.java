@@ -1,26 +1,25 @@
 package game.weapons;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import game.Player;
 
-public class Shotgun extends SpecialWeapon {
+public class Shotgun extends Weapon {
     public Shotgun() {
-    }
-
-    //private int xAoE; //AoE stands for Area of Effect
-   // private int yAoE;
-
-    @Override
-    public void draw(TextGraphics graphics) {
 
     }
 
     @Override
-    protected int getDamage() {
+    protected char generateCharacter() {
+        return 'S';
+    }
+
+    @Override
+    protected int generateDamage() {
         return 3;
     }
 
     @Override
-    protected int getRange() {
+    protected int generateRange() {
         return 2;
     }
 

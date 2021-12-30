@@ -2,10 +2,16 @@ package game;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class Bullet implements Entity{
+public class Bullet extends Entity{
     private int range;
-    public Bullet(int range) {
+    public Bullet(Position position,int range) {
+        super(position);
         this.range = range;
+    }
+
+    @Override
+    protected char generateCharacter() {
+        return 'B';
     }
 
     @Override

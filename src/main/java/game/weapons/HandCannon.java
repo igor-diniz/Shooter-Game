@@ -1,19 +1,21 @@
 package game.weapons;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
+import game.Player;
 
-public class HandCannon extends PrimaryWeapon{
+public class HandCannon extends Weapon{
 
 
-    public HandCannon(){}
+    public HandCannon(){
+
+    }
 
     @Override
-    protected int getDamage() {
+    protected int generateDamage() {
         return 1;
     }
 
     @Override
-    protected int getRange() {
+    protected int generateRange() {
         return 5;
     }
 
@@ -22,11 +24,8 @@ public class HandCannon extends PrimaryWeapon{
         return 12;
     }
 
-    ;
-
-
     @Override
-    public void draw(TextGraphics graphics) {
-
+    protected char generateCharacter() {
+        return 'H';
     }
 }
