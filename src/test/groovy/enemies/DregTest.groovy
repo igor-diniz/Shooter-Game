@@ -1,19 +1,25 @@
+package enemies
+
 import game.Player
 import game.enemies.Dreg
 import game.Position
+import game.weapons.HandCannon
+import game.weapons.Weapon
 import spock.lang.Specification
 class DregTest extends Specification {
-    def 'Enemy Creation'() {
+    def 'Dreg Creation'() {
         given:
         Dreg enemy = new Dreg(new Position(3,3));
 
         when:
         def health = enemy.getHealth()
+        Weapon weapon = enemy.getWeapon();
         then:
+        weapon instanceof HandCannon;
         health == 1
     }
 
-    def 'Moving Enemy'() {
+    def 'Moving Dreg'() {
         given:
         Dreg enemy1 = new Dreg(new Position(10,10));
         Dreg enemy2 = new Dreg(new Position(10,10));

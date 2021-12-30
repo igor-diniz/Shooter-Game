@@ -21,6 +21,8 @@ public abstract class Enemy implements Entity {
         else health = 0;
     }
 
+    public Weapon getWeapon(){return weapon;}
+
     protected abstract int generateHealth();
 
     protected abstract Weapon generateWeapon();

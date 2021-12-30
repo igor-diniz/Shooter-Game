@@ -16,7 +16,7 @@ public class Game
     private Level level;
     public Game(int numRows,int numColumns) throws IOException {
         level = new Level(numRows,numColumns);
-        Terminal terminal = new DefaultTerminalFactory().createTerminal(); //reused from hero
+        Terminal terminal = new DefaultTerminalFactory().createTerminal(); //reused from hero ta aqui so pra eu lembrar como se fazem as coisas
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);
         screen.startScreen();
