@@ -8,12 +8,21 @@ public abstract class Enemy implements Entity {
     private int health;
     private Position position;
     private Weapon weapon;
+    private final char character;
 
     public Enemy(Position position){ //which enemy he is will determine his health
         this.health = generateHealth();
         this.position = position;
         this.weapon = generateWeapon();
+        this.character = generateCharacter();
     }
+
+    public char getCharacter()
+    {
+        return character;
+    }
+
+    protected abstract char generateCharacter();
 
     public void getDamaged(int damage)
     {

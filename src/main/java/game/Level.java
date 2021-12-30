@@ -14,7 +14,6 @@ public class Level
     private List<Enemy> enemyList;
     public Level(int numRows,int numColumns)
     {
-        player = new Player(new Position(10,10));
         NUM_ROWS = numRows;
         NUM_COLUMNS = numColumns;
         level = new char[NUM_ROWS][NUM_COLUMNS];
@@ -43,6 +42,16 @@ public class Level
 
     public void generateEntitys(Player player,List<Enemy> enemyList, List<Wall> wallList)
     {
-
+        this.enemyList = enemyList;
+        this.player = player;
+        level[player.getPosition().getX()][player.getPosition().getY()] = player.getCharacter();
+        for (Enemy enemy : enemyList)
+        {
+            level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+        }
+        for (Wall wall : wallList)
+        {
+            level[wall.getPosition().getX()][wall.getPosition().getY()] = wall.getCharacter();
+        }
     }
 }

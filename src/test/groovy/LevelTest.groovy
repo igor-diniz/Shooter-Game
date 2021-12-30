@@ -27,7 +27,7 @@ class LevelTest extends Specification
         given:
         Level level = new Level(10,10)
         Player player = new Player(new Position(1,1))
-        Dreg dreg = new Dreg(new Position(9,9))
+        Dreg dreg = new Dreg(new Position(8,8))
         Dreg dreg2 = new Dreg(new Position(8,5))
         List<Enemy> enemyList = new ArrayList<Enemy>()
         enemyList.add(dreg)
@@ -35,13 +35,13 @@ class LevelTest extends Specification
         List<Wall> wallList = new ArrayList<Wall>()
         for(int i = 0; i < level.getNumRows();i++)
         {
-            wallList.add(new Wall(new Position(0,i)))
-            walllist.add(new Wall(new Position(level.getNumRows()-1,i)))
+            wallList.add(new Wall(new Position(level.getNumRows()-1,i)))
+            wallList.add (new Wall(new Position(0, i)))
         }
         for(int i = 0; i < level.getNumColumns(); i++)
         {
-            walllist.add(new Wall(new Position(i,0)))
-            walllist.add(new Wall(new Position(i,level.getNumColumns()-1))
+            wallList.add(new Wall(new Position(i,0)))
+            wallList.add(new Wall(new Position(i,level.getNumColumns()-1)))
         }
 
         when:
@@ -49,7 +49,7 @@ class LevelTest extends Specification
         then:
         level.getCharacterAt(1,1) == 'H'
         level.getCharacterAt(8,5) == 'D'
-        level.getCharacterAt(9,9) == 'D'
+        level.getCharacterAt(8,8) == 'D'
         level.getCharacterAt(0,5) == 'W'
     }
 }

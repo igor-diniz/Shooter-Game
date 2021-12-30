@@ -11,6 +11,11 @@ public class Vandal extends Enemy {
     }
 
     @Override
+    protected char generateCharacter() {
+        return 'V';
+    }
+
+    @Override
     protected int generateHealth() {
         return 2;
     }

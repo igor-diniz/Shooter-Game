@@ -15,6 +15,7 @@ public class Player implements Entity
     private HeavyWeapon heavyWeapon = new RocketLauncher();
     private Position position;
     private int weaponInUse;
+    private final char character = 'H';
     Player(Position position)
     {
         this.position = position;
@@ -24,7 +25,7 @@ public class Player implements Entity
 
     public char getCharacter()
     {
-        //
+        return character;
     }
 
     public void shoot()

@@ -6,8 +6,14 @@ import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
 public class Dreg extends Enemy {
+
     public Dreg(Position position) {
         super(position);
+    }
+
+    @Override
+    protected char generateCharacter() {
+        return 'D';
     }
 
     @Override
@@ -23,10 +29,5 @@ public class Dreg extends Enemy {
     @Override
     protected Weapon generateWeapon() {
         return new HandCannon();
-    }
-
-    public char getCharacter()
-    {
-
     }
 }

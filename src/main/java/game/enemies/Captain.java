@@ -11,6 +11,11 @@ public class Captain extends Enemy {
     }
 
     @Override
+    protected char generateCharacter() {
+        return 'C';
+    }
+
+    @Override
     protected int generateHealth() {
         return 3;
     }

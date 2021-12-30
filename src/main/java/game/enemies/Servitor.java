@@ -11,6 +11,11 @@ public class Servitor extends Enemy {
     }
 
     @Override
+    protected char generateCharacter() {
+        return 'S';
+    }
+
+    @Override
     protected int generateHealth() {
         return 3;
     }
