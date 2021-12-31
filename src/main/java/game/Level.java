@@ -80,4 +80,15 @@ public class Level
         for(Wall wall: wallList) wall.draw(graphics);
     }
 
+    public void processKey(KeyStroke key)
+    {
+        String a = key.getKeyType().toString();
+        switch(a)
+        {
+            case "ArrowUp": ;
+            case "ArrowLeft":
+            case "ArrowDown":
+            case "ArrowRight":
+        }
+    }
 }
