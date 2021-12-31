@@ -30,16 +30,6 @@ public class Level
             }
         }
     }
-
-    public Level(Level another)
-    {
-        this.level = another.level;
-        this.player = another.player;
-        this.enemyList = another.enemyList;
-        this.NUM_COLUMNS = another.getNumColumns();
-        this.NUM_ROWS = another.getNumRows();
-        this.wallList = another.wallList;
-    }
     public int getNumRows()
     {
         return NUM_ROWS;
@@ -85,10 +75,30 @@ public class Level
         String a = key.getKeyType().toString();
         switch(a)
         {
-            case "ArrowUp": ;
+            case "ArrowUp":
+                if(level[player.getPosition().getX()][player.getPosition().getY() -1] != 'x') break;
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
+                player.moveUp();
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
+                break;
             case "ArrowLeft":
+                if(level[player.getPosition().getX()-1][player.getPosition().getY()] != 'x') break;
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
+                player.moveLeft();
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
+                break;
             case "ArrowDown":
+                if(level[player.getPosition().getX()][player.getPosition().getY() + 1] != 'x') break;
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
+                player.moveDown();
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
+                break;
             case "ArrowRight":
+                if(level[player.getPosition().getX()+1][player.getPosition().getY()] != 'x') break;
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
+                player.moveRight();
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
+                break;
         }
     }
 }

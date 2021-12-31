@@ -75,20 +75,16 @@ class LevelTest extends Specification
             wallList.add(new Wall(new Position(i,0)))
             wallList.add(new Wall(new Position(i,level1.getNumColumns()-1)))
         }
-        KeyStroke key1 = Stub()
-        KeyStroke key2 = Stub()
-        key1.getKeyType().toString() >> "ArrowUp" >> "ArrowLeft"
-        key2.getKeyType().toString() >> "ArrowDown" >> "ArrowRight"
-        Level level2 = new Level(level1)
+        level1.generateEntities(player,enemyList,wallList)
+        KeyStroke key1 = Stub(KeyStroke.class)
+        key1.getKeyType() >> "ArrowUp" >> "ArrowLeft" >> "ArrowDown" >> "ArrowRight"
         when:
         level1.processKey(key1)
-        level1.processKey(key1) //this should fail because position 7,6 is not 'x'
-        level2.processKey(key2)
-        level2.processKey(key2)
+        level1.processKey(key1) // this should not work cause there's a dreg on position 5,6
+        level1.processKey(key1)
+        level1.processKey(key1)
         then:
-        level1.getCharacterAt(6,6) == (char)'p'
-        level2.getCharacterAt(7,8) == (char)'p'
-
+        level1.getCharacterAt(7,7) == (char)'p'
 
     }
 }
