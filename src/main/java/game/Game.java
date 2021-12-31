@@ -6,9 +6,13 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 import game.enemies.Dreg;
 import game.enemies.Enemy;
 
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +24,11 @@ public class Game
     private Terminal terminal;
     public Game() throws IOException {
         loadLevel1();
+        Font font = new Font("WenQuanYi Zen Hei Mono", Font.BOLD, 24);
+        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         TerminalSize terminalSize = new TerminalSize(level.getNumColumns(), level.getNumRows());
-        terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).createTerminal();
+        terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize)
+                .setTerminalEmulatorFontConfiguration(cfg).createTerminal();
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);
         screen.startScreen();
