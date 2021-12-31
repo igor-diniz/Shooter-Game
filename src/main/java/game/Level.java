@@ -30,6 +30,16 @@ public class Level
             }
         }
     }
+
+    public Level(Level another)
+    {
+        this.level = another.level;
+        this.player = another.player;
+        this.enemyList = another.enemyList;
+        this.NUM_COLUMNS = another.getNumColumns();
+        this.NUM_ROWS = another.getNumRows();
+        this.wallList = another.wallList;
+    }
     public int getNumRows()
     {
         return NUM_ROWS;
@@ -70,15 +80,4 @@ public class Level
         for(Wall wall: wallList) wall.draw(graphics);
     }
 
-    public void processKey(KeyStroke key)
-    {
-        String a = key.getKeyType().toString();
-        switch(a)
-        {
-            case "ArrowUp": ;
-            case "ArrowLeft":
-            case "ArrowDown":
-            case "ArrowRight":
-        }
-    }
 }
