@@ -49,6 +49,7 @@ public class Level
     {
         this.enemyList = enemyList;
         this.player = player;
+        this.wallList = wallList;
         level[player.getPosition().getX()][player.getPosition().getY()] = player.getCharacter();
         for (Enemy enemy : enemyList)
         {

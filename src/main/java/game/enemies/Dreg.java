@@ -17,11 +17,6 @@ public class Dreg extends Enemy {
     }
 
     @Override
-    public void draw(TextGraphics graphics) {
-
-    }
-
-    @Override
     protected int generateHealth() {
         return 1;
     }

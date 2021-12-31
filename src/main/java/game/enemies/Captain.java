@@ -25,8 +25,4 @@ public class Captain extends Enemy {
         return new HandCannon();
     }
 
-    @Override
-    public void draw(TextGraphics graphics) {
-
-    }
 }
