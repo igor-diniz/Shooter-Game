@@ -77,14 +77,15 @@ class LevelTest extends Specification
         }
         level1.generateEntities(player,enemyList,wallList)
         KeyStroke key1 = Stub(KeyStroke.class)
-        key1.getKeyType() >> "ArrowUp" >> "ArrowLeft" >> "ArrowDown" >> "ArrowRight"
+        key1.getKeyType() >> "ArrowUp" >> "ArrowLeft" >> "ArrowUp" >> "ArrowDown" >> "ArrowRight"
         when:
         level1.processKey(key1)
         level1.processKey(key1) // this should not work cause there's a dreg on position 5,6
         level1.processKey(key1)
         level1.processKey(key1)
+        level1.processKey(key1)
         then:
-        level1.getCharacterAt(7,7) == (char)'p'
+        level1.getPlayerPosition() == new Position(7,6)
 
     }
 }

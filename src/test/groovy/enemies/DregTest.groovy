@@ -24,10 +24,10 @@ class DregTest extends Specification {
         Dreg enemy1 = new Dreg(new Position(10,10));
         Dreg enemy2 = new Dreg(new Position(10,10));
         when:
-        enemy1.moveUp()
-        enemy1.moveRight()
-        enemy2.moveLeft()
-        enemy2.moveDown()
+        enemy1.setPosition(enemy1.moveUp())
+        enemy1.setPosition(enemy1.moveRight())
+        enemy2.setPosition(enemy2.moveLeft())
+        enemy2.setPosition(enemy2.moveDown())
         then:
         enemy1.getPosition() == new Position(11,9)
         enemy2.getPosition() == new Position(9,11)

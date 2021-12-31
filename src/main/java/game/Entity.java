@@ -27,13 +27,25 @@ public abstract class Entity {
 
     public Position getPosition() { return position;}
 
-    public void moveUp() { position.moveUp(); }
+    public Position moveUp()
+    {
+        return new Position(position.getX(), position.getY() - 1);
+    }
 
-    public void moveDown() { position.moveDown();}
+    public Position moveDown()
+    {
+        return new Position(position.getX(), position.getY() + 1);
+    }
 
-    public void moveLeft() { position.moveLeft(); }
+    public Position moveRight()
+    {
+        return new Position(position.getX()+1, position.getY());
+    }
 
-    public void moveRight() { position.moveRight();}
+    public Position moveLeft()
+    {
+        return new Position(position.getX()-1, position.getY());
+    }
 
     public void setPosition(Position position) { this.position = position; }
 }

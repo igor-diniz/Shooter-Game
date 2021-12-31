@@ -76,29 +76,21 @@ public class Level
         switch(a)
         {
             case "ArrowUp":
-                if(level[player.getPosition().getX()][player.getPosition().getY() -1] != 'x') break;
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
-                player.moveUp();
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
-                break;
+                if(isValidMove(player.moveUp()))  player.setPosition(player.moveUp()); break;
             case "ArrowLeft":
-                if(level[player.getPosition().getX()-1][player.getPosition().getY()] != 'x') break;
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
-                player.moveLeft();
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
-                break;
+                if(isValidMove(player.moveLeft())) player.setPosition(player.moveLeft()); break;
             case "ArrowDown":
-                if(level[player.getPosition().getX()][player.getPosition().getY() + 1] != 'x') break;
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
-                player.moveDown();
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
-                break;
+                if(isValidMove(player.moveDown())) player.setPosition(player.moveDown()); break;
             case "ArrowRight":
-                if(level[player.getPosition().getX()+1][player.getPosition().getY()] != 'x') break;
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
-                player.moveRight();
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
-                break;
+                if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
         }
     }
+    public boolean isValidMove(Position position)
+    {
+        if(level[position.getX()][position.getY()] != 'x') return false;
+        return true;
+    }
+
+    public Position getPlayerPosition()  {return player.getPosition();}
+
 }
