@@ -13,7 +13,7 @@ public class Dreg extends Enemy {
 
     @Override
     protected char generateCharacter() {
-        return 'D';
+        return 'd';
     }
 
     @Override

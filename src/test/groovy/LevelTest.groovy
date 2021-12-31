@@ -45,11 +45,11 @@ class LevelTest extends Specification
         }
 
         when:
-        level.generateEntitys(player,enemyList,wallList)
+        level.generateEntities(player,enemyList,wallList)
         then:
-        level.getCharacterAt(1,1) == 'H'
-        level.getCharacterAt(8,5) == 'D'
-        level.getCharacterAt(8,8) == 'D'
-        level.getCharacterAt(0,5) == 'W'
+        level.getCharacterAt(1,1) == 'p'
+        level.getCharacterAt(8,5) == 'd'
+        level.getCharacterAt(8,8) == 'd'
+        level.getCharacterAt(0,5) == 'w'
     }
 }

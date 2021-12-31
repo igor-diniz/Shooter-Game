@@ -10,7 +10,7 @@ public class Shotgun extends Weapon {
 
     @Override
     protected char generateCharacter() {
-        return 'S';
+        return 's';
     }
 
     @Override

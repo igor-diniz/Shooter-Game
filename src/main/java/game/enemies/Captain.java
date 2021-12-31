@@ -12,7 +12,7 @@ public class Captain extends Enemy {
 
     @Override
     protected char generateCharacter() {
-        return 'C';
+        return 'c';
     }
 
     @Override

@@ -23,7 +23,7 @@ public class Player extends Entity
 
     @Override
     protected char generateCharacter() {
-        return 'H';
+        return 'p';
     }
 
     public void shoot()

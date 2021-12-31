@@ -10,7 +10,7 @@ public class Wall extends Entity {
 
     @Override
     protected char generateCharacter() {
-        return 'W';
+        return 'w';
     }
 
 

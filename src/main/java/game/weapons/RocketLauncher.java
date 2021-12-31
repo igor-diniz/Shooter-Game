@@ -28,6 +28,6 @@ public class RocketLauncher extends Weapon {
 
     @Override
     protected char generateCharacter() {
-        return 'R';
+        return 'r';
     }
 }

@@ -22,7 +22,7 @@ public abstract class Entity {
 
     public void draw(TextGraphics graphics)
     {
-        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), String.valueOf(character));
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf(character));
     }
 
     public Position getPosition() { return position;}

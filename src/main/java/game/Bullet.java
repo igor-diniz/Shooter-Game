@@ -11,7 +11,7 @@ public class Bullet extends Entity{
 
     @Override
     protected char generateCharacter() {
-        return 'B';
+        return 'b';
     }
 
     @Override

@@ -12,7 +12,7 @@ public class Servitor extends Enemy {
 
     @Override
     protected char generateCharacter() {
-        return 'S';
+        return 's';
     }
 
     @Override

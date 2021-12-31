@@ -26,6 +26,6 @@ public class HandCannon extends Weapon{
 
     @Override
     protected char generateCharacter() {
-        return 'H';
+        return 'h';
     }
 }

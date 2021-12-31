@@ -12,7 +12,7 @@ public class Vandal extends Enemy {
 
     @Override
     protected char generateCharacter() {
-        return 'V';
+        return 'v';
     }
 
     @Override
