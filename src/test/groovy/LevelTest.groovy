@@ -16,11 +16,9 @@ class LevelTest extends Specification
         when:
         int row = level.getNumRows()
         int columns = level.getNumColumns()
-        char character = level.getCharacterAt(3,3)
         then:
         row == 10
         columns == 10
-        character == 'x'
     }
 
     def 'Level Entity Introduction'()
@@ -110,14 +108,12 @@ class LevelTest extends Specification
             wallList.add(new Wall(new Position(i,level1.getNumColumns()-1)))
         }
         level1.generateEntities(player,enemyList,wallList)
-        KeyStroke key1 = Stub(KeyStroke.class)
-        key1.getKeyType() >> "ArrowDown"
 
         when:
-        level1.processKey(key1)
+        level1.moveEnemies()
 
         then:
-        level1.getEnemyList[0].getPosition() == new Position(5,7)
-        level1.getEnemyList[1].getPosition() == new Position(8,6)
+        level1.getEnemyList()[0].getPosition() == new Position(5,7)
+        level1.getEnemyList()[1].getPosition() == new Position(8,6)
     }
 }

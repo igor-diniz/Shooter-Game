@@ -5,7 +5,6 @@ public abstract class Weapon
     private final int damage;
     private final int range;
     private int ammo;
-    //private int projectileVelocity;
 
     protected Weapon()
     {

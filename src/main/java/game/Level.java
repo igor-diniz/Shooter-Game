@@ -22,13 +22,6 @@ public class Level
         NUM_ROWS = numRows;
         NUM_COLUMNS = numColumns;
         level = new char[NUM_ROWS][NUM_COLUMNS];
-        for(int i = 0; i< NUM_ROWS; i++)
-        {
-            for(int j = 0; j< NUM_COLUMNS; j++)
-            {
-                level[i][j] = 'x';
-            }
-        }
     }
     public int getNumRows()
     {
@@ -47,6 +40,13 @@ public class Level
 
     public void generateEntities(Player player, List<Enemy> enemyList, List<Wall> wallList)
     {
+        for(int i = 0; i< NUM_ROWS; i++)
+        {
+            for(int j = 0; j< NUM_COLUMNS; j++)
+            {
+                level[i][j] = 'x';
+            }
+        }
         this.enemyList = enemyList;
         this.player = player;
         this.wallList = wallList;
@@ -71,9 +71,10 @@ public class Level
         for(Wall wall: wallList) wall.draw(graphics);
     }
 
-    public void processKey(KeyStroke key)
+    public boolean processKey(KeyStroke key)
     {
         String a = key.getKeyType().toString();
+        level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
         switch(a)
         {
             case "ArrowUp":
@@ -84,18 +85,55 @@ public class Level
                 if(isValidMove(player.moveDown())) player.setPosition(player.moveDown()); break;
             case "ArrowRight":
                 if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
+            default:
+                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
+                return false;
         }
+        level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
+        return true;
     }
     public boolean isValidMove(Position position)
     {
-        if(level[position.getX()][position.getY()] != 'x') return false;
-        return true;
+        return level[position.getX()][position.getY()] == 'x';
     }
 
     public Position getPlayerPosition()  {return player.getPosition();}
 
-    public List<Enemy> getEnemyList() {}
+    public List<Enemy> getEnemyList() {return enemyList;}
 
-    private void moveMonsters(){}
-
+    public void moveEnemies()
+    {
+        int xDistance, yDistance;
+        for(Enemy enemy : enemyList)
+        {
+            level[enemy.getPosition().getX()][enemy.getPosition().getY()] = 'x';
+            xDistance = enemy.getPosition().getX() - player.getPosition().getX();
+            yDistance = enemy.getPosition().getY() - player.getPosition().getY();
+            if(Math.abs(xDistance) > Math.abs(yDistance))
+            {
+                if(xDistance > 0 && isValidMove(enemy.moveLeft()))
+                {
+                    enemy.setPosition(enemy.moveLeft());
+                    level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+                    continue;
+                }
+                if(isValidMove(enemy.moveRight())) {enemy.setPosition(enemy.moveRight()) ;
+                    level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+                    continue;}
+            }
+            if(yDistance > 0 && isValidMove(enemy.moveUp()))
+            {
+                enemy.setPosition(enemy.moveUp());
+                level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+                continue;
+            }
+            if(isValidMove(enemy.moveDown()))
+            {
+                enemy.setPosition(enemy.moveDown());
+                level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+                continue;
+            }
+            level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+        }
+    }
 }

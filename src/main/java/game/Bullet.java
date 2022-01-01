@@ -1,12 +1,15 @@
 package game;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
+
+import game.weapons.Weapon;
 
 public class Bullet extends Entity{
     private int range;
-    public Bullet(Position position,int range) {
+    private final int damage;
+    public Bullet(Position position, Weapon weapon) {
         super(position);
-        this.range = range;
+        damage = weapon.getDamage();
+        range = weapon.getRange();
     }
 
     @Override
@@ -14,10 +17,10 @@ public class Bullet extends Entity{
         return 'b';
     }
 
-    @Override
-    public void draw(TextGraphics graphics) {
-        //do something
-        range--;
+    public boolean decreaseRange()
+    {
+        if(range > 0){ range --; return true;}
+        return false;
     }
 
     public int getRange() {

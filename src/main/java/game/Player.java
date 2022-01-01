@@ -31,13 +31,13 @@ public class Player extends Entity
         switch(weaponInUse)
         {
             case 0:
-                if(primaryWeapon.shoot()) bullets.add(new Bullet(getPosition(),primaryWeapon.getRange()));;
+                if(primaryWeapon.shoot()) bullets.add(new Bullet(getPosition(),primaryWeapon));;
                 break;
             case 1:
-                if(specialWeapon.shoot()) bullets.add(new Bullet(getPosition(), specialWeapon.getRange()));;
+                if(specialWeapon.shoot()) bullets.add(new Bullet(getPosition(), specialWeapon));;
                 break;
             case 2:
-                if(heavyWeapon.shoot()) bullets.add(new Bullet(getPosition(),heavyWeapon.getRange()));
+                if(heavyWeapon.shoot()) bullets.add(new Bullet(getPosition(),heavyWeapon));
                 break;
         }
     }

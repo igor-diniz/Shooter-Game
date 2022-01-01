@@ -2,6 +2,7 @@ package game;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -48,13 +49,14 @@ public class Game
             draw();
             KeyStroke key = terminal.pollInput(); //pollInput is non-blocking
             if(key == null) continue;
-            processKey(key);
+            if (key.getKeyType() == KeyType.EOF) { break; }
+            if(processKey(key)) level.moveEnemies(); //monsters should only move if player inputs a valid key
         }
     }
 
-    private void processKey(KeyStroke key)
+    private boolean processKey(KeyStroke key)
     {
-        level.processKey(key);
+        return level.processKey(key);
     }
 
     private void loadLevel1()

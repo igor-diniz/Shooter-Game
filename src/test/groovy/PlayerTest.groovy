@@ -52,7 +52,6 @@ class PlayerTest extends Specification
         then:
         player.getHealth() == 2
         player1.getHealth() == 1
-
     }
 
 }
