@@ -117,7 +117,7 @@ class LevelTest extends Specification
         level1.processKey(key1)
 
         then:
-        level1.getMonsters[0].getPosition() == new Position(5,7)
-        level1.getMonsters[1].getPosition() == new Position(8,6)
+        level1.getEnemyList[0].getPosition() == new Position(5,7)
+        level1.getEnemyList[1].getPosition() == new Position(8,6)
     }
 }

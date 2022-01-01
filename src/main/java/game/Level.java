@@ -94,4 +94,8 @@ public class Level
 
     public Position getPlayerPosition()  {return player.getPosition();}
 
+    public List<Enemy> getEnemyList() {}
+
+    private void moveMonsters(){}
+
 }
