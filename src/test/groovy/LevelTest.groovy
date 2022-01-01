@@ -86,6 +86,38 @@ class LevelTest extends Specification
         level1.processKey(key1)
         then:
         level1.getPlayerPosition() == new Position(7,6)
+    }
 
+    def 'Level Enemy movement'()
+    {
+        given:
+        Level level1 = new Level(10,10)
+        Player player = new Player(new Position(6,7))
+        Dreg dreg = new Dreg(new Position(5,6))
+        Dreg dreg2 = new Dreg(new Position(8,5))
+        List<Enemy> enemyList = new ArrayList<Enemy>()
+        enemyList.add(dreg)
+        enemyList.add(dreg2)
+        List<Wall> wallList = new ArrayList<Wall>()
+        for(int i = 0; i < level1.getNumRows();i++)
+        {
+            wallList.add(new Wall(new Position(level1.getNumRows()-1,i)))
+            wallList.add (new Wall(new Position(0, i)))
+        }
+        for(int i = 0; i < level1.getNumColumns(); i++)
+        {
+            wallList.add(new Wall(new Position(i,0)))
+            wallList.add(new Wall(new Position(i,level1.getNumColumns()-1)))
+        }
+        level1.generateEntities(player,enemyList,wallList)
+        KeyStroke key1 = Stub(KeyStroke.class)
+        key1.getKeyType() >> "ArrowDown"
+
+        when:
+        level1.processKey(key1)
+
+        then:
+        level1.getMonsters[0].getPosition() == new Position(5,7)
+        level1.getMonsters[1].getPosition() == new Position(8,6)
     }
 }
