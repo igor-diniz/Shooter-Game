@@ -146,15 +146,16 @@ class LevelTest extends Specification
         level.generateEntities(player,enemyList,wallList)
         Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon())
         Bullet bullet2 = new Bullet(new Position(8,5),new HandCannon())
-        Bullet bullet3 = new Bullet(new Position(8,5),new HandCannon())
+        Bullet bullet3 = new Bullet(new Position(8,3),new HandCannon())
         level.addBullet(bullet1)
         level.addBullet(bullet2)
         level.addBullet(bullet3)
         when:
         level.checkCollisions()
+        level.checkCollisions()
         then:
-        player.getHealth() == 2
+        level.getPlayer().getHealth() == 2
         level.getEnemyList().size() == 1
-        level.getBullets.size() == 1
+        level.getBullets().size() == 1
     }
 }

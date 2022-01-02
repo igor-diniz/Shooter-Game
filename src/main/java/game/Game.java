@@ -43,7 +43,7 @@ public class Game
     }
 
     public void run() throws IOException, InterruptedException {
-        while(true)
+        while(!level.gameOver())
         {
             Thread.sleep(5);
             draw();

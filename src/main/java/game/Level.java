@@ -101,9 +101,11 @@ public class Level
         return level[position.getX()][position.getY()] == 'x';
     }
 
-    public Position getPlayerPosition()  {return player.getPosition();}
+    public Player getPlayer()  {return player;}
 
     public List<Enemy> getEnemyList() {return enemyList;}
+
+    public boolean gameOver() {return gameOver;}
 
     public void moveEnemies()
     {
@@ -142,7 +144,31 @@ public class Level
     }
     public void checkCollisions()
     {
-
+        List<Bullet> bulletsToRemove = new ArrayList<Bullet>();
+        List<Enemy> enemiesToRemove = new ArrayList<Enemy>();
+        for(Bullet bullet : bulletList)
+        {
+            if(bullet.getPosition().equals(player.getPosition()))
+            {
+                player.getDamaged(bullet.getDamage());
+                if(player.getHealth() == 0) gameOver = true;
+                bulletsToRemove.add(bullet);
+                continue;
+            }
+            for(Enemy enemy : enemyList)
+            {
+                if (bullet.getPosition().equals(enemy.getPosition()))
+                {
+                    enemy.getDamaged(bullet.getDamage());
+                    if(enemy.getHealth() == 0) enemiesToRemove.add(enemy);
+                    bulletsToRemove.add(bullet);
+                    break;
+                }
+            }
+        }
+        for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
+        for(Enemy enemy : enemiesToRemove) enemyList.remove(enemy);
+        if(enemyList.size() == 0) gameOver = true;
     }
     public void addBullet(Bullet bullet)
     {
