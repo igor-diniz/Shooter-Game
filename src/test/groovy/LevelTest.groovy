@@ -123,6 +123,48 @@ class LevelTest extends Specification
         level1.getEnemyList()[1].getPosition() == new Position(8,6)
     }
 
+    def 'level Move Bullets'()
+    {
+        Level level = new Level(10,10)
+        Player player = new Player(new Position(1,1))
+        Dreg dreg = new Dreg(new Position(8,8))
+        Dreg dreg2 = new Dreg(new Position(8,5))
+        List<Enemy> enemyList = new ArrayList<Enemy>()
+        enemyList.add(dreg)
+        enemyList.add(dreg2)
+        List<Wall> wallList = new ArrayList<Wall>()
+        for(int i = 0; i < level.getNumRows();i++)
+        {
+            wallList.add(new Wall(new Position(level.getNumRows()-1,i)))
+            wallList.add (new Wall(new Position(0, i)))
+        }
+        for(int i = 0; i < level.getNumColumns(); i++)
+        {
+            wallList.add(new Wall(new Position(i,0)))
+            wallList.add(new Wall(new Position(i,level.getNumColumns()-1)))
+        }
+        level.generateEntities(player,enemyList,wallList)
+        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon())
+        bullet1.setDirection('S')
+        Bullet bullet2 = new Bullet(new Position(5,5),new HandCannon())
+        bullet2.setDirection('N')
+        Bullet bullet3 = new Bullet(new Position(5,3),new HandCannon())
+        bullet2.setDirection('W')
+        Bullet bullet4 = new Bullet(new Position(5,6),new HandCannon())
+        bullet2.setDirection('E')
+        level.addBullet(bullet1)
+        level.addBullet(bullet2)
+        level.addBullet(bullet3)
+        level.addBullet(bullet4)
+        when:
+        level.moveBullets()
+        then:
+        level.getBullets().get(0).position == new Position(1,2)
+        level.getBullets().get(1).position == new Position(5,4)
+        level.getBullets().get(2).position == new Position(4,3)
+        level.getBullets().get(3).position == new Position(6,6)
+    }
+
     def 'collisions'()
     {
         Level level = new Level(10,10)

@@ -50,7 +50,9 @@ public class Game
             KeyStroke key = terminal.pollInput(); //pollInput is non-blocking
             if(key == null) continue;
             if (key.getKeyType() == KeyType.EOF) { break; }
-            if(processKey(key)) level.moveEnemies(); //monsters should only move if player inputs a valid key
+            if(!processKey(key)); //monsters should only move if player inputs a valid key
+            level.moveEnemies();
+            level.moveBullets();
         }
     }
 

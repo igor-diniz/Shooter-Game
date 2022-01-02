@@ -155,6 +155,11 @@ public class Level
                 bulletsToRemove.add(bullet);
                 continue;
             }
+            if(level[bullet.getPosition().getX()][bullet.getPosition().getY()] == 'w')
+            {
+                bulletsToRemove.add(bullet);
+                continue;
+            }
             for(Enemy enemy : enemyList)
             {
                 if (bullet.getPosition().equals(enemy.getPosition()))
