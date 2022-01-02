@@ -1,6 +1,5 @@
 package game.enemies;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import game.Position;
 import game.weapons.HandCannon;
 import game.weapons.Weapon;

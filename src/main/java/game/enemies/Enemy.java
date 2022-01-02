@@ -7,18 +7,11 @@ import game.weapons.Weapon;
 public abstract class Enemy extends Entity {
     private int health;
     private Weapon weapon;
-    private final char character;
 
     public Enemy(Position position){
         super(position);
         this.health = generateHealth();
         this.weapon = generateWeapon();
-        this.character = generateCharacter();
-    }
-
-    public char getCharacter()
-    {
-        return character;
     }
 
     public void getDamaged(int damage)
@@ -36,7 +29,5 @@ public abstract class Enemy extends Entity {
     public int getHealth() {return health;}
 
     public void setHealth(int newHealth) {health = newHealth;}
-
-
 }
 

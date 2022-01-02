@@ -6,10 +6,9 @@ import game.weapons.Weapon;
 public class Bullet extends Entity{
     private int range;
     private final int damage;
-    private final char direction;
     public Bullet(Position position, Weapon weapon, char direction) {
         super(position);
-        this.direction = direction;
+        this.setDirection(direction);
         damage = weapon.getDamage();
         range = weapon.getRange();
     }
@@ -33,13 +32,9 @@ public class Bullet extends Entity{
         return damage;
     }
 
-    public char getDirection() {
-        return direction;
-    }
-
     public void move()
     {
-        switch(direction)
+        switch(getDirection())
         {
             case 'N':
                 this.setPosition(this.moveUp()); break;

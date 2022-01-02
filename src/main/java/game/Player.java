@@ -13,7 +13,6 @@ public class Player extends Entity
     private Weapon heavyWeapon = new RocketLauncher();
     private int weaponInUse;
     private List<Bullet> bullets;
-    private char direction = 'N';
     Player(Position position)
     {
         super(position);
@@ -93,13 +92,5 @@ public class Player extends Entity
 
     public void setSpecialWeapon(Weapon specialWeapon) {
         this.specialWeapon = specialWeapon;
-    }
-
-    public char getDirection() {
-        return direction;
-    }
-
-    public void setDirection(char direction) {
-        this.direction = direction;
     }
 }
