@@ -89,7 +89,7 @@ class LevelTest extends Specification
         level1.processKey(key1)
         level1.processKey(key1)
         then:
-        level1.getPlayerPosition() == new Position(7,6)
+        level1.getPlayer().getPosition() == new Position(7,6)
     }
 
     def 'Level Enemy movement'()

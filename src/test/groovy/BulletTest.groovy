@@ -15,8 +15,8 @@ class BulletTest extends Specification
         player.getPosition() >> new Position(10,10)
         Weapon weapon = new HandCannon()
         Weapon weapon2 = new Shotgun()
-        Bullet bullet = new Bullet(player.getPosition(),weapon)
-        Bullet bullet1 = new Bullet(player.getPosition(),weapon2)
+        Bullet bullet = new Bullet(player.getPosition(),weapon, 'N' as char)
+        Bullet bullet1 = new Bullet(player.getPosition(),weapon2, 'N' as char)
         when:
         int range = bullet.getRange()
         bullet1.decreaseRange()

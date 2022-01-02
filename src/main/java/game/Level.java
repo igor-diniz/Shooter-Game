@@ -187,6 +187,11 @@ public class Level
 
     public void moveBullets()
     {
-
+        for(Bullet bullet : bulletList)
+        {
+            level[bullet.getPosition().getX()][bullet.getPosition().getY()] = 'x';
+            bullet.move();
+            level[bullet.getPosition().getX()][bullet.getPosition().getY()] = 'b';
+        }
     }
 }

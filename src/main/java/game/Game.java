@@ -53,6 +53,7 @@ public class Game
             if(!processKey(key)); //monsters should only move if player inputs a valid key
             level.moveEnemies();
             level.moveBullets();
+            level.checkCollisions();
         }
     }
 

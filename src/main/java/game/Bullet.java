@@ -36,4 +36,19 @@ public class Bullet extends Entity{
     public char getDirection() {
         return direction;
     }
+
+    public void move()
+    {
+        switch(direction)
+        {
+            case 'N':
+                this.setPosition(this.moveUp()); break;
+            case 'E':
+                this.setPosition(this.moveRight()); break;
+            case 'W':
+                this.setPosition(this.moveLeft()); break;
+            case 'S':
+                this.setPosition(this.moveDown()); break;
+        }
+    }
 }
