@@ -225,7 +225,7 @@ class LevelTest extends Specification
         level.moveEnemies()
         level.processKey(key1)
         then:
-        level.getBullets().get(0).getDirection() == ('S' as char)
+        level.getBullets().get(2).getDirection() == ('S' as char) //the player's bullet
         level.getBullets().size() == 3
     }
 }

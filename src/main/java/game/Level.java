@@ -90,7 +90,7 @@ public class Level
             case "ArrowRight":
                 if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
             case "Enter":
-                //
+                bulletList.add(new Bullet(player.getPosition(),player.getUsingWeapon(),player.getDirection())); break;
             default:
                 level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
                 return false;
@@ -122,27 +122,20 @@ public class Level
                 if(xDistance > 0 && isValidMove(enemy.moveLeft()))
                 {
                     enemy.setPosition(enemy.moveLeft());
-                    level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
-                    continue;
                 }
-                if(isValidMove(enemy.moveRight())) {enemy.setPosition(enemy.moveRight()) ;
-                    level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
-                    continue;}
+                else if(isValidMove(enemy.moveRight()))
+                    enemy.setPosition(enemy.moveRight());
             }
-            if(yDistance > 0 && isValidMove(enemy.moveUp()))
+            else if(yDistance > 0 && isValidMove(enemy.moveUp()))
             {
                 enemy.setPosition(enemy.moveUp());
-                level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
-                continue;
             }
-            if(isValidMove(enemy.moveDown()))
+            else if(isValidMove(enemy.moveDown()))
             {
                 enemy.setPosition(enemy.moveDown());
-                level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
-                continue;
             }
             level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
-            //bulletList.add()
+            bulletList.add(new Bullet(enemy.getPosition(),enemy.getWeapon(),enemy.getDirection()));
         }
     }
     public void checkCollisions()
