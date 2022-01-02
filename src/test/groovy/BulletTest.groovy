@@ -22,6 +22,6 @@ class BulletTest extends Specification
         bullet1.decreaseRange()
         then:
         bullet1.getRange() == 1
-        range == 5
+        range == 3
     }
 }

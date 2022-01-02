@@ -16,7 +16,7 @@ public class HandCannon extends Weapon{
 
     @Override
     protected int generateRange() {
-        return 5;
+        return 3;
     }
 
     @Override

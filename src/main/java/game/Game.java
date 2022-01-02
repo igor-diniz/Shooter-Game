@@ -43,14 +43,14 @@ public class Game
     }
 
     public void run() throws IOException, InterruptedException {
-        while(!level.gameOver())
+        while(true)
         {
             Thread.sleep(5);
             draw();
             KeyStroke key = terminal.pollInput(); //pollInput is non-blocking
             if(key == null) continue;
             if (key.getKeyType() == KeyType.EOF) { break; }
-            if(!processKey(key)); //monsters should only move if player inputs a valid key
+            if(!processKey(key)) continue; //monsters should only move if player inputs a valid key
             level.moveEnemies();
             level.moveBullets();
             level.checkCollisions();

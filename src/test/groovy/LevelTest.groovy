@@ -201,8 +201,8 @@ class LevelTest extends Specification
     {
         Level level = new Level(10,10)
         Player player = new Player(new Position(1,1))
-        Dreg dreg = new Dreg(new Position(8,8))
-        Dreg dreg2 = new Dreg(new Position(8,5))
+        Dreg dreg = new Dreg(new Position(2,2))
+        Dreg dreg2 = new Dreg(new Position(2,1))
         List<Enemy> enemyList = new ArrayList<Enemy>()
         enemyList.add(dreg)
         enemyList.add(dreg2)
