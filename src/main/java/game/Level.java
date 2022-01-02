@@ -89,6 +89,8 @@ public class Level
                 if(isValidMove(player.moveDown())) player.setPosition(player.moveDown()); break;
             case "ArrowRight":
                 if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
+            case "Enter":
+                //
             default:
                 level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
                 return false;
@@ -140,6 +142,7 @@ public class Level
                 continue;
             }
             level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+            //bulletList.add()
         }
     }
     public void checkCollisions()
