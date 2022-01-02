@@ -123,7 +123,7 @@ class LevelTest extends Specification
         level1.getEnemyList()[1].getPosition() == new Position(8,6)
     }
 
-    def 'level Move Bullets'()
+    def 'Level Move Bullets'()
     {
         Level level = new Level(10,10)
         Player player = new Player(new Position(1,1))
@@ -161,7 +161,7 @@ class LevelTest extends Specification
         level.getBullets().get(3).position == new Position(6,6)
     }
 
-    def 'collisions'()
+    def 'Collisions'()
     {
         Level level = new Level(10,10)
         Player player = new Player(new Position(1,1))
@@ -195,5 +195,37 @@ class LevelTest extends Specification
         level.getPlayer().getHealth() == 2
         level.getEnemyList().size() == 1
         level.getBullets().size() == 1
+    }
+
+    def 'Level Bullet Creation'()
+    {
+        Level level = new Level(10,10)
+        Player player = new Player(new Position(1,1))
+        Dreg dreg = new Dreg(new Position(8,8))
+        Dreg dreg2 = new Dreg(new Position(8,5))
+        List<Enemy> enemyList = new ArrayList<Enemy>()
+        enemyList.add(dreg)
+        enemyList.add(dreg2)
+        List<Wall> wallList = new ArrayList<Wall>()
+        for(int i = 0; i < level.getNumRows();i++)
+        {
+            wallList.add(new Wall(new Position(level.getNumRows()-1,i)))
+            wallList.add (new Wall(new Position(0, i)))
+        }
+        for(int i = 0; i < level.getNumColumns(); i++)
+        {
+            wallList.add(new Wall(new Position(i,0)))
+            wallList.add(new Wall(new Position(i,level.getNumColumns()-1)))
+        }
+        level.generateEntities(player,enemyList,wallList)
+        KeyStroke key1 = Stub(KeyStroke.class)
+        key1.getKeyType()  >> "ArrowDown" >> "Enter"
+        when:
+        level.processKey(key1) // this should not generate a bullet
+        level.moveEnemies()
+        level.processKey(key1)
+        then:
+        level.getBullets().get(0).getDirection() == ('S' as char)
+        level.getBullets().size() == 3
     }
 }
