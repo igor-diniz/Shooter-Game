@@ -7,6 +7,8 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import game.enemies.Enemy;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Level
@@ -17,6 +19,8 @@ public class Level
     private Player player;
     private List<Enemy> enemyList;
     private List<Wall> wallList;
+    private List<Bullet> bulletList = new ArrayList<Bullet>();
+    private boolean gameOver = false;
     public Level(int numRows,int numColumns)
     {
         NUM_ROWS = numRows;
@@ -135,5 +139,18 @@ public class Level
             }
             level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
         }
+    }
+    public void checkCollisions()
+    {
+
+    }
+    public void addBullet(Bullet bullet)
+    {
+        bulletList.add(bullet);
+    }
+
+    public List<Bullet> getBullets()
+    {
+        return bulletList;
     }
 }

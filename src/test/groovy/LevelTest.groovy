@@ -151,7 +151,7 @@ class LevelTest extends Specification
         level.addBullet(bullet2)
         level.addBullet(bullet3)
         when:
-        level.checkColisions()
+        level.checkCollisions()
         then:
         player.getHealth() == 2
         level.getEnemyList().size() == 1
