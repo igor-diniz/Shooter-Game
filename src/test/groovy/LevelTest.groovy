@@ -52,10 +52,10 @@ class LevelTest extends Specification
         when:
         level.generateEntities(player,enemyList,wallList)
         then:
-        level.getCharacterAt(1,1) == 'p'
-        level.getCharacterAt(8,5) == 'd'
-        level.getCharacterAt(8,8) == 'd'
-        level.getCharacterAt(0,5) == 'w'
+        level.getCharacterAt(1,1) == ('p' as char)
+        level.getCharacterAt(8,5) == ('d' as char)
+        level.getCharacterAt(8,8) == ('d' as char)
+        level.getCharacterAt(0,5) == ('w' as char)
     }
 
     def 'Level player movement'()
@@ -144,14 +144,10 @@ class LevelTest extends Specification
             wallList.add(new Wall(new Position(i,level.getNumColumns()-1)))
         }
         level.generateEntities(player,enemyList,wallList)
-        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon())
-        bullet1.setDirection('S')
-        Bullet bullet2 = new Bullet(new Position(5,5),new HandCannon())
-        bullet2.setDirection('N')
-        Bullet bullet3 = new Bullet(new Position(5,3),new HandCannon())
-        bullet2.setDirection('W')
-        Bullet bullet4 = new Bullet(new Position(5,6),new HandCannon())
-        bullet2.setDirection('E')
+        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'S' as char)
+        Bullet bullet2 = new Bullet(new Position(5,5),new HandCannon(), 'N' as char)
+        Bullet bullet3 = new Bullet(new Position(5,3),new HandCannon(), 'W' as char)
+        Bullet bullet4 = new Bullet(new Position(5,6),new HandCannon(), 'E' as char)
         level.addBullet(bullet1)
         level.addBullet(bullet2)
         level.addBullet(bullet3)
@@ -186,9 +182,9 @@ class LevelTest extends Specification
             wallList.add(new Wall(new Position(i,level.getNumColumns()-1)))
         }
         level.generateEntities(player,enemyList,wallList)
-        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon())
-        Bullet bullet2 = new Bullet(new Position(8,5),new HandCannon())
-        Bullet bullet3 = new Bullet(new Position(8,3),new HandCannon())
+        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'N' as char)
+        Bullet bullet2 = new Bullet(new Position(8,5),new HandCannon(), 'N' as char)
+        Bullet bullet3 = new Bullet(new Position(8,3),new HandCannon(), 'N' as char)
         level.addBullet(bullet1)
         level.addBullet(bullet2)
         level.addBullet(bullet3)

@@ -6,8 +6,10 @@ import game.weapons.Weapon;
 public class Bullet extends Entity{
     private int range;
     private final int damage;
-    public Bullet(Position position, Weapon weapon) {
+    private final char direction;
+    public Bullet(Position position, Weapon weapon, char direction) {
         super(position);
+        this.direction = direction;
         damage = weapon.getDamage();
         range = weapon.getRange();
     }
@@ -29,5 +31,9 @@ public class Bullet extends Entity{
 
     public int getDamage() {
         return damage;
+    }
+
+    public char getDirection() {
+        return direction;
     }
 }

@@ -184,4 +184,9 @@ public class Level
     {
         return bulletList;
     }
+
+    public void moveBullets()
+    {
+
+    }
 }

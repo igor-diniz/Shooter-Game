@@ -13,6 +13,7 @@ public class Player extends Entity
     private Weapon heavyWeapon = new RocketLauncher();
     private int weaponInUse;
     private List<Bullet> bullets;
+    private char direction = 'N';
     Player(Position position)
     {
         super(position);
@@ -31,13 +32,13 @@ public class Player extends Entity
         switch(weaponInUse)
         {
             case 0:
-                if(primaryWeapon.shoot()) bullets.add(new Bullet(getPosition(),primaryWeapon));;
+                if(primaryWeapon.shoot()) bullets.add(new Bullet(getPosition(),primaryWeapon,getDirection()));;
                 break;
             case 1:
-                if(specialWeapon.shoot()) bullets.add(new Bullet(getPosition(), specialWeapon));;
+                if(specialWeapon.shoot()) bullets.add(new Bullet(getPosition(), specialWeapon,getDirection()));;
                 break;
             case 2:
-                if(heavyWeapon.shoot()) bullets.add(new Bullet(getPosition(),heavyWeapon));
+                if(heavyWeapon.shoot()) bullets.add(new Bullet(getPosition(),heavyWeapon,getDirection()));
                 break;
         }
     }
@@ -92,5 +93,13 @@ public class Player extends Entity
 
     public void setSpecialWeapon(Weapon specialWeapon) {
         this.specialWeapon = specialWeapon;
+    }
+
+    public char getDirection() {
+        return direction;
+    }
+
+    public void setDirection(char direction) {
+        this.direction = direction;
     }
 }
