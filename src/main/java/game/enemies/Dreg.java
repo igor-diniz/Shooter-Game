@@ -11,6 +11,9 @@ public class Dreg extends Enemy {
     }
 
     @Override
+    protected int generateActionDelay() { return 3; }
+
+    @Override
     protected char generateCharacter() {
         return 'd';
     }

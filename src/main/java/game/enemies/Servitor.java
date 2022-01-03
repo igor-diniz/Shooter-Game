@@ -1,6 +1,5 @@
 package game.enemies;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import game.Position;
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
@@ -8,6 +7,11 @@ import game.weapons.Weapon;
 public class Servitor extends Enemy {
     public Servitor(Position position) {
         super(position);
+    }
+
+    @Override
+    protected int generateActionDelay() {
+        return 2;
     }
 
     @Override

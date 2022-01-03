@@ -11,6 +11,11 @@ public class Vandal extends Enemy {
     }
 
     @Override
+    protected int generateActionDelay() {
+        return 1;
+    }
+
+    @Override
     protected char generateCharacter() {
         return 'v';
     }
