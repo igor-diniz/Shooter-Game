@@ -43,7 +43,7 @@ public class Game
     }
 
     public void run() throws IOException, InterruptedException {
-        while(true)
+        while(!level.gameOver())
         {
             Thread.sleep(5);
             draw();
@@ -55,6 +55,9 @@ public class Game
             level.moveBullets();
             level.checkCollisions();
         }
+        draw();
+        if(level.getPlayer().getHealth() > 0) System.out.println("You won!");
+        else System.out.println("You lose!");
     }
 
     private boolean processKey(KeyStroke key)
@@ -81,6 +84,10 @@ public class Game
         {
             wallList.add(new Wall(new Position(i,0)));
             wallList.add(new Wall(new Position(i,level.getNumColumns()-1)));
+        }
+        for(int i = 0; i < level.getNumRows()/2;i++)
+        {
+            wallList.add(new Wall(new Position(5,i)));
         }
         level.generateEntities(player,enemyList,wallList);
     }

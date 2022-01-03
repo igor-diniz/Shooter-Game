@@ -8,10 +8,12 @@ public abstract class Enemy extends Entity {
     private int health;
     private Weapon weapon;
 
+
     public Enemy(Position position){
         super(position);
         this.health = generateHealth();
         this.weapon = generateWeapon();
+
     }
 
     public void getDamaged(int damage)
@@ -19,6 +21,8 @@ public abstract class Enemy extends Entity {
         if(health > damage) health -= damage;
         else health = 0;
     }
+
+    protected abstract int generateActionDelay();
 
     public Weapon getWeapon(){return weapon;}
 

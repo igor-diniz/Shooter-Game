@@ -1,9 +1,6 @@
 package game;
 
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import game.enemies.Enemy;
@@ -19,7 +16,7 @@ public class Level
     private Player player;
     private List<Enemy> enemyList;
     private List<Wall> wallList;
-    private List<Bullet> bulletList = new ArrayList<Bullet>();
+    private List<Bullet> bulletList = new ArrayList<>();
     private boolean gameOver = false;
     public Level(int numRows,int numColumns)
     {
@@ -83,13 +80,17 @@ public class Level
         switch(a)
         {
             case "ArrowUp":
-                if(isValidMove(player.moveUp()))  player.setPosition(player.moveUp()); break;
+                if(isValidMove(player.moveUp())) player.setPosition(player.moveUp());
+                break;
             case "ArrowLeft":
-                if(isValidMove(player.moveLeft())) player.setPosition(player.moveLeft()); break;
+                if(isValidMove(player.moveLeft())) player.setPosition(player.moveLeft());
+                break;
             case "ArrowDown":
-                if(isValidMove(player.moveDown())) player.setPosition(player.moveDown()); break;
+                if(isValidMove(player.moveDown())) player.setPosition(player.moveDown());
+                break;
             case "ArrowRight":
-                if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
+                if(isValidMove(player.moveRight())) player.setPosition(player.moveRight());
+                break;
             case "Enter":
                 if(player.getUsingWeapon().getAmmo() > 0) {
                     bulletList.add(new Bullet(player.getPosition(), player.getUsingWeapon(), player.getDirection()));
@@ -145,8 +146,8 @@ public class Level
     }
     public void checkCollisions()
     {
-        List<Bullet> bulletsToRemove = new ArrayList<Bullet>();
-        List<Enemy> enemiesToRemove = new ArrayList<Enemy>();
+        List<Bullet> bulletsToRemove = new ArrayList<>();
+        List<Enemy> enemiesToRemove = new ArrayList<>();
         for(Bullet bullet : bulletList)
         {
             if(bullet.getPosition().equals(player.getPosition()))
@@ -188,7 +189,7 @@ public class Level
 
     public void moveBullets()
     {
-        List<Bullet> bulletsToRemove = new ArrayList<Bullet>();
+        List<Bullet> bulletsToRemove = new ArrayList<>();
         for(Bullet bullet : bulletList)
         {
             level[bullet.getPosition().getX()][bullet.getPosition().getY()] = 'x';

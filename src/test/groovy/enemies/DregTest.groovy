@@ -46,4 +46,22 @@ class DregTest extends Specification {
         dreg1.getHealth() == 0
 
     }
+
+    def 'Delay Test'()
+    {
+        given:
+        Dreg enemy = new Dreg(new Position(10,10));
+        Dreg enemy1 = new Dreg(new Position(10,10));
+        when:
+        enemy1.setPosition(enemy1.moveUp())
+        enemy1.setPosition(enemy1.moveUp())
+        enemy.setPosition(enemy1.moveUp())
+        enemy.setPosition(enemy1.moveUp())
+        enemy.setPosition(enemy1.moveUp())
+        enemy.setPosition(enemy1.moveUp())
+        then:
+        enemy1.getPosition() == new Position(10,9)
+        enemy1.getRemainingTime() == 2
+        enemy.getPosition() == new Position(10,8)
+    }
 }
