@@ -14,6 +14,11 @@ public class Bullet extends Entity{
     }
 
     @Override
+    protected int generateActionDelay() {
+        return 0;
+    }
+
+    @Override
     protected char generateCharacter() {
         return 'b';
     }

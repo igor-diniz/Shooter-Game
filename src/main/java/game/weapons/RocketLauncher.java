@@ -1,7 +1,5 @@
 package game.weapons;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import game.Player;
 
 public class RocketLauncher extends Weapon {
     //private int xAoE; //AoE stands for Area of Effect

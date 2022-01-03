@@ -29,8 +29,8 @@ class DregTest extends Specification {
         enemy2.setPosition(enemy2.moveLeft())
         enemy2.setPosition(enemy2.moveDown())
         then:
-        enemy1.getPosition() == new Position(11,9)
-        enemy2.getPosition() == new Position(9,11)
+        enemy1.getPosition() == new Position(10,9)
+        enemy2.getPosition() == new Position(9,10)
     }
 
     def 'Get Damaged'()

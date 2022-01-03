@@ -1,7 +1,5 @@
 package game.weapons;
 
-import game.Player;
-
 public class HandCannon extends Weapon{
 
 
