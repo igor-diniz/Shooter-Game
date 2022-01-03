@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 import game.enemies.Dreg;
 import game.enemies.Enemy;
+import game.enemies.Vandal;
 
 
 import java.awt.*;
@@ -23,6 +24,7 @@ public class Game
     private Screen screen;
     private Level level;
     private Terminal terminal;
+    private final int frameRateInMillis = 10;
     public Game() throws IOException {
         loadLevel1();
         Font font = new Font("WenQuanYi Zen Hei Mono", Font.BOLD, 24);
@@ -43,17 +45,25 @@ public class Game
     }
 
     public void run() throws IOException, InterruptedException {
+        int rateOfEntitiesAction = frameRateInMillis * 2;
         while(!level.gameOver())
         {
-            Thread.sleep(5);
+            Thread.sleep(frameRateInMillis);
             draw();
             KeyStroke key = terminal.pollInput(); //pollInput is non-blocking
-            if(key == null) continue;
-            if (key.getKeyType() == KeyType.EOF) { break; }
-            if(!processKey(key)) continue; //monsters should only move if player inputs a valid key
-            level.moveEnemies();
-            level.moveBullets();
-            level.checkCollisions();
+            if(key != null) {
+                if (key.getKeyType() == KeyType.EOF) {
+                    break;
+                }
+                processKey(key);
+            }
+            if(rateOfEntitiesAction == frameRateInMillis) {
+                level.moveEnemies();
+                level.moveBullets();
+                level.checkCollisions();
+                rateOfEntitiesAction = frameRateInMillis * 2;
+            }
+            else rateOfEntitiesAction--;
         }
         draw();
         if(level.getPlayer().getHealth() > 0) System.out.println("You won!");
@@ -71,7 +81,9 @@ public class Game
         Player player = new Player(new Position(1,1));
         Dreg dreg = new Dreg(new Position(8,8));
         Dreg dreg2 = new Dreg(new Position(8,5));
+        Vandal vandal = new Vandal(new Position (8,2));
         List<Enemy> enemyList = new ArrayList<Enemy>();
+        enemyList.add(vandal);
         enemyList.add(dreg);
         enemyList.add(dreg2);
         List<Wall> wallList = new ArrayList<Wall>();

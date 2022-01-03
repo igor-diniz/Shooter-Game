@@ -74,4 +74,6 @@ public abstract class Entity {
     }
 
     public int getRemainingTime() { return actionDelay - timer; }
+
+    public int getActionDelay() {return actionDelay;}
 }

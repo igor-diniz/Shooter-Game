@@ -75,6 +75,7 @@ public class Level
 
     public boolean processKey(KeyStroke key)
     {
+        if(key == null) return false;
         String a = key.getKeyType().toString();
         level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
         switch(a)
@@ -117,11 +118,13 @@ public class Level
     public void moveEnemies()
     {
         int xDistance, yDistance;
+        double oldDistanceToPlayer;
         for(Enemy enemy : enemyList)
         {
             level[enemy.getPosition().getX()][enemy.getPosition().getY()] = 'x';
             xDistance = enemy.getPosition().getX() - player.getPosition().getX();
             yDistance = enemy.getPosition().getY() - player.getPosition().getY();
+            oldDistanceToPlayer = enemy.getPosition().distanceTo(player.getPosition());
             if(Math.abs(xDistance) > Math.abs(yDistance))
             {
                 if(xDistance > 0 && isValidMove(enemy.moveLeft()))
@@ -140,7 +143,8 @@ public class Level
                 enemy.setPosition(enemy.moveDown());
             }
             level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
-            if(enemy.getPosition().distanceTo(player.getPosition()) < enemy.getWeapon().getRange()) //enemies should only shoot if the player is in their range
+            if((enemy.getPosition().distanceTo(player.getPosition()) < enemy.getWeapon().getRange())
+            && (enemy.getPosition().distanceTo(player.getPosition()) != oldDistanceToPlayer)) //enemies should only shoot if the player is in their range and the enemy has moved
             bulletList.add(new Bullet(enemy.getPosition(),enemy.getWeapon(),enemy.getDirection()));
         }
     }
