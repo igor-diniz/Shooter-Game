@@ -36,7 +36,7 @@ class PlayerTest extends Specification
         player.setPrimaryWeapon(new HandCannon())
         int ammo = player.getUsingWeapon().getAmmo()
         when:
-        player.shoot()
+        player.getUsingWeapon().shoot();
         then:
         player.getUsingWeapon().getAmmo() == ammo -1
     }

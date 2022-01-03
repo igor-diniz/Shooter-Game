@@ -73,36 +73,28 @@ public class Level
         for(Wall wall: wallList) wall.draw(graphics);
     }
 
-    public boolean processKey(KeyStroke key)
+    public void processKey(KeyStroke key)
     {
-        if(key == null) return false;
+        if(key == null) return;
         String a = key.getKeyType().toString();
         level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
         switch(a)
         {
             case "ArrowUp":
-                if(isValidMove(player.moveUp())) player.setPosition(player.moveUp());
-                break;
+                if(isValidMove(player.moveUp())) player.setPosition(player.moveUp()); break;
             case "ArrowLeft":
-                if(isValidMove(player.moveLeft())) player.setPosition(player.moveLeft());
-                break;
+                if(isValidMove(player.moveLeft())) player.setPosition(player.moveLeft()); break;
             case "ArrowDown":
-                if(isValidMove(player.moveDown())) player.setPosition(player.moveDown());
-                break;
+                if(isValidMove(player.moveDown())) player.setPosition(player.moveDown()); break;
             case "ArrowRight":
-                if(isValidMove(player.moveRight())) player.setPosition(player.moveRight());
-                break;
+                if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
             case "Enter":
                 if(player.getUsingWeapon().getAmmo() > 0) {
                     bulletList.add(new Bullet(player.getPosition(), player.getUsingWeapon(), player.getDirection()));
                     player.getUsingWeapon().decreaseAmmo();
                 } break;
-            default:
-                level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
-                return false;
         }
         level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
-        return true;
     }
     public boolean isValidMove(Position position)
     {

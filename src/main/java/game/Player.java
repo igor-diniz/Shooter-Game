@@ -12,13 +12,11 @@ public class Player extends Entity
     private Weapon specialWeapon = new Shotgun();
     private Weapon heavyWeapon = new RocketLauncher();
     private int weaponInUse;
-    private List<Bullet> bullets;
     Player(Position position)
     {
         super(position);
         this.health = 3;
         weaponInUse = 0;
-        bullets = new ArrayList<Bullet>();
     }
 
     @Override
@@ -30,23 +28,6 @@ public class Player extends Entity
     protected char generateCharacter() {
         return 'p';
     }
-
-    public void shoot()
-    {
-        switch(weaponInUse)
-        {
-            case 0:
-                if(primaryWeapon.shoot()) bullets.add(new Bullet(getPosition(),primaryWeapon,getDirection()));;
-                break;
-            case 1:
-                if(specialWeapon.shoot()) bullets.add(new Bullet(getPosition(), specialWeapon,getDirection()));;
-                break;
-            case 2:
-                if(heavyWeapon.shoot()) bullets.add(new Bullet(getPosition(),heavyWeapon,getDirection()));
-                break;
-        }
-    }
-
 
     public void setWeaponInUse(int index) {weaponInUse = index;}
 

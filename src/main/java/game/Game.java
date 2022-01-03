@@ -70,9 +70,9 @@ public class Game
         else System.out.println("You lose!");
     }
 
-    private boolean processKey(KeyStroke key)
+    private void processKey(KeyStroke key)
     {
-        return level.processKey(key);
+        level.processKey(key);
     }
 
     private void loadLevel1()
