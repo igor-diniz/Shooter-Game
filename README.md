@@ -10,7 +10,7 @@ The game consists of one player and different monsters, which depend on differen
 The following screenshots ilustrate the general look of our game, as well as the divergent functionalities:
 ### Game preview
 ![](docs/images/screenshots/previewGame.png)
-<p align="center">
+<p>
   <b><i>Gif 1. Overview of FATE game</i></b>
 </p>
 <br>
@@ -19,15 +19,15 @@ The following screenshots ilustrate the general look of our game, as well as the
 
 ### Menus
 ![](docs/images/screenshots/mainMenu.png)
-<p align="center">
+<p>
   <b><i>Fig 1. Main Menu </i></b>
 </p>
 
 <br>
 <br />
 
-![](docs/images/screenshots/instructions.jpg)
-<p align="center">
+![](docs/images/screenshots/instructionsMenu.png)
+<p>
   <b><i>Fig 2. Instructions Menu </i></b>
 </p>
 
@@ -35,7 +35,7 @@ The following screenshots ilustrate the general look of our game, as well as the
 <br />
 
 ![](docs/images/screenshots/pauseMenu.png)
-<p align="center">
+<p>
   <b><i>Fig 3. Pause Menu </i></b>
 </p>  
 
