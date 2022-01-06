@@ -2,9 +2,6 @@ package game;
 
 import game.weapons.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Player extends Entity
 {
     private int health;
@@ -35,6 +32,7 @@ public class Player extends Entity
     {
         if(health > damage) health -= damage;
         else health = 0;
+        damaged = true;
     }
 
     public Weapon getUsingWeapon()

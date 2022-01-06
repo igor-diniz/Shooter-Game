@@ -18,6 +18,7 @@ public abstract class Enemy extends Entity {
     {
         if(health > damage) health -= damage;
         else health = 0;
+        damaged = true;
     }
 
     public Weapon getWeapon(){return weapon;}

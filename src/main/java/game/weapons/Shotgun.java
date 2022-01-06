@@ -1,8 +1,5 @@
 package game.weapons;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import game.Player;
-
 public class Shotgun extends Weapon {
     public Shotgun() {
 

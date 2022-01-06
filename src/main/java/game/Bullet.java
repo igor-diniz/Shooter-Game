@@ -20,7 +20,7 @@ public class Bullet extends Entity{
 
     @Override
     protected char generateCharacter() {
-        return 'o';
+        return 'b';
     }
 
     public boolean decreaseRange()

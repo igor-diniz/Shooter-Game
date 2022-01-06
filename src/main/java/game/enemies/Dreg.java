@@ -15,7 +15,7 @@ public class Dreg extends Enemy {
 
     @Override
     protected char generateCharacter() {
-        return 'd';
+        return 'a';
     }
 
     @Override

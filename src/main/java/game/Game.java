@@ -8,14 +8,21 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
+import game.enemies.Captain;
 import game.enemies.Dreg;
 import game.enemies.Enemy;
 import game.enemies.Vandal;
 
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +32,24 @@ public class Game
     private Level level;
     private Terminal terminal;
     private final int frameRateInMillis = 10;
-    public Game() throws IOException {
+    public Game() throws IOException, FontFormatException, URISyntaxException {
         loadLevel1();
-        Font font = new Font("WenQuanYi Zen Hei Mono", Font.BOLD, 24);
-        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
+        URL resource = getClass().getClassLoader().getResource("fate.ttf");
+        File fontFile = new File(resource.toURI());
+        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+        Font loadedFont = font.deriveFont(Font.PLAIN,60);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         TerminalSize terminalSize = new TerminalSize(level.getNumColumns(), level.getNumRows());
-        terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize)
-                .setTerminalEmulatorFontConfiguration(cfg).createTerminal();
+        terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setForceAWTOverSwing(true)
+                .setTerminalEmulatorFontConfiguration(fontConfig).createTerminal();
+        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                e.getWindow().dispose();
+            }
+        });
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null);
         screen.startScreen();
