@@ -55,7 +55,7 @@ The following screenshots ilustrate the general look of our game, as well as the
 <br>
 <br />
 
-###Enemies
+### Enemies
 
 ![](docs/images/screenshots/dreg.png)
 <p>
