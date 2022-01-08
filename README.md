@@ -20,7 +20,7 @@ The game consists of one player and different monsters, which depend on differen
 
 ### Mockups
 
-The following screenshots ilustrate the general look of our game, as well as the divergent functionalities:
+The following screenshots illustrate the general look of our game, as well as the divergent functionalities:
 ### Game preview
 ![](docs/gifs/gamePreview.gif)
 <p>
