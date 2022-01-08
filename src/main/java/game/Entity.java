@@ -10,7 +10,7 @@ public abstract class Entity {
     private char direction = 'N';
     private final int actionDelay; //this represents how many frames of the game the enemy takes to do an action
     private int timer; //when timer == actonDelay, the enemy do an action
-    private String color = "#00ff00"; //FIX current colors of enemies, bullets and walls
+    private String color = "#1a487a"; //FIX current colors of enemies, bullets and walls
     protected int damaged = 0;
 
 
@@ -33,7 +33,7 @@ public abstract class Entity {
 
     public void draw(TextGraphics graphics)
     {
-        if(damaged > 0) graphics.setForegroundColor(TextColor.Factory.fromString("#ff0000"));
+        if(damaged > 0) graphics.setForegroundColor(TextColor.Factory.fromString("#ff0000")); // Red for damage color
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf(character));
         graphics.setForegroundColor(TextColor.Factory.fromString(color));
         damaged--;

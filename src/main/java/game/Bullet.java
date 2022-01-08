@@ -11,6 +11,7 @@ public class Bullet extends Entity{
         this.setDirection(direction);
         damage = weapon.getDamage();
         range = weapon.getRange();
+        this.setColor("#5c00a3");
     }
 
     @Override

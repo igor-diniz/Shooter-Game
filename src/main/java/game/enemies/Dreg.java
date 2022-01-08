@@ -8,6 +8,8 @@ public class Dreg extends Enemy {
 
     public Dreg(Position position) {
         super(position);
+        this.setColor("#1a487a");
+
     }
 
     @Override
@@ -15,7 +17,7 @@ public class Dreg extends Enemy {
 
     @Override
     protected char generateCharacter() {
-        return 'a';
+        return 'd';
     }
 
     @Override
