@@ -28,7 +28,7 @@ public class Player extends Entity
 
     public void setWeaponInUse(int index) {weaponInUse = index;}
 
-    public void getDamaged(int damage)
+    public void takeDamage(int damage)
     {
         if(health > damage) health -= damage;
         else health = 0;

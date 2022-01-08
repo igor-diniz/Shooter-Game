@@ -10,7 +10,7 @@ public abstract class Entity {
     private char direction = 'N';
     private final int actionDelay; //this represents how many frames of the game the enemy takes to do an action
     private int timer; //when timer == actonDelay, the enemy do an action
-    private String color = "#00ff00";
+    private String color = "#00ff00"; //FIX current colors of enemies, bullets and walls
     protected int damaged = 0;
 
 

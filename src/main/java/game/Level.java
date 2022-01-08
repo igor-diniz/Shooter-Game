@@ -63,13 +63,14 @@ public class Level
     }
     public void draw(TextGraphics graphics)
     {
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(NUM_COLUMNS, NUM_ROWS), 'x');
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
-        graphics.enableModifiers(SGR.BOLD);
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#567D46"));
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(NUM_COLUMNS, NUM_ROWS), ' ');
+        graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         player.draw(graphics);
         for(Enemy enemy: enemyList) enemy.draw(graphics);
+        graphics.enableModifiers(SGR.BOLD);
         for(Bullet bullet: bulletList) bullet.draw(graphics);
+        graphics.disableModifiers(SGR.BOLD);
         for(Wall wall: wallList) wall.draw(graphics);
     }
 
@@ -148,7 +149,7 @@ public class Level
         {
             if(bullet.getPosition().equals(player.getPosition()))
             {
-                player.getDamaged(bullet.getDamage());
+                player.takeDamage(bullet.getDamage());
                 if(player.getHealth() == 0) gameOver = true;
                 bulletsToRemove.add(bullet);
                 continue;
@@ -162,7 +163,7 @@ public class Level
             {
                 if (bullet.getPosition().equals(enemy.getPosition()))
                 {
-                    enemy.getDamaged(bullet.getDamage());
+                    enemy.takeDamage(bullet.getDamage());
                     if(enemy.getHealth() == 0) {enemiesToRemove.add(enemy); level[enemy.getPosition().getX()][enemy.getPosition().getY()] = 'x';}
                     bulletsToRemove.add(bullet);
                     break;
