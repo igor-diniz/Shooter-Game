@@ -140,7 +140,7 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 ### Testing
 
-#### Screenshots of coverage report
+### Screenshots of Coverage Report
 
 ![](images/screenshots/CoverageReport/general.png)
 <br>
