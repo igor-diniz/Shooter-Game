@@ -11,7 +11,7 @@ public class Bullet extends Entity{
         this.setDirection(direction);
         damage = weapon.getDamage();
         range = weapon.getRange();
-        this.setColor("#5c00a3");
+        //this.setColor("#5c00a3");
     }
 
     @Override
@@ -22,6 +22,11 @@ public class Bullet extends Entity{
     @Override
     protected char generateCharacter() {
         return 'b';
+    }
+
+    @Override
+    protected String generateColor() {
+        return "#000000";
     }
 
     public boolean decreaseRange()

@@ -19,6 +19,7 @@ public abstract class Entity {
         this.position = position;
         character = generateCharacter();
         this.actionDelay = generateActionDelay();
+        //color = generateColor();
         timer = actionDelay;
     }
 
@@ -26,13 +27,13 @@ public abstract class Entity {
 
     protected abstract char generateCharacter();
 
-    public char getCharacter()
-    {
-        return character;
-    }
+    protected abstract String generateColor();
+
+    public char getCharacter() {return character;}
 
     public void draw(TextGraphics graphics)
     {
+        color = generateColor();
         if(damaged > 0) graphics.setForegroundColor(TextColor.Factory.fromString("#ff0000")); // Red for damage color
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf(character));
         graphics.setForegroundColor(TextColor.Factory.fromString(color));

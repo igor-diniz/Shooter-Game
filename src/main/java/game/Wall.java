@@ -6,7 +6,7 @@ public class Wall extends Entity {
     public Wall(Position position)
     {
         super(position);
-        this.setColor("#4d2f1f");
+        //this.setColor("#4d2f1f");
 
     }
 
@@ -19,6 +19,12 @@ public class Wall extends Entity {
     protected char generateCharacter() {
         return '#';
     }
+
+    @Override
+    protected String generateColor() {
+        return "#4d2f1f";
+    }
+
 
 
 }

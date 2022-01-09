@@ -35,6 +35,11 @@ public class Player extends Entity
         damaged = 25;
     }
 
+    @Override
+    protected String generateColor() {
+        return "#1064ad"; //should be #000000, changed due to draw issue
+    }
+
     public Weapon getUsingWeapon()
     {
         switch(weaponInUse)

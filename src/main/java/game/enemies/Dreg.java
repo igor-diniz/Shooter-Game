@@ -8,7 +8,7 @@ public class Dreg extends Enemy {
 
     public Dreg(Position position) {
         super(position);
-        this.setColor("#1a487a");
+        //this.setColor("#1064ad");
 
     }
 
@@ -28,5 +28,10 @@ public class Dreg extends Enemy {
     @Override
     protected Weapon generateWeapon() {
         return new HandCannon();
+    }
+
+    @Override
+    protected String generateColor() {
+        return "#1064ad";
     }
 }

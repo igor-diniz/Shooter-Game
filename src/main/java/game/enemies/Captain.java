@@ -8,7 +8,7 @@ import game.weapons.Weapon;
 public class Captain extends Enemy {
     public Captain(Position position) {
         super(position);
-        this.setColor("#1a487a");
+        //this.setColor("#1064ad");
     }
 
     @Override
@@ -29,6 +29,11 @@ public class Captain extends Enemy {
     @Override
     protected Weapon generateWeapon() {
         return new HandCannon();
+    }
+
+    @Override
+    protected String generateColor() {
+        return "#1064ad";
     }
 
 }
