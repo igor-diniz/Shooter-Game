@@ -132,11 +132,11 @@ The use of the Factory Method Pattern in the current design allows the following
 - Removes the need to recreate the same code every time a new enemy is created.
 
 
-### Know Code Smells and Refactoring suggestions
-#### Code Smell 1
-The `PlatformSegment` class is a **Data Class**, as it contains only fields, and no behavior. This is problematic because […].
+### Known Code Smells and Refactoring suggestions
+#### Lots of branching
+The 'Level.checkCollisions()', 'Level.moveEnemies()', 'Level.processKey(KeyStroke)' methods are  **Switch Statements**, as it contains lots of branching and, for that, higher complexity. This is problematic because when a new condition is added, we have to find all the switch code and modify it.
 
-A way to improve the code would be to move the `isPlatformSegmentSolid()` method to the `PlatformSegment` class, as this logic is purely concerned with the `PlatformSegment` class.
+A way to improve the code would be to use the Extract method to make the structure of the better, more readable and unique.
 
 ### Testing
 
