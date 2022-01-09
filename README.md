@@ -82,7 +82,7 @@ The following screenshots illustrate the general look of our game, as well as th
 <br />
 
 ### Levels
-![](docs/images/screenshots/previewGame.png)
+![](docs/images/screenshots/level1.png)
 <p>
   <b><i>Fig 7. Level 1 </i></b>
 </p>
@@ -91,10 +91,7 @@ The following screenshots illustrate the general look of our game, as well as th
 <br />
 
 ### Animations
-
-<p>
-  <img src="docs/gifs/bombs.gif"/>
-</p>
+![](docs/gifs/damageAnimation.gif)
 <p>
   <b><i>Gif 2. Damage caused by the shoots</i></b>
 </p>
