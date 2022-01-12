@@ -47,8 +47,8 @@ class PlayerTest extends Specification
         Player player = new Player(new Position(10,10))
         Player player1 = new Player(new Position(10,10))
         when:
-        player.getDamaged(1)
-        player1.getDamaged(2)
+        player.takeDamage(1)
+        player1.takeDamage(2)
         then:
         player.getHealth() == 2
         player1.getHealth() == 1

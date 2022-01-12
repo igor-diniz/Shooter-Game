@@ -154,7 +154,7 @@ public class Level
                 bulletsToRemove.add(bullet);
                 continue;
             }
-            if(level[bullet.getPosition().getX()][bullet.getPosition().getY()] == 'w')
+            if(level[bullet.getPosition().getX()][bullet.getPosition().getY()] == '#')
             {
                 bulletsToRemove.add(bullet);
                 continue;

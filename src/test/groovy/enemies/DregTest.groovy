@@ -39,8 +39,8 @@ class DregTest extends Specification {
         Dreg dreg = new Dreg(new Position(10,10))
         Dreg dreg1 = new Dreg(new Position(10,10))
         when:
-        dreg.getDamaged(1)
-        dreg1.getDamaged(2)
+        dreg.takeDamage(1)
+        dreg1.takeDamage(2)
         then:
         dreg.getHealth() == 0
         dreg1.getHealth() == 0
