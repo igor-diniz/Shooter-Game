@@ -13,3 +13,15 @@ Ghost: I think you got them all, for now at least. I found a ship a few weeks ag
 * Level ends, player is taken to the tower.
 
 1st tower visit
+* Player and ghost spawn on the tower
+Ghost: This is the tower, an overwatch for Earth's Last City. Look, it's Commander Zavala! Let's talk to him
+* Player walks up to Zavala
+Zavala: Oh, hello Guardian! I see you are fresh out of the grave. These are hard times indeed, let me explain.
+A few centuries ago, humanity found the Traveler, an alien orb capable of unthinkable power and knowledge.
+With its help, we terraformed dozens of worlds and achieved high level technology, it was a true Golden Age.
+But the Traveler had its enemy, the Darkness, that followed him to our own home: Earth!
+As last resort, the Traveler sacrificed itself to dispel the Darkness, entering a deep dormant state.
+As its last breath, the Traveler created the Ghosts, capable of giving the power of the Light to those who are worth it.
+As your first mission, I need you to attack a possible whereabouts of the mighty Sepiks Prime.
+Your ghost will provide you intel and keep our communications up. Eyes up, guardian!
+* Level ends and player is loaded to the second mission
