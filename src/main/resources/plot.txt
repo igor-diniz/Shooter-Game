@@ -1,0 +1,15 @@
+FATE
+1st mission
+* Player spawns with ghost floating in front of him
+Ghost: You're alive! I spent months trying to find someone compatible. Hurry up, they are coming, we can't stay here.
+* Ghost despawns
+* Player follows the path until they find a door with an item close to it
+* Ghost spawns
+Ghost: Hey, check that gun while I try to open this door.
+* Player unlocks auto rifle and the door opens, Ghost despawns they walk a bit more until they find some Fallen
+Ghost: Well, you've met the Fallen. They aren't very happy to see you
+* Player combats Fallen until the end of the level.
+Ghost: I think you got them all, for now at least. I found a ship a few weeks ago, it's just up ahead
+* Level ends, player is taken to the tower.
+
+1st tower visit
