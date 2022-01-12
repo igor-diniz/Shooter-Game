@@ -12,7 +12,7 @@ public class Player extends Entity
     Player(Position position)
     {
         super(position);
-        this.health = 3;
+        this.health = 15;
         weaponInUse = 0;
     }
 

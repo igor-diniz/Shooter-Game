@@ -39,7 +39,7 @@ public class Game
         Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
-        Font loadedFont = font.deriveFont(Font.PLAIN,60);
+        Font loadedFont = font.deriveFont(Font.PLAIN,45);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         TerminalSize terminalSize = new TerminalSize(level.getNumColumns(), level.getNumRows());
         terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setForceAWTOverSwing(true)

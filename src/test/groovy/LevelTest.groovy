@@ -78,6 +78,7 @@ class LevelTest extends Specification
         level.processKey(key1)
         level.processKey(key1)
         then:
+        level.getCharacterAt(2,3) == 'p'as char
         level.getPlayer().getPosition() == new Position(2,3)
     }
 
@@ -85,7 +86,6 @@ class LevelTest extends Specification
     {
         given:
         level.generateEntities(player,enemyList,wallList)
-
         when:
         level.moveEnemies()
 

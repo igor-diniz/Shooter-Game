@@ -112,6 +112,7 @@ public class Level
     {
         int xDistance, yDistance;
         double oldDistanceToPlayer;
+
         for(Enemy enemy : enemyList)
         {
             level[enemy.getPosition().getX()][enemy.getPosition().getY()] = 'x';
@@ -126,6 +127,8 @@ public class Level
                 }
                 else if(isValidMove(enemy.moveRight()))
                     enemy.setPosition(enemy.moveRight());
+                else if(isValidMove(enemy.moveLeft())) //in case the enemy is in the left of the player and his move to the right is invalid
+                    enemy.setPosition(enemy.moveLeft());
             }
             else if(yDistance > 0 && isValidMove(enemy.moveUp()))
             {
@@ -134,6 +137,10 @@ public class Level
             else if(isValidMove(enemy.moveDown()))
             {
                 enemy.setPosition(enemy.moveDown());
+            }
+            else if(isValidMove(enemy.moveUp()))
+            {
+                enemy.setPosition(enemy.moveUp());
             }
             level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
             if((enemy.getPosition().distanceTo(player.getPosition()) < enemy.getWeapon().getRange())
