@@ -13,13 +13,15 @@ import spock.lang.Specification
 
 class LevelTest extends Specification
 {
+
     private Level level
     private Player player
     private Dreg dreg
     private Dreg dreg2
     private List<Enemy> enemyList
     private List<Wall> wallList
-    void setup()
+
+    void 'setup'()
     {
         level = new Level(10,10)
         player = new Player(new Position(1,1))
@@ -28,6 +30,7 @@ class LevelTest extends Specification
         enemyList = new ArrayList<Enemy>()
         enemyList.add(dreg)
         enemyList.add(dreg2)
+        wallList = new ArrayList<Wall>()
         for(int i = 0; i < level.getNumRows();i++)
         {
             wallList.add(new Wall(new Position(level.getNumRows()-1,i)))
@@ -66,15 +69,16 @@ class LevelTest extends Specification
         given:
         level.generateEntities(player,enemyList,wallList)
         KeyStroke key1 = Stub(KeyStroke.class)
-        key1.getKeyType() >> "ArrowUp" >> "ArrowLeft" >> "ArrowUp" >> "ArrowDown" >> "ArrowRight"
+        key1.getKeyType() >> "ArrowUp" >> "ArrowLeft" >> "ArrowUp" >> "ArrowDown" >> "ArrowRight" >> "ArrowDown"
         when:
-        level.processKey(key1)
-        level.processKey(key1) // this should not work cause there's a dreg on position 5,6
+        level.processKey(key1)//should not work because of wall
+        level.processKey(key1)//should not work because of wall
+        level.processKey(key1)//should not work because of wall
         level.processKey(key1)
         level.processKey(key1)
         level.processKey(key1)
         then:
-        level.getPlayer().getPosition() == new Position(7,6)
+        level.getPlayer().getPosition() == new Position(2,3)
     }
 
     def 'Level Enemy movement'()
@@ -86,8 +90,8 @@ class LevelTest extends Specification
         level.moveEnemies()
 
         then:
-        level.getEnemyList()[0].getPosition() == new Position(5,7)
-        level.getEnemyList()[1].getPosition() == new Position(8,6)
+        level.getEnemyList()[0].getPosition() == new Position(8,7)
+        level.getEnemyList()[1].getPosition() == new Position(7,5)
     }
 
     def 'Level Move Bullets'()
@@ -138,7 +142,7 @@ class LevelTest extends Specification
         level.moveEnemies()
         level.processKey(key1)
         then:
-        level.getBullets().get(2).getDirection() == ('S' as char) //the player's bullet
-        level.getBullets().size() == 3
+        level.getBullets().get(0).getDirection() == ('S' as char) //the player's bullet
+        level.getBullets().size() == 1
     }
 }
