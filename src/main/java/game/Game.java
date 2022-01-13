@@ -9,8 +9,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
-import game.enemies.Captain;
 import game.enemies.Dreg;
 import game.enemies.Enemy;
 import game.enemies.Vandal;
@@ -120,5 +118,9 @@ public class Game
             wallList.add(new Wall(new Position(5,i)));
         }
         level.generateEntities(player,enemyList,wallList);
+    }
+
+    public Screen getScreen() {
+        return screen;
     }
 }

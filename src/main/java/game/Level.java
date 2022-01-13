@@ -138,7 +138,7 @@ public class Level
             {
                 enemy.setPosition(enemy.moveDown());
             }
-            else if(isValidMove(enemy.moveUp()))
+            else if(isValidMove(enemy.moveUp()))//in case the enemy is in the above the player and his move down is invalid
             {
                 enemy.setPosition(enemy.moveUp());
             }
