@@ -34,7 +34,7 @@ public class Level
         return NUM_COLUMNS;
     }
 
-    public char getCharacterAt(int row,int column)
+    public char getCharacterAt(int column,int row)
     {
         return level[row][column];
     }
@@ -51,14 +51,14 @@ public class Level
         this.enemyList = enemyList;
         this.player = player;
         this.wallList = wallList;
-        level[player.getPosition().getX()][player.getPosition().getY()] = player.getCharacter();
+        level[player.getPosition().getY()][player.getPosition().getX()] = player.getCharacter();
         for (Enemy enemy : enemyList)
         {
-            level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+            level[enemy.getPosition().getY()][enemy.getPosition().getX()] = enemy.getCharacter();
         }
         for (Wall wall : wallList)
         {
-            level[wall.getPosition().getX()][wall.getPosition().getY()] = wall.getCharacter();
+            level[wall.getPosition().getY()][wall.getPosition().getX()] = wall.getCharacter();
         }
     }
     public void draw(TextGraphics graphics)
@@ -78,7 +78,7 @@ public class Level
     {
         if(key == null) return;
         String a = key.getKeyType().toString();
-        level[player.getPosition().getX()][player.getPosition().getY()] = 'x';
+        level[player.getPosition().getY()][player.getPosition().getX()] = 'x';
         switch(a)
         {
             case "ArrowUp":
@@ -95,11 +95,11 @@ public class Level
                     player.getUsingWeapon().decreaseAmmo();
                 } break;
         }
-        level[player.getPosition().getX()][player.getPosition().getY()] = 'p';
+        level[player.getPosition().getY()][player.getPosition().getX()] = 'p';
     }
     public boolean isValidMove(Position position)
     {
-        return level[position.getX()][position.getY()] == 'x';
+        return level[position.getY()][position.getX()] == 'x';
     }
 
     public Player getPlayer()  {return player;}
@@ -115,7 +115,7 @@ public class Level
 
         for(Enemy enemy : enemyList)
         {
-            level[enemy.getPosition().getX()][enemy.getPosition().getY()] = 'x';
+            level[enemy.getPosition().getY()][enemy.getPosition().getX()] = 'x';
             xDistance = enemy.getPosition().getX() - player.getPosition().getX();
             yDistance = enemy.getPosition().getY() - player.getPosition().getY();
             oldDistanceToPlayer = enemy.getPosition().distanceTo(player.getPosition());
@@ -142,7 +142,7 @@ public class Level
             {
                 enemy.setPosition(enemy.moveUp());
             }
-            level[enemy.getPosition().getX()][enemy.getPosition().getY()] = enemy.getCharacter();
+            level[enemy.getPosition().getY()][enemy.getPosition().getX()] = enemy.getCharacter();
             if((enemy.getPosition().distanceTo(player.getPosition()) < enemy.getWeapon().getRange())
             && (enemy.getPosition().distanceTo(player.getPosition()) != oldDistanceToPlayer)) //enemies should only shoot if the player is in their range and the enemy has moved
             bulletList.add(new Bullet(enemy.getPosition(),enemy.getWeapon(),enemy.getDirection()));
@@ -161,7 +161,7 @@ public class Level
                 bulletsToRemove.add(bullet);
                 continue;
             }
-            if(level[bullet.getPosition().getX()][bullet.getPosition().getY()] == '#')
+            if(level[bullet.getPosition().getY()][bullet.getPosition().getX()] == '#')
             {
                 bulletsToRemove.add(bullet);
                 continue;
@@ -171,7 +171,7 @@ public class Level
                 if (bullet.getPosition().equals(enemy.getPosition()))
                 {
                     enemy.takeDamage(bullet.getDamage());
-                    if(enemy.getHealth() == 0) {enemiesToRemove.add(enemy); level[enemy.getPosition().getX()][enemy.getPosition().getY()] = 'x';}
+                    if(enemy.getHealth() == 0) {enemiesToRemove.add(enemy); level[enemy.getPosition().getY()][enemy.getPosition().getX()] = 'x';}
                     bulletsToRemove.add(bullet);
                     break;
                 }
@@ -196,15 +196,15 @@ public class Level
         List<Bullet> bulletsToRemove = new ArrayList<>();
         for(Bullet bullet : bulletList)
         {
-            level[bullet.getPosition().getX()][bullet.getPosition().getY()] = 'x';
+            level[bullet.getPosition().getY()][bullet.getPosition().getX()] = 'x';
             if(bullet.getRange() > 0)
                 bullet.decreaseRange();
             else{
                 bulletsToRemove.add(bullet);
                 continue;}
             bullet.move();
-            if(level[bullet.getPosition().getX()][bullet.getPosition().getY()] == 'x')
-            level[bullet.getPosition().getX()][bullet.getPosition().getY()] = 'b';
+            if(level[bullet.getPosition().getY()][bullet.getPosition().getX()] == 'x')
+            level[bullet.getPosition().getY()][bullet.getPosition().getX()] = 'b';
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
     }
