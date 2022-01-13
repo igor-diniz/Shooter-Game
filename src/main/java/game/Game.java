@@ -59,6 +59,16 @@ public class Game
         level.draw(screen.newTextGraphics());
         screen.refresh();
     }
+    /*public void drawMainMenu() throws IOException, InterruptedException {
+        MainMenu a = new MainMenu(this);
+        while(true) {
+            screen.clear();
+            a.showMenu(screen.newTextGraphics());
+            screen.refresh();
+            Thread.sleep(300);
+            a.previousOption();
+        }
+    }*/
 
     public void run() throws IOException, InterruptedException {
         int rateOfEntitiesAction = frameRateInMillis * 2;

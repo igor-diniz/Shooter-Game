@@ -5,6 +5,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import com.googlecode.lanterna.terminal.Terminal
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame
+import game.Game
 import game.MainMenu
 import spock.lang.Specification
 
@@ -15,50 +16,31 @@ import java.awt.event.WindowEvent
 
 class MainMenuTest extends Specification
 {
-    private Screen screen;
+    private Game game;
 
     void 'setup'()
     {
-        URL resource = getClass().getClassLoader().getResource("fate.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-        Font loadedFont = font.deriveFont(Font.PLAIN,45);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        TerminalSize terminalSize = new TerminalSize(16, 16);
-        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setForceAWTOverSwing(true)
-                .setTerminalEmulatorFontConfiguration(fontConfig).createTerminal();
-        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                e.getWindow().dispose();
-            }
-        });
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
+        game = new Game();
     }
 
     def 'Menu Creation'()
     {
-        given:
-        MainMenu mainMenu = new MainMenu(screen)
+        when:
+        MainMenu mainMenu = new MainMenu(game)
         then:
         mainMenu.getMessages().size() == 3
-        mainMenu.getSelected() == 1
+        mainMenu.getSelected() == 0
     }
 
     def 'Menu option selection'()
     {
         given:
-        MainMenu mainMenu = new MainMenu(screen)
+        MainMenu mainMenu = new MainMenu(game)
         when:
         mainMenu.previousOption()
         mainMenu.nextOption()
         mainMenu.nextOption()
         then:
-        mainMenu.getSelected() == 2
+        mainMenu.getSelected() == 1
     }
 }
