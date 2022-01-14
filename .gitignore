@@ -13,3 +13,4 @@ gradlew.bat
 .gradle/7.1/executionHistory/executionHistory.bin
 .gradle/checksums/checksums.lock
 .gradle/7.1/dependencies-accessors/dependencies-accessors.lock
+.idea/runConfigurations.xml

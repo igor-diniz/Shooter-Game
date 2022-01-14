@@ -47,4 +47,33 @@ Ghost: We did it! Commander Zavala, Sepiks Prime is no more.
 Zavala: Good news, this will be a huge loss for the Fallen on Earth. Good job Guardian, I expect great things from you
 Zavala out
 Ghost: Hey, check it out, I think I see a gun over there
-*Player unlocks machine gun
+* Player unlocks machine gun
+
+3rd mission - S.A.B.E.R.
+* Player spawns on Earth and receives a message from Zavala
+Zavala: Guardian, the Fallen breached into a Rasputin's bunker. Rasputin is an AI created during the Golden Age to
+protect the solar system. It controls satellites and space weapons of high destructive power. This cannot fall on
+enemy hands.
+Ghost: The bunker entrance is up ahead, let's go!
+* Player enters the bunker and walk a bit until they find some enemies. After pew pew.
+Ghost: We need to open these doors, but even I can't hack Rasputins systems, let me scan the room...
+Got it, that thing is a cooling cell, if we destroy it the system will overheat and open the door for us
+* Player shoots the thingy
+Rasputin: Chto delayesh'? YA unichtozhu tebya orbital'noy raketoy
+Ghost: I think he is really mad at us
+* Door opens, player goes to electrical room. It has two corridors and there are beams coming from both
+Ghost: Well, I think we shouldn't have shot that thing, but I believe shooting that other thing and the end of the
+corridor will shut down these electric bolts.
+* After player shoots the thing, the door opens. Next room has 3 waves of enemies. After enemies die, door opens and
+player goes to the boss room
+Ghost. He is... he is trying to merge Rasputin's technology with his own body. We got to stop him!
+* After boss battle, player picks up and unlocks handcannon
+Ghost: Ghost to Zavala, the Fallen are defeated and Rasputin is safe
+Zavala: That's another victory to humanity. I just hope one day this AI will consider us as allies.
+Ghost: Hey, that gun you unlocked, its a handcannon, you can select it on your inventory to take your auto rifle's slot.
+You can swap it back anytime you want.
+
+
+
+
+
