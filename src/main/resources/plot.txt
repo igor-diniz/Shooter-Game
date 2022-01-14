@@ -129,3 +129,10 @@ Ghost: Is that... a weapon? Why all the bosses drop human weapons? It's almost l
 * Player unlocks Rocket Launcher
 
 7th mission - Vault of Glass
+Zavala: What is this place?
+Osiris: It is a region where time behaves... differently
+Ghost: we are heading in
+* Conflux encounter, defend to blocks
+* Oracles encounter, blinking oracles 5x
+* Templar encounter, shot oracles to break shield
+* Atheon encounter, shot blinking oracles to damage boss
