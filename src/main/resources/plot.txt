@@ -96,9 +96,14 @@ Ghost: That's Osiris!
 Ghost: That thing ran away, he had Osiris and some really strong energy signature.
 Ghost: I am tracking his ship, he is... he is going to the Moon. We will stop him. He may have taken Osiris, but
 he left that gun.
-* Player unlocks sniper rifle
+* Player unlocks Sniper Rifle
 
 5th mission - Ominigul
+Zavala: Welcome to the moon, guardian, I wish your first visit was in better terms but we need you right now.
+We tracked that thing to this location, his name is Ominigul and he is aspiring to the throne of the Hive.
+Ghost: We are rescuing Osiris, no matter what faces us.
+* 2 rooms with enemies tbh no need to new mechanics here, just some pew pew
+* Boss room, after we kill him
 Osiris: Thank you guardian, you saved my live. Ominigul is dead but he delivered the artifact.
 Ghost: What artifact?
 Osiris: It's some sort of supercomputer, it's capable of running infinite simulations of reality. That means the Hive
@@ -106,7 +111,21 @@ would be able to predict the future and defeat the city.
 Ghost: That can't be good... let's get out of here... wait, what it that?
 * Player unlocks Scout Rifle
 
+
 6th mission - Phogoth
+Zavala: Heads up, Osiris just arrived at the tower, he is safe. About your artifact, our intel says it was brought
+here, to be defended but a monstrosity called Phogoth.
+Osiris: Phogoth is some sort of mutant created by the Hive, watch out for him
+Ghost: Don't worry, the city depends on us, and we are going to do everything we can to save it
+* Again, I have no idea about runs here, just pew pew and hack doors
+* Boss room, after we kill it
+Ghost: Phogoth is dead, I am analysing the arti... oh!
+Osiris: What?
+Ghost: The artifact... is not a supercomputer, it's a part of one! And apparently it's almost completed, it's being
+assembled on a place called Vault of Glass
+Osiris: I've heard that name before... I know where to find it
+Zavala: Alright guardian let's move
+Ghost: Is that... a weapon? Why all the bosses drop human weapons? It's almost like we are in some sort of game...
 * Player unlocks Rocket Launcher
 
 7th mission - Vault of Glass
