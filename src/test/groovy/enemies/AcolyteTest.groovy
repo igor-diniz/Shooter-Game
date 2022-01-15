@@ -4,8 +4,9 @@ import game.Position
 import game.enemies.Acolyte
 import game.weapons.HandCannon
 import game.weapons.Weapon
+import spock.lang.Specification
 
-class AcolyteTest {
+class AcolyteTest extends Specification {
     def 'Acolyte Creation'() {
         given:
         Acolyte enemy = new Acolyte(new Position(3,3));
@@ -15,7 +16,7 @@ class AcolyteTest {
         Weapon weapon = enemy.getWeapon();
         then:
         weapon instanceof HandCannon;
-        health == 30
+        health == 60
     }
 
     def 'Moving Acolyte'() {
@@ -38,11 +39,11 @@ class AcolyteTest {
         Acolyte Acolyte = new Acolyte(new Position(10,10))
         Acolyte Acolyte1 = new Acolyte(new Position(10,10))
         when:
-        Acolyte.takeDamage(10)
-        Acolyte1.takeDamage(20)
+        Acolyte.takeDamage(50)
+        Acolyte1.takeDamage(60)
         then:
-        Acolyte.getHealth() == 20
-        Acolyte1.getHealth() == 10
+        Acolyte.getHealth() == 10
+        Acolyte1.getHealth() == 0
 
     }
 
@@ -60,7 +61,7 @@ class AcolyteTest {
         enemy.setPosition(enemy1.moveUp())
         then:
         enemy1.getPosition() == new Position(10,9)
-        enemy1.getRemainingTime() == 2
+        enemy1.getRemainingTime() == 5
         enemy.getPosition() == new Position(10,8)
     }
 }
