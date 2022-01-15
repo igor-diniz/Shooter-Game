@@ -3,6 +3,7 @@ package enemies
 import game.Player
 import game.enemies.Dreg
 import game.Position
+import game.weapons.EnemyWeapon1
 import game.weapons.HandCannon
 import game.weapons.Weapon
 import spock.lang.Specification
@@ -15,7 +16,7 @@ class DregTest extends Specification {
         def health = enemy.getHealth()
         Weapon weapon = enemy.getWeapon();
         then:
-        weapon instanceof HandCannon;
+        weapon instanceof EnemyWeapon1;
         health == 40
     }
 

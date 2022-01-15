@@ -2,6 +2,7 @@ package enemies
 
 import game.Position
 import game.enemies.Thrall
+import game.weapons.EnemyWeapon1
 import game.weapons.HandCannon
 import game.weapons.Weapon
 import spock.lang.Specification
@@ -15,7 +16,7 @@ class ThrallTest extends Specification{
             def health = enemy.getHealth()
             Weapon weapon = enemy.getWeapon();
             then:
-            weapon instanceof HandCannon;
+            weapon instanceof EnemyWeapon1;
             health == 30
         }
 

@@ -2,6 +2,7 @@ package enemies
 
 import game.Position
 import game.enemies.Knight
+import game.weapons.EnemyWeapon3
 import game.weapons.HandCannon
 import game.weapons.Weapon
 import spock.lang.Specification
@@ -15,7 +16,7 @@ class KnightTest extends Specification {
         def health = enemy.getHealth()
         Weapon weapon = enemy.getWeapon();
         then:
-        weapon instanceof HandCannon;
+        weapon instanceof EnemyWeapon3;
         health == 100
     }
 
