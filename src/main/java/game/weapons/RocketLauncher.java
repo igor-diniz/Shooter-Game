@@ -9,12 +9,12 @@ public class RocketLauncher extends Weapon {
 
     @Override
     protected int generateDamage() {
-        return 5;
+        return 150;
     }
 
     @Override
     protected int generateRange() {
-        return 3;
+        return 10;
     }
 
     @Override
