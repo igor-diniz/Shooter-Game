@@ -1,7 +1,6 @@
 package game.weapons;
 public abstract class Weapon
 {
-    private final char character;
     private final int damage;
     private final int range;
     private int ammo;
@@ -11,9 +10,7 @@ public abstract class Weapon
         this.damage = generateDamage();
         this.range = generateRange();
         this.ammo = getStartAmmo();
-        this.character = generateCharacter();
     }
-    protected abstract char generateCharacter();
 
     protected abstract int generateDamage();
 
@@ -46,7 +43,4 @@ public abstract class Weapon
         return damage;
     }
 
-    public char getCharacter() {
-        return character;
-    }
 }
