@@ -9,10 +9,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import game.enemies.Captain;
-import game.enemies.Dreg;
-import game.enemies.Enemy;
-import game.enemies.Vandal;
+import game.enemies.*;
 
 
 import java.awt.*;
@@ -110,11 +107,13 @@ public class Game
         Dreg dreg2 = new Dreg(new Position(8,5));
         Vandal vandal = new Vandal(new Position (8,2));
         Captain captain = new Captain(new Position(10,5));
+        Thrall thrall = new Thrall(new Position(12,8));
         List<Enemy> enemyList = new ArrayList<Enemy>();
         enemyList.add(vandal);
         enemyList.add(dreg);
         enemyList.add(dreg2);
         enemyList.add(captain);
+        enemyList.add(thrall);
         List<Wall> wallList = new ArrayList<Wall>();
         for(int i = 0; i < level.getNumRows();i++)
         {
