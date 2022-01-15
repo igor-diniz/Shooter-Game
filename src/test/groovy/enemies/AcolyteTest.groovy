@@ -1,0 +1,4 @@
+package enemies
+
+class AcolyteTest {
+}

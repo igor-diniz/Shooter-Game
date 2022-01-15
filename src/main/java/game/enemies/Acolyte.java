@@ -4,8 +4,8 @@ import game.Position;
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
-public class Acolyte {
-    public Thrall(Position position) {
+public class Acolyte extends Enemy {
+    public Acolyte(Position position) {
         super(position);
     }
 
