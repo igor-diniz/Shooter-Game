@@ -4,8 +4,9 @@ import game.Position
 import game.enemies.Knight
 import game.weapons.HandCannon
 import game.weapons.Weapon
+import spock.lang.Specification
 
-class KnightTest {
+class KnightTest extends Specification {
     def 'Knight Creation'() {
         given:
         Knight enemy = new Knight(new Position(3,3));
@@ -15,7 +16,7 @@ class KnightTest {
         Weapon weapon = enemy.getWeapon();
         then:
         weapon instanceof HandCannon;
-        health == 60
+        health == 100
     }
 
     def 'Moving Knight'() {
@@ -38,8 +39,8 @@ class KnightTest {
         Knight Knight = new Knight(new Position(10,10))
         Knight Knight1 = new Knight(new Position(10,10))
         when:
-        Knight.takeDamage(50)
-        Knight1.takeDamage(60)
+        Knight.takeDamage(90)
+        Knight1.takeDamage(100)
         then:
         Knight.getHealth() == 10
         Knight1.getHealth() == 0
@@ -60,7 +61,7 @@ class KnightTest {
         enemy.setPosition(enemy1.moveUp())
         then:
         enemy1.getPosition() == new Position(10,9)
-        enemy1.getRemainingTime() == 5
+        enemy1.getRemainingTime() == 8
         enemy.getPosition() == new Position(10,8)
     }
 }
