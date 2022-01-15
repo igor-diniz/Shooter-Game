@@ -13,7 +13,7 @@ public class Captain extends Enemy {
 
     @Override
     protected int generateActionDelay() {
-        return 4;
+        return 9;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Captain extends Enemy {
 
     @Override
     protected int generateHealth() {
-        return 3;
+        return 100;
     }
 
     @Override
