@@ -6,11 +6,6 @@ public class Shotgun extends Weapon {
     }
 
     @Override
-    protected char generateCharacter() {
-        return 's';
-    }
-
-    @Override
     protected int generateDamage() {
         return 3;
     }

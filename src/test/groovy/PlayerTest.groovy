@@ -10,7 +10,9 @@ class PlayerTest extends Specification
 
         when:
         def health = player.getHealth()
+        def color = player.getColor()
         then:
+        color == "#1064ad"
         health == 3
         player.getPosition() == new Position(10,10)
     }

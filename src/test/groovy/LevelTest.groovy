@@ -6,6 +6,7 @@ import game.Position
 import game.Wall
 import game.enemies.Dreg
 import game.enemies.Enemy
+import game.enemies.Vandal
 import game.weapons.HandCannon
 import spock.lang.Specification
 
@@ -16,8 +17,8 @@ class LevelTest extends Specification
 
     private Level level
     private Player player
-    private Dreg dreg
-    private Dreg dreg2
+    private Vandal vandal
+    private Vandal vandal2
     private List<Enemy> enemyList
     private List<Wall> wallList
 
@@ -25,11 +26,11 @@ class LevelTest extends Specification
     {
         level = new Level(10,10)
         player = new Player(new Position(1,1))
-        dreg = new Dreg(new Position(8,8))
-        dreg2 = new Dreg(new Position(8,5))
+        vandal = new Vandal(new Position(8,8))
+        vandal2 = new Vandal(new Position(8,5))
         enemyList = new ArrayList<Enemy>()
-        enemyList.add(dreg)
-        enemyList.add(dreg2)
+        enemyList.add(vandal)
+        enemyList.add(vandal2)
         wallList = new ArrayList<Wall>()
         for(int i = 0; i < level.getNumRows();i++)
         {
@@ -59,8 +60,8 @@ class LevelTest extends Specification
         level.generateEntities(player,enemyList,wallList)
         then:
         level.getCharacterAt(1,1) == ('p' as char)
-        level.getCharacterAt(8,5) == ('d' as char)
-        level.getCharacterAt(8,8) == ('d' as char)
+        level.getCharacterAt(8,5) == ('v' as char)
+        level.getCharacterAt(8,8) == ('v' as char)
         level.getCharacterAt(0,5) == ('#' as char)
     }
 
@@ -97,10 +98,10 @@ class LevelTest extends Specification
     def 'Level Move Bullets'()
     {
         level.generateEntities(player,enemyList,wallList)
-        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'S' as char)
-        Bullet bullet2 = new Bullet(new Position(5,5),new HandCannon(), 'N' as char)
-        Bullet bullet3 = new Bullet(new Position(5,3),new HandCannon(), 'W' as char)
-        Bullet bullet4 = new Bullet(new Position(5,6),new HandCannon(), 'E' as char)
+        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'S' as char,true)
+        Bullet bullet2 = new Bullet(new Position(5,5),new HandCannon(), 'N' as char,true)
+        Bullet bullet3 = new Bullet(new Position(5,3),new HandCannon(), 'W' as char,true)
+        Bullet bullet4 = new Bullet(new Position(5,6),new HandCannon(), 'E' as char,true)
         level.addBullet(bullet1)
         level.addBullet(bullet2)
         level.addBullet(bullet3)
@@ -117,9 +118,9 @@ class LevelTest extends Specification
     def 'Collisions'()
     {
         level.generateEntities(player,enemyList,wallList)
-        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'N' as char)
-        Bullet bullet2 = new Bullet(new Position(8,5),new HandCannon(), 'N' as char)
-        Bullet bullet3 = new Bullet(new Position(8,3),new HandCannon(), 'N' as char)
+        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'N' as char,true)
+        Bullet bullet2 = new Bullet(new Position(8,5),new HandCannon(), 'N' as char,true)
+        Bullet bullet3 = new Bullet(new Position(8,3),new HandCannon(), 'N' as char,true)
         level.addBullet(bullet1)
         level.addBullet(bullet2)
         level.addBullet(bullet3)
@@ -128,7 +129,7 @@ class LevelTest extends Specification
         level.checkCollisions()
         then:
         level.getPlayer().getHealth() == 2
-        level.getEnemyList().size() == 1
+        level.getEnemyList().size() == 2
         level.getBullets().size() == 1
     }
 
@@ -139,10 +140,10 @@ class LevelTest extends Specification
         key1.getKeyType()  >> "ArrowDown" >> "Enter"
         when:
         level.processKey(key1) // this should not generate a bullet
-        level.moveEnemies()
         level.processKey(key1)
+        level.moveEnemies()
         then:
         level.getBullets().get(0).getDirection() == ('S' as char) //the player's bullet
-        level.getBullets().size() == 1
+        level.getBullets().size() == 3
     }
 }

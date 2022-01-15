@@ -2,7 +2,7 @@ package game;
 
 import game.weapons.*;
 
-public class Player extends Entity
+public class Player extends MovingEntity
 {
     private int health;
     private Weapon primaryWeapon = new HandCannon();
@@ -81,5 +81,11 @@ public class Player extends Entity
 
     public void setSpecialWeapon(Weapon specialWeapon) {
         this.specialWeapon = specialWeapon;
+    }
+
+    public Bullet shoot()
+    {
+        if(getUsingWeapon().shoot()) return new Bullet(getPosition(),getUsingWeapon(),getDirection(),true);
+        return null;
     }
 }

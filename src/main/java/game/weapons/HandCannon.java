@@ -19,11 +19,6 @@ public class HandCannon extends Weapon{
 
     @Override
     protected int getStartAmmo() {
-        return 12;
-    }
-
-    @Override
-    protected char generateCharacter() {
-        return 'h';
+        return -1;
     }
 }

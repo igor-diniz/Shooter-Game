@@ -1,19 +1,15 @@
 package game.weapons;
 public abstract class Weapon
 {
-    private final char character;
     private final int damage;
     private final int range;
     private int ammo;
 
-    protected Weapon()
-    {
+    protected Weapon() {
         this.damage = generateDamage();
         this.range = generateRange();
         this.ammo = getStartAmmo();
-        this.character = generateCharacter();
     }
-    protected abstract char generateCharacter();
 
     protected abstract int generateDamage();
 
@@ -22,7 +18,7 @@ public abstract class Weapon
     protected abstract int getStartAmmo();
 
     public boolean shoot() {
-        if(ammo > 0) {
+        if(ammo != 0) {
             decreaseAmmo();
             return true;
         }
@@ -36,8 +32,6 @@ public abstract class Weapon
 
     public int getAmmo(){return ammo;}
 
-    public void setAmmo(int ammo) {this.ammo = ammo;}
-
     public int getRange() {
         return range;
     }
@@ -46,7 +40,4 @@ public abstract class Weapon
         return damage;
     }
 
-    public char getCharacter() {
-        return character;
-    }
 }

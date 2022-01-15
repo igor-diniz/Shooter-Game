@@ -1,7 +1,9 @@
 package game.enemies;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import game.Position;
+import game.enemies.strategy.GetInRangeStrategy;
+import game.enemies.strategy.MoveStrategy;
+import game.enemies.strategy.TrackStrategy;
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
@@ -13,7 +15,12 @@ public class Vandal extends Enemy {
 
     @Override
     protected int generateActionDelay() {
-        return 1;
+        return 3;
+    }
+
+    @Override
+    protected MoveStrategy generateMoveStrategy() {
+        return new GetInRangeStrategy();
     }
 
     @Override
