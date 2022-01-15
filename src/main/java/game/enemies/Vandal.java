@@ -2,6 +2,7 @@ package game.enemies;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import game.Position;
+import game.weapons.EnemyWeapon2;
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
@@ -28,7 +29,7 @@ public class Vandal extends Enemy {
 
     @Override
     protected Weapon generateWeapon() {
-        return new HandCannon();
+        return new EnemyWeapon2();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package game.enemies;
 
 import game.Position;
+import game.weapons.EnemyWeapon3;
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
@@ -24,7 +25,7 @@ public class Knight extends Enemy {
 
     @Override
     protected Weapon generateWeapon() {
-        return new HandCannon();
+        return new EnemyWeapon3();
     }
 
     @Override
