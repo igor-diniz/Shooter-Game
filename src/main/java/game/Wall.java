@@ -22,7 +22,7 @@ public class Wall extends Entity {
 
     @Override
     protected String generateColor() {
-        return "#4d2f1f";
+        return "#96281b";
     }
 
 
