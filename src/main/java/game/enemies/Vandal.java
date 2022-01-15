@@ -13,7 +13,7 @@ public class Vandal extends Enemy {
 
     @Override
     protected int generateActionDelay() {
-        return 1;
+        return 6;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Vandal extends Enemy {
 
     @Override
     protected int generateHealth() {
-        return 2;
+        return 60;
     }
 
     @Override
