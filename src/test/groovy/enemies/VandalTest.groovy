@@ -1,7 +1,6 @@
 package enemies
 
 import game.Position
-import game.enemies.Dreg
 import game.enemies.Vandal
 import game.weapons.HandCannon
 import game.weapons.Weapon

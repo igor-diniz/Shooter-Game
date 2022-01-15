@@ -16,7 +16,7 @@ class DregTest extends Specification {
         Weapon weapon = enemy.getWeapon();
         then:
         weapon instanceof HandCannon;
-        health == 1
+        health == 40
     }
 
     def 'Moving Dreg'() {
@@ -39,11 +39,11 @@ class DregTest extends Specification {
         Dreg dreg = new Dreg(new Position(10,10))
         Dreg dreg1 = new Dreg(new Position(10,10))
         when:
-        dreg.takeDamage(1)
-        dreg1.takeDamage(2)
+        dreg.takeDamage(10)
+        dreg1.takeDamage(20)
         then:
-        dreg.getHealth() == 0
-        dreg1.getHealth() == 0
+        dreg.getHealth() == 30
+        dreg1.getHealth() == 20
 
     }
 

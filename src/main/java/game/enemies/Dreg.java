@@ -22,7 +22,7 @@ public class Dreg extends Enemy {
 
     @Override
     protected int generateHealth() {
-        return 1;
+        return 40;
     }
 
     @Override
