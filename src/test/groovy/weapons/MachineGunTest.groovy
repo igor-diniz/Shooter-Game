@@ -13,7 +13,7 @@ class MachineGunTest {
         MachineGun1.shoot()
         MachineGun1.shoot()
         then:
-        MachineGun.getAmmo() == 14
-        MachineGun1.getAmmo() == 13
+        MachineGun.getAmmo() == 11
+        MachineGun1.getAmmo() == 10
     }
 }
