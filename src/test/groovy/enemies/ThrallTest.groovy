@@ -16,7 +16,7 @@ class ThrallTest extends Specification{
             Weapon weapon = enemy.getWeapon();
             then:
             weapon instanceof HandCannon;
-            health == 100
+            health == 30
         }
 
         def 'Moving Thrall'() {
@@ -42,8 +42,8 @@ class ThrallTest extends Specification{
             Thrall.takeDamage(10)
             Thrall1.takeDamage(20)
             then:
-            Thrall.getHealth() == 90
-            Thrall1.getHealth() == 80
+            Thrall.getHealth() == 20
+            Thrall1.getHealth() == 10
 
         }
 
@@ -61,7 +61,7 @@ class ThrallTest extends Specification{
             enemy.setPosition(enemy1.moveUp())
             then:
             enemy1.getPosition() == new Position(10,9)
-            enemy1.getRemainingTime() == 8
+            enemy1.getRemainingTime() == 2
             enemy.getPosition() == new Position(10,8)
         }
 }

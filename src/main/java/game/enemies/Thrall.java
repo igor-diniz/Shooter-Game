@@ -10,7 +10,7 @@ public class Thrall extends Enemy {
     }
 
     @Override
-    protected int generateActionDelay() {return 0;}
+    protected int generateActionDelay() {return 3;}
 
     @Override
     protected char generateCharacter() {
@@ -19,7 +19,7 @@ public class Thrall extends Enemy {
 
     @Override
     protected int generateHealth() {
-        return 0;
+        return 30;
     }
 
     @Override
