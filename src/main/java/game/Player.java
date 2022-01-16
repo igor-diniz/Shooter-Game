@@ -9,12 +9,16 @@ public class Player extends MovingEntity
     private Weapon specialWeapon = new Shotgun();
     private Weapon heavyWeapon = new RocketLauncher();
     private int weaponInUse;
-    public int healing;
+    private int healing;
+    private int maxHealth;
+
     Player(Position position)
     {
         super(position);
         this.health = 150;
+        this.maxHealth = 150;
         weaponInUse = 0;
+        healing = 0;
     }
 
     @Override
@@ -97,5 +101,13 @@ public class Player extends MovingEntity
 
     public void decreaseHealing() {
         this.healing -= 1;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
     }
 }

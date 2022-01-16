@@ -147,4 +147,13 @@ class LevelTest extends Specification
         level.getBullets().get(0).getDirection() == ('S' as char) //the player's bullet
         level.getBullets().size() == 2
     }
+    def 'Player Healing'()
+    {
+        Player player1 = new Player(new Position(1,1))
+        when:
+        player.takeDamage(5)
+        then:
+        player.getHealing() == 60
+        player1.getHealing() == 0
+    }
 }
