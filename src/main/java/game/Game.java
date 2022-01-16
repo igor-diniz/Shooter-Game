@@ -108,12 +108,18 @@ public class Game
         Vandal vandal = new Vandal(new Position (8,2));
         Captain captain = new Captain(new Position(10,5));
         Thrall thrall = new Thrall(new Position(12,8));
+        Thrall thrall1 = new Thrall(new Position(15,9));
+        Acolyte acolyte = new Acolyte(new Position(14,6));
+        Knight knight = new Knight(new Position(13,8));
         List<Enemy> enemyList = new ArrayList<Enemy>();
         enemyList.add(vandal);
         enemyList.add(dreg);
         enemyList.add(dreg2);
         enemyList.add(captain);
         enemyList.add(thrall);
+        enemyList.add(thrall1);
+        enemyList.add(acolyte);
+        enemyList.add(knight);
         List<Wall> wallList = new ArrayList<Wall>();
         for(int i = 0; i < level.getNumRows();i++)
         {
