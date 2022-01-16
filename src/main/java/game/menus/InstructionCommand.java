@@ -2,12 +2,11 @@ package game.menus;
 
 import game.Game;
 
-public class PlayCommand extends Command
-{
+public class InstructionCommand extends Command{
 
-    private State oldState;
 
-    public PlayCommand(Game game) {
+
+    public InstructionCommand(Game game) {
         super(game);
     }
 
@@ -23,6 +22,6 @@ public class PlayCommand extends Command
 
     @Override
     public void undo() {
-        ;
+
     }
 }

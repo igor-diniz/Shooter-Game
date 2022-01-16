@@ -5,6 +5,6 @@ import com.googlecode.lanterna.input.KeyStroke;
 
 public interface State
 {
-    void showMenu(TextGraphics graphics);
+    void show(TextGraphics graphics);
     void processInput(KeyStroke keystroke);
 }

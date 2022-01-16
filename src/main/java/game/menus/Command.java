@@ -2,9 +2,17 @@ package game.menus;
 
 import game.Game;
 
-public interface Command
+public abstract class Command
 {
-    void execute(Game game);
+    protected Game game;
+    public Command(Game game)
+    {
+        this.game = game;
+    }
 
-    void undo(Game game);
+    abstract String getText();
+
+    abstract void execute();
+
+    abstract void undo();
 }

@@ -1,8 +1,9 @@
 package weapons
 
 import game.weapons.RocketLauncher
+import spock.lang.Specification
 
-class RocketLauncherTest {
+class RocketLauncherTest extends Specification{
     def 'RocketLauncher Test'()
     {
         given:

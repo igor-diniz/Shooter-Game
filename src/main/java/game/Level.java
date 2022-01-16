@@ -82,19 +82,20 @@ public class Level
             gameOver = true;
             return;
         }
-        String a = key.getKeyType().toString();
+        if(key.getKeyType() != KeyType.Character) return;
+        char choice = key.getCharacter();
         level[player.getPosition().getY()][player.getPosition().getX()] = 'x';
-        switch(a)
+        switch(choice)
         {
-            case "ArrowUp":
+            case 'W': case 'w':
                 if(isValidMove(player.moveUp())) player.setPosition(player.moveUp()); break;
-            case "ArrowLeft":
+            case 'A': case 'a':
                 if(isValidMove(player.moveLeft())) player.setPosition(player.moveLeft()); break;
-            case "ArrowDown":
+            case 'S': case 's':
                 if(isValidMove(player.moveDown())) player.setPosition(player.moveDown()); break;
-            case "ArrowRight":
+            case 'D': case 'd':
                 if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
-            case "Enter":
+            case 'E': case 'e':
                 Bullet bullet = player.shoot();
                 if (bullet != null)  bulletList.add(player.shoot());
                 break;

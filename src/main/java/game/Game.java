@@ -9,6 +9,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import game.enemies.*;
+import game.menus.MenuState;
 import game.menus.State;
 
 
@@ -51,6 +52,12 @@ public class Game
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
+        state = new MenuState(this);
+    }
+
+    public Level getLevel()
+    {
+        return level;
     }
 
     private void draw() throws IOException {
@@ -58,28 +65,18 @@ public class Game
         level.draw(screen.newTextGraphics());
         screen.refresh();
     }
-    /*public void drawMainMenu() throws IOException, InterruptedException {
-        MainMenu a = new MainMenu(this);
-        while(true) {
-            screen.clear();
-            a.showMenu(screen.newTextGraphics());
-            screen.refresh();
-            Thread.sleep(300);
-            a.previousOption();
-        }
-    }*/
+
 
     public void run() throws IOException, InterruptedException {
         int frameTime = 1000 / this.frameRateInMillis;
         while(!level.isGameOver())
         {
             long startTime = System.currentTimeMillis();
-            draw();
-            KeyStroke key = terminal.pollInput(); //pollInput is non-blocking
-            processKey(key);
-            level.moveEnemies();
-            level.moveBullets();
-            level.checkCollisions();
+            screen.clear();
+            state.show(screen.newTextGraphics());
+            screen.refresh();
+            KeyStroke key = terminal.pollInput();
+            state.processInput(key);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
 
@@ -89,11 +86,6 @@ public class Game
         draw();
         if(level.getPlayer().getHealth() > 0) System.out.println("You won!");
         else System.out.println("You lose!");
-    }
-
-    private void processKey(KeyStroke key)
-    {
-        level.processKey(key);
     }
 
     private void loadLevel1()
@@ -142,5 +134,9 @@ public class Game
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public State getState() {
+        return state;
     }
 }

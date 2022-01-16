@@ -1,8 +1,9 @@
 package weapons
 
 import game.weapons.MachineGun
+import spock.lang.Specification
 
-class MachineGunTest {
+class MachineGunTest extends Specification{
     def 'MachineGun Test'()
     {
         given:

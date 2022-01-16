@@ -2,12 +2,8 @@ package game.menus;
 
 import game.Game;
 
-public class PlayCommand extends Command
-{
-
-    private State oldState;
-
-    public PlayCommand(Game game) {
+public class ExitCommand extends Command {
+    public ExitCommand(Game game) {
         super(game);
     }
 
@@ -18,11 +14,11 @@ public class PlayCommand extends Command
 
     @Override
     public void execute() {
-
+        System.exit(0);
     }
 
     @Override
     public void undo() {
-        ;
+
     }
 }

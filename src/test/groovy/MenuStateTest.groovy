@@ -1,29 +1,31 @@
+
+
 import game.Game
-import game.menus.Main
+import game.menus.MenuState
 import spock.lang.Specification
 
-class MainMenuTest extends Specification
+class MenuStateTest extends Specification
 {
     private Game game;
 
     void 'setup'()
     {
+
         game = new Game();
     }
 
     def 'Menu Creation'()
     {
         when:
-        Main mainMenu = new Main(game)
+        MenuState mainMenu = new MenuState(game)
         then:
-        mainMenu.getMessages().size() == 3
         mainMenu.getSelected() == 0
     }
 
     def 'Menu option selection'()
     {
         given:
-        Main mainMenu = new Main(game)
+        MenuState mainMenu = new MenuState(game)
         when:
         mainMenu.previousOption()
         mainMenu.nextOption()
