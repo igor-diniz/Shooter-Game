@@ -18,7 +18,7 @@ public class Acolyte extends Enemy {
     }
 
     @Override
-    protected int generateActionDelay() {return 60;}
+    protected int generateActionDelay() {return 25;}
 
     @Override
     protected char generateCharacter() {

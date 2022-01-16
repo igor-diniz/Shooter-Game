@@ -77,7 +77,7 @@ class ThrallTest extends Specification{
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 29
-        enemy.getRemainingTime() == 26
+        enemy1.getRemainingTime() == 14
+        enemy.getRemainingTime() == 11
     }
 }

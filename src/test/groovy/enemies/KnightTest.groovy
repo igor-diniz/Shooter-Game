@@ -77,7 +77,7 @@ class KnightTest extends Specification {
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 89
-        enemy.getRemainingTime() == 86
+        enemy1.getRemainingTime() == 34
+        enemy.getRemainingTime() == 31
     }
 }
