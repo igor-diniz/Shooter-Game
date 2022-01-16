@@ -15,8 +15,8 @@ public class Player extends MovingEntity
     Player(Position position)
     {
         super(position);
-        this.health = 150;
         this.maxHealth = 150;
+        this.health = maxHealth;
         weaponInUse = 0;
         healing = 0;
     }
@@ -110,4 +110,6 @@ public class Player extends MovingEntity
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
+
+    public void increaseHealth(){if(health < maxHealth) {this.health += 1;}}
 }

@@ -184,5 +184,7 @@ public class Level
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
     }
     public void healPlayer(){
+        if (player.getHealing() > 0){player.decreaseHealing();}
+        else {player.increaseHealth();}
     }
 }

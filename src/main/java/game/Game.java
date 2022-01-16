@@ -79,6 +79,7 @@ public class Game
             level.moveEnemies();
             level.moveBullets();
             level.checkCollisions();
+            level.healPlayer();
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
 
