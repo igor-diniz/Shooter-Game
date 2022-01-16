@@ -19,9 +19,7 @@ public class Captain extends Enemy {
     }
 
     @Override
-    protected int generateActionDelay() {
-        return 9;
-    }
+    protected int generateActionDelay() { return 90; }
 
     @Override
     protected char generateCharacter() {

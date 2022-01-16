@@ -70,7 +70,8 @@ class LevelTest extends Specification
         given:
         level.generateEntities(player,enemyList,wallList)
         KeyStroke key1 = Stub(KeyStroke.class)
-        key1.getKeyType() >> "ArrowUp" >> "ArrowLeft" >> "ArrowUp" >> "ArrowDown" >> "ArrowRight" >> "ArrowDown"
+        key1.getKeyType() >> "ArrowUp" >> "ArrowUp" >> "ArrowLeft" >> "ArrowLeft" >> "ArrowUp"  >> "ArrowUp" >> "ArrowDown" >> "ArrowDown"
+                >> "ArrowRight"  >> "ArrowRight" >> "ArrowDown" >> "ArrowDown"
         when:
         level.processKey(key1)//should not work because of wall
         level.processKey(key1)//should not work because of wall
@@ -128,7 +129,7 @@ class LevelTest extends Specification
         level.checkCollisions()
         level.checkCollisions()
         then:
-        level.getPlayer().getHealth() == 2
+        level.getPlayer().getHealth() == 110
         level.getEnemyList().size() == 2
         level.getBullets().size() == 1
     }
@@ -137,13 +138,13 @@ class LevelTest extends Specification
     {
         level.generateEntities(player,enemyList,wallList)
         KeyStroke key1 = Stub(KeyStroke.class)
-        key1.getKeyType()  >> "ArrowDown" >> "Enter"
+        key1.getKeyType()  >> "ArrowDown" >> "ArrowDown" >> "Enter" >> "Enter"
         when:
         level.processKey(key1) // this should not generate a bullet
         level.processKey(key1)
         level.moveEnemies()
         then:
         level.getBullets().get(0).getDirection() == ('S' as char) //the player's bullet
-        level.getBullets().size() == 3
+        level.getBullets().size() == 2
     }
 }

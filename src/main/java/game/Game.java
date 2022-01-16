@@ -27,7 +27,7 @@ public class Game
     private Screen screen;
     private Level level;
     private Terminal terminal;
-    private final int frameRateInMillis = 10;
+    private final int frameRateInMillis = 30;
     public Game() throws IOException, FontFormatException, URISyntaxException {
         loadLevel1();
         URL resource = getClass().getClassLoader().getResource("fate.ttf");
@@ -69,25 +69,21 @@ public class Game
     }*/
 
     public void run() throws IOException, InterruptedException {
-        int rateOfEntitiesAction = frameRateInMillis * 2;
-        while(!level.gameOver())
+        int frameTime = 1000 / this.frameRateInMillis;
+        while(!level.isGameOver())
         {
-            Thread.sleep(frameRateInMillis);
+            long startTime = System.currentTimeMillis();
             draw();
             KeyStroke key = terminal.pollInput(); //pollInput is non-blocking
-            if(key != null) {
-                if (key.getKeyType() == KeyType.EOF) {
-                    break;
-                }
-                processKey(key);
-            }
-            if(rateOfEntitiesAction == frameRateInMillis) {
-                level.moveEnemies();
-                level.moveBullets();
-                level.checkCollisions();
-                rateOfEntitiesAction = frameRateInMillis * 2;
-            }
-            else rateOfEntitiesAction--;
+            processKey(key);
+            level.moveEnemies();
+            level.moveBullets();
+            level.checkCollisions();
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
+
+            if (sleepTime > 0) Thread.sleep(sleepTime);
+
         }
         draw();
         if(level.getPlayer().getHealth() > 0) System.out.println("You won!");

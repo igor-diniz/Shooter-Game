@@ -12,8 +12,8 @@ class PlayerTest extends Specification
         def health = player.getHealth()
         def color = player.getColor()
         then:
-        color == "#1064ad"
-        health == 3
+        color == "#000000"
+        health == 150
         player.getPosition() == new Position(10,10)
     }
     def 'Move Player'()
@@ -50,10 +50,10 @@ class PlayerTest extends Specification
         Player player1 = new Player(new Position(10,10))
         when:
         player.takeDamage(1)
-        player1.takeDamage(2)
+        player1.takeDamage(160)
         then:
-        player.getHealth() == 2
-        player1.getHealth() == 1
+        player.getHealth() == 149
+        player1.getHealth() == 0
     }
 
 }

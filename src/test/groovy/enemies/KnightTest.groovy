@@ -1,6 +1,10 @@
 package enemies
 
+import game.Level
+import game.Player
 import game.Position
+import game.Wall
+import game.enemies.Enemy
 import game.enemies.Knight
 import game.weapons.EnemyWeapon3
 import game.weapons.HandCannon
@@ -8,6 +12,17 @@ import game.weapons.Weapon
 import spock.lang.Specification
 
 class KnightTest extends Specification {
+
+    private Level level
+    private Player player
+
+    void 'setup'()
+    {
+        level = new Level(20,20)
+        player = new Player(new Position(1,1))
+        level.generateEntities(player,new ArrayList<Enemy>(),new ArrayList<Wall>())
+    }
+
     def 'Knight Creation'() {
         given:
         Knight enemy = new Knight(new Position(3,3));
@@ -30,8 +45,8 @@ class KnightTest extends Specification {
         enemy2.setPosition(enemy2.moveLeft())
         enemy2.setPosition(enemy2.moveDown())
         then:
-        enemy1.getPosition() == new Position(10,9)
-        enemy2.getPosition() == new Position(9,10)
+        enemy1.getPosition() == new Position(11,9)
+        enemy2.getPosition() == new Position(9,11)
     }
 
     def 'Get Damaged'()
@@ -40,8 +55,8 @@ class KnightTest extends Specification {
         Knight Knight = new Knight(new Position(10,10))
         Knight Knight1 = new Knight(new Position(10,10))
         when:
-        Knight.takeDamage(90)
-        Knight1.takeDamage(100)
+        Knight.takeDamage(90,true)
+        Knight1.takeDamage(100,true)
         then:
         Knight.getHealth() == 10
         Knight1.getHealth() == 0
@@ -54,15 +69,15 @@ class KnightTest extends Specification {
         Knight enemy = new Knight(new Position(10,10));
         Knight enemy1 = new Knight(new Position(10,10));
         when:
-        enemy1.setPosition(enemy1.moveUp())
-        enemy1.setPosition(enemy1.moveUp())
-        enemy.setPosition(enemy1.moveUp())
-        enemy.setPosition(enemy1.moveUp())
-        enemy.setPosition(enemy1.moveUp())
-        enemy.setPosition(enemy1.moveUp())
+        enemy1.move(level,player)
+        enemy1.move(level,player)
+        enemy.move(level,player)
+        enemy.move(level,player)
+        enemy.move(level,player)
+        enemy.move(level,player)
+        enemy.move(level,player)
         then:
-        enemy1.getPosition() == new Position(10,9)
-        enemy1.getRemainingTime() == 8
-        enemy.getPosition() == new Position(10,8)
+        enemy1.getRemainingTime() == 89
+        enemy.getRemainingTime() == 86
     }
 }

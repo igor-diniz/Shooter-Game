@@ -20,8 +20,8 @@ public abstract class MovingEntity extends Entity
 
     @Override
     public void draw(TextGraphics graphics) {
-        if (damaged > 0) graphics.setForegroundColor(TextColor.Factory.fromString("#ff0000")); // Red for damage color
         graphics.setForegroundColor(TextColor.Factory.fromString(getColor()));
+        if (damaged > 0) graphics.setForegroundColor(TextColor.Factory.fromString("#ff0000")); // Red for damage color
         graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), String.valueOf(getCharacter()));
         damaged--;
     }

@@ -3,6 +3,7 @@ package game;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import game.enemies.Enemy;
 
 import java.util.ArrayList;
@@ -77,6 +78,10 @@ public class Level
     public void processKey(KeyStroke key)
     {
         if(key == null) return;
+        if (key.getKeyType() == KeyType.EOF) {
+            gameOver = true;
+            return;
+        }
         String a = key.getKeyType().toString();
         level[player.getPosition().getY()][player.getPosition().getX()] = 'x';
         switch(a)
@@ -105,7 +110,7 @@ public class Level
 
     public List<Enemy> getEnemyList() {return enemyList;}
 
-    public boolean gameOver() {return gameOver;}
+    public boolean isGameOver() {return gameOver;}
 
     public void moveEnemies()
     {
@@ -113,9 +118,10 @@ public class Level
         {
             level[enemy.getPosition().getY()][enemy.getPosition().getX()] = 'x';
             enemy.move(this,player);
+            level[enemy.getPosition().getY()][enemy.getPosition().getX()] = enemy.getCharacter();
+            if(enemy.getPosition().distanceTo(player.getPosition()) > enemy.getWeapon().getRange()) continue;
             Bullet bullet = enemy.shoot();
             if (bullet != null)  bulletList.add(enemy.shoot());
-            level[enemy.getPosition().getY()][enemy.getPosition().getX()] = enemy.getCharacter();
         }
     }
     public void checkCollisions()

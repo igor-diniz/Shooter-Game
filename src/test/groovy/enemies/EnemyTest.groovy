@@ -8,6 +8,7 @@ import game.enemies.Dreg
 import game.Position
 import game.enemies.Enemy
 import game.enemies.Vandal
+import game.weapons.EnemyWeapon1
 import game.weapons.HandCannon
 import game.weapons.Weapon
 import spock.lang.Specification
@@ -30,23 +31,25 @@ class EnemyTest extends Specification {
         def health = dreg.getHealth()
         Weapon weapon = dreg.getWeapon();
         then:
-        weapon instanceof HandCannon;
-        health == 1
+        weapon instanceof EnemyWeapon1;
+        health == 40
     }
 
     def 'Moving Enemy'() {
         given:
         Dreg enemy1 = new Dreg(new Position(10,10));
-        Vandal enemy2 = new Vandal(new Position(5,5));
+        Vandal enemy2 = new Vandal(new Position(7,8));
         Captain enemy3 = new Captain(new Position(7,7))
         when:
-        enemy1.move(level,player)
-        enemy2.move(level,player)
-        enemy2.move(level,player)
-        enemy3.move(level,player)
+        for(int i = 0; i < 90; i++) {
+            enemy1.move(level, player)
+            enemy2.move(level, player)
+            enemy2.move(level, player)
+            enemy3.move(level, player)
+        }
         then:
         level.getCharacterAt(10,10) != 'd'
-        enemy2.getPosition() == new Position(5,4)
+        enemy2.getPosition() == new Position(7,6)
         enemy3.getPosition() == new Position(7,6)
     }
 
@@ -59,8 +62,8 @@ class EnemyTest extends Specification {
         dreg.takeDamage(1,true)
         dreg1.takeDamage(2,true)
         then:
-        dreg.getHealth() == 0
-        dreg1.getHealth() == 0
+        dreg.getHealth() == 39
+        dreg1.getHealth() == 38
 
     }
 
@@ -78,8 +81,7 @@ class EnemyTest extends Specification {
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getPosition() == new Position(10,9)
-        enemy1.getRemainingTime() == 2
-        enemy.getPosition() == new Position(9,9)
+        enemy1.getRemainingTime() == 59
+        enemy.getRemainingTime() == 56
     }
 }

@@ -12,7 +12,7 @@ public class Player extends MovingEntity
     Player(Position position)
     {
         super(position);
-        this.health = 3;
+        this.health = 150;
         weaponInUse = 0;
     }
 
@@ -37,7 +37,7 @@ public class Player extends MovingEntity
 
     @Override
     protected String generateColor() {
-        return "#1064ad"; //should be #000000, changed due to draw issue
+        return "#000000"; //should be #000000, changed due to draw issue
     }
 
     public Weapon getUsingWeapon()
