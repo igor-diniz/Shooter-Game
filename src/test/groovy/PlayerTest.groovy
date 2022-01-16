@@ -55,6 +55,17 @@ class PlayerTest extends Specification
         player.getHealth() == 149
         player1.getHealth() == 0
     }
-
+    def 'Player healing'()
+    {
+        given:
+        Player player = new Player(new Position(10,10))
+        Player player1 = new Player(new Position(10,10))
+        when:
+        player.takeDamage(1)
+        player1.takeDamage(160)
+        then:
+        player.getHealing() == 60
+        player1.getHealing() == 60
+    }
 }
 

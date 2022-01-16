@@ -9,6 +9,7 @@ public class Player extends MovingEntity
     private Weapon specialWeapon = new Shotgun();
     private Weapon heavyWeapon = new RocketLauncher();
     private int weaponInUse;
+    public int healing;
     Player(Position position)
     {
         super(position);
@@ -33,6 +34,7 @@ public class Player extends MovingEntity
         if(health > damage) health -= damage;
         else health = 0;
         damaged = 25;
+        healing = 60;
     }
 
     @Override
@@ -87,5 +89,13 @@ public class Player extends MovingEntity
     {
         if(getUsingWeapon().shoot()) return new Bullet(getPosition(),getUsingWeapon(),getDirection(),true);
         return null;
+    }
+
+    public int getHealing() {
+        return healing;
+    }
+
+    public void decreaseHealing() {
+        this.healing -= 1;
     }
 }

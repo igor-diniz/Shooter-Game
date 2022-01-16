@@ -183,4 +183,6 @@ public class Level
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
     }
+    public void healPlayer(){
+    }
 }
