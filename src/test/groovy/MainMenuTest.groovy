@@ -1,18 +1,6 @@
-import com.googlecode.lanterna.TerminalSize
-import com.googlecode.lanterna.screen.Screen
-import com.googlecode.lanterna.screen.TerminalScreen
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory
-import com.googlecode.lanterna.terminal.Terminal
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame
 import game.Game
-import game.MainMenu
+import game.menus.Main
 import spock.lang.Specification
-
-import java.awt.Font
-import java.awt.GraphicsEnvironment
-import java.awt.event.WindowAdapter
-import java.awt.event.WindowEvent
 
 class MainMenuTest extends Specification
 {
@@ -26,7 +14,7 @@ class MainMenuTest extends Specification
     def 'Menu Creation'()
     {
         when:
-        MainMenu mainMenu = new MainMenu(game)
+        Main mainMenu = new Main(game)
         then:
         mainMenu.getMessages().size() == 3
         mainMenu.getSelected() == 0
@@ -35,7 +23,7 @@ class MainMenuTest extends Specification
     def 'Menu option selection'()
     {
         given:
-        MainMenu mainMenu = new MainMenu(game)
+        Main mainMenu = new Main(game)
         when:
         mainMenu.previousOption()
         mainMenu.nextOption()

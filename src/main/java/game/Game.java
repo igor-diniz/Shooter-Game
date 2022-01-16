@@ -2,7 +2,6 @@ package game;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -10,6 +9,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import game.enemies.*;
+import game.menus.State;
 
 
 import java.awt.*;
@@ -28,6 +28,7 @@ public class Game
     private Level level;
     private Terminal terminal;
     private final int frameRateInMillis = 30;
+    private State state;
     public Game() throws IOException, FontFormatException, URISyntaxException {
         loadLevel1();
         URL resource = getClass().getClassLoader().getResource("fate.ttf");
@@ -137,5 +138,9 @@ public class Game
 
     public Screen getScreen() {
         return screen;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 }
