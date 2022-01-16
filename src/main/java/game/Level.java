@@ -90,10 +90,9 @@ public class Level
             case "ArrowRight":
                 if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
             case "Enter":
-                if(player.getUsingWeapon().getAmmo() > 0) {
-                    bulletList.add(new Bullet(player.getPosition(), player.getUsingWeapon(), player.getDirection()));
-                    player.getUsingWeapon().decreaseAmmo();
-                } break;
+                Bullet bullet = player.shoot();
+                if (bullet != null)  bulletList.add(player.shoot());
+                break;
         }
         level[player.getPosition().getY()][player.getPosition().getX()] = 'p';
     }
@@ -110,42 +109,13 @@ public class Level
 
     public void moveEnemies()
     {
-        int xDistance, yDistance;
-        double oldDistanceToPlayer;
-
         for(Enemy enemy : enemyList)
         {
             level[enemy.getPosition().getY()][enemy.getPosition().getX()] = 'x';
-            xDistance = enemy.getPosition().getX() - player.getPosition().getX();
-            yDistance = enemy.getPosition().getY() - player.getPosition().getY();
-            oldDistanceToPlayer = enemy.getPosition().distanceTo(player.getPosition());
-            if(Math.abs(xDistance) > Math.abs(yDistance))
-            {
-                if(xDistance > 0 && isValidMove(enemy.moveLeft()))
-                {
-                    enemy.setPosition(enemy.moveLeft());
-                }
-                else if(isValidMove(enemy.moveRight()))
-                    enemy.setPosition(enemy.moveRight());
-                else if(isValidMove(enemy.moveLeft())) //in case the enemy is in the left of the player and his move to the right is invalid
-                    enemy.setPosition(enemy.moveLeft());
-            }
-            else if(yDistance > 0 && isValidMove(enemy.moveUp()))
-            {
-                enemy.setPosition(enemy.moveUp());
-            }
-            else if(isValidMove(enemy.moveDown()))
-            {
-                enemy.setPosition(enemy.moveDown());
-            }
-            else if(isValidMove(enemy.moveUp()))//in case the enemy is in the above the player and his move down is invalid
-            {
-                enemy.setPosition(enemy.moveUp());
-            }
+            enemy.move(this,player);
+            Bullet bullet = enemy.shoot();
+            if (bullet != null)  bulletList.add(enemy.shoot());
             level[enemy.getPosition().getY()][enemy.getPosition().getX()] = enemy.getCharacter();
-            if((enemy.getPosition().distanceTo(player.getPosition()) < enemy.getWeapon().getRange())
-            && (enemy.getPosition().distanceTo(player.getPosition()) != oldDistanceToPlayer)) //enemies should only shoot if the player is in their range and the enemy has moved
-            bulletList.add(new Bullet(enemy.getPosition(),enemy.getWeapon(),enemy.getDirection()));
         }
     }
     public void checkCollisions()
@@ -157,11 +127,10 @@ public class Level
             if(bullet.getPosition().equals(player.getPosition()))
             {
                 player.takeDamage(bullet.getDamage());
-                if(player.getHealth() == 0) gameOver = true;
                 bulletsToRemove.add(bullet);
                 continue;
             }
-            if(level[bullet.getPosition().getY()][bullet.getPosition().getX()] == '#')
+            else if(level[bullet.getPosition().getY()][bullet.getPosition().getX()] == '#')
             {
                 bulletsToRemove.add(bullet);
                 continue;
@@ -170,7 +139,7 @@ public class Level
             {
                 if (bullet.getPosition().equals(enemy.getPosition()))
                 {
-                    enemy.takeDamage(bullet.getDamage());
+                    enemy.takeDamage(bullet.getDamage(),bullet.isShotByPlayer());
                     if(enemy.getHealth() == 0) {enemiesToRemove.add(enemy); level[enemy.getPosition().getY()][enemy.getPosition().getX()] = 'x';}
                     bulletsToRemove.add(bullet);
                     break;
@@ -179,7 +148,7 @@ public class Level
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
         for(Enemy enemy : enemiesToRemove) enemyList.remove(enemy);
-        if(enemyList.size() == 0) gameOver = true;
+        if(enemyList.size() == 0 || player.getHealth() == 0) gameOver = true;
     }
     public void addBullet(Bullet bullet)
     {

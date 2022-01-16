@@ -1,8 +1,9 @@
 package game.enemies;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import game.Position;
 import game.weapons.EnemyWeapon3;
+import game.enemies.strategy.MoveStrategy;
+import game.enemies.strategy.TrackStrategy;
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
@@ -10,6 +11,11 @@ public class Captain extends Enemy {
     public Captain(Position position) {
         super(position);
         //this.setColor("#1064ad");
+    }
+
+    @Override
+    protected MoveStrategy generateMoveStrategy() {
+        return new TrackStrategy();
     }
 
     @Override

@@ -101,6 +101,7 @@ public class Game
 
     private void loadLevel1()
     {
+
         level = new Level(25,50);
         Player player = new Player(new Position(1,1));
         Dreg dreg = new Dreg(new Position(8,8));

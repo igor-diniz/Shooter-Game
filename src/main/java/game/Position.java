@@ -19,29 +19,6 @@ public class Position {
         return y;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void moveUp() {
-        y--;
-    }
-
-    public void moveRight() {
-        x++;
-    }
-
-    public void moveDown() {
-        y++;
-    }
-
-    public void moveLeft() {
-        x--;
-    }
     @Override
     public boolean equals(Object o)
     {
@@ -60,8 +37,4 @@ public class Position {
         return Math.sqrt(Math.pow(this.x - position.x, 2) + Math.pow(this.y - position.y, 2));
     }
 
-    public void moveTo(Position position) {
-        this.x = position.getX();
-        this.y = position.getY();
-    }
 }

@@ -1,6 +1,7 @@
 package game.weapons;
 
 public class Shotgun extends Weapon {
+
     public Shotgun() {}
 
     @Override

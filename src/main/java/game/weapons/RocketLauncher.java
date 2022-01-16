@@ -21,5 +21,4 @@ public class RocketLauncher extends Weapon {
     protected int getStartAmmo() {
         return 1;
     }
-
 }

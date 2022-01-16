@@ -1,7 +1,12 @@
 package game.enemies;
 
 import game.Position;
+
 import game.weapons.EnemyWeapon1;
+
+import game.enemies.strategy.BlindStrategy;
+import game.enemies.strategy.MoveStrategy;
+
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
@@ -9,12 +14,15 @@ public class Dreg extends Enemy {
 
     public Dreg(Position position) {
         super(position);
-        //this.setColor("#1064ad");
-
     }
 
     @Override
-    protected int generateActionDelay() { return 3; }
+    protected MoveStrategy generateMoveStrategy() {
+        return new BlindStrategy();
+    }
+
+    @Override
+    protected int generateActionDelay() { return 1; }
 
     @Override
     protected char generateCharacter() {
