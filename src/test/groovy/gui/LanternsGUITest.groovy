@@ -63,4 +63,13 @@ class LanternaGUITest extends Specification {
         then:
         res == 60
     }
+
+    def 'Draw Immobile Entity Test'()
+    {
+        when:
+        gui.drawImmobileEntity(position,color,'#' as char)
+        then:
+        1 * tg.setForegroundColor(TextColor.Factory.fromString(color))
+        1 * tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf('#'));
+    }
 }
