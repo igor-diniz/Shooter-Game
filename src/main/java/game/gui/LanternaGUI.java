@@ -44,4 +44,9 @@ public class LanternaGUI implements GUI {
     public int getWidth() {
         return width;
     }
+
+    @Override
+    public int getHeight() {
+        return 0;
+    }
 }
