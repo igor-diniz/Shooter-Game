@@ -98,4 +98,15 @@ class LanternaGUITest extends Specification {
         then:
         7 * tg.putString(_)
     }
+
+    def 'Draw Inventory Test'()
+    {
+        given:
+        Game game = new Game()
+        int selected = 0
+        when:
+        gui.drawInventory(game,selected)
+        then:
+        13 * tg.putString(_)
+    }
 }
