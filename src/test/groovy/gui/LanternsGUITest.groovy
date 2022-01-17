@@ -109,4 +109,17 @@ class LanternaGUITest extends Specification {
         then:
         13 * tg.putString(_)
     }
+
+    def 'Draw GameState Test'()
+    {
+        given:
+        Level level = new Level(20,50)
+        when:
+        gui.drawGame(level)
+        then:
+        1 * tg.setBackgroundColor(TextColor.Factory.fromString("#000000"))
+        1 * tg.fillRectangle(_)
+        3 * tg.putString(_)
+        gui.drawRectangle()
+    }
 }
