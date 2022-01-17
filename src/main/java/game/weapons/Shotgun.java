@@ -1,18 +1,22 @@
 package game.weapons;
 
 public class Shotgun extends Weapon {
-    public Shotgun() {
 
+    public Shotgun() {}
+
+    @Override
+    protected char generateType() {
+        return 'S';
     }
 
     @Override
-    protected char generateCharacter() {
-        return 's';
+    protected String generateName() {
+        return "SHOTGUN";
     }
 
     @Override
     protected int generateDamage() {
-        return 3;
+        return 80;
     }
 
     @Override
@@ -22,6 +26,6 @@ public class Shotgun extends Weapon {
 
     @Override
     protected int getStartAmmo() {
-        return 8;
+        return 5;
     }
 }

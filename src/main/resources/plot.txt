@@ -1,0 +1,138 @@
+FATE
+1st mission - Intro
+* Player spawns with ghost floating in front of him
+Ghost: You're alive! I spent months trying to find someone compatible. Hurry up, they are coming, we can't stay here.
+* Ghost despawns
+* Player follows the path until they find a door with an item close to it
+* Ghost spawns
+Ghost: Hey, check that gun while I try to open this door.
+* Player unlocks auto rifle and the door opens, Ghost despawns they walk a bit more until they find some Fallen
+Ghost: Well, you've met the Fallen. They aren't very happy to see you
+* Player combats Fallen until they find another item
+Ghost: Guardian, I think I see a shotgun over there!
+ * Player unlocks shotgun, level continues (miniboss).
+Ghost: I think you got them all, at least for now. I found a ship a few weeks ago, it's just up ahead
+* Level ends, player is taken to the tower.
+
+1st tower visit
+* Player and ghost spawn on the tower
+Ghost: This is the tower, an overwatch for Earth's Last City. Look, it's Commander Zavala! Let's talk to him
+* Player walks up to Zavala
+Zavala: Oh, hello Guardian! I see you are fresh out of the grave. These are hard times indeed, let me explain.
+A few centuries ago, humanity found the Traveler, an alien orb capable of unthinkable power and knowledge.
+With its help, we terraformed dozens of worlds and achieved high level technology, it was a true Golden Age.
+But the Traveler had its enemy, the Darkness, that followed him to our own home: Earth!
+As last resort, the Traveler sacrificed itself to dispel the Darkness, entering a deep dormant state.
+As its last breath, the Traveler created the Ghosts, capable of giving the power of the Light to those who are worth it.
+As your first mission, I need you to attack a possible whereabouts of the mighty Sepiks Prime.
+Your ghost will provide you intel and keep our communications up. Eyes up, guardian!
+* Level ends and player is loaded to the second mission
+
+2nd mission - Sepiks Prime
+* Player spawns on Earth, there is a door in front of him, so he walks towards it
+Ghost: So, Sepiks Prime is an Archon, these are the ones among the Fallen responsible for creating their species food!
+Killing him will hurt their supplies and weaken their troops.
+* Door opens, after enemies and lots of shooting they find another door
+Ghost: I can open this door, but I hear more Fallen coming, give me cover while I do my job
+* More enemies spawn (miniboss?), after they are all dead
+Ghost: Got it! Let's move
+* After walking a bit
+Ghost: The Fallen, you know why they have this name? It's because they were just like the humans!
+The traveler, it used to help them, but they became too greedy and corrupt, so it left
+The Fallen did not like this move, so they followed him here, and now they want its power back!
+* After walking a bit, they find more enemies (miniboss?), they find a gate
+Ghost: So, this is the Sepiks lair? I will open it.
+* Door opens, boss encounters starts... after killing boss
+Ghost: We did it! Commander Zavala, Sepiks Prime is no more.
+Zavala: Good news, this will be a huge loss for the Fallen on Earth. Good job Guardian, I expect great things from you
+Zavala out
+Ghost: Hey, check it out, I think I see a gun over there
+* Player unlocks machine gun
+
+3rd mission - S.A.B.E.R.
+* Player spawns on Earth and receives a message from Zavala
+Zavala: Guardian, the Fallen breached into a Rasputin's bunker. Rasputin is an AI created during the Golden Age to
+protect the solar system. It controls satellites and space weapons of high destructive power. This cannot fall on
+enemy hands.
+Ghost: The bunker entrance is up ahead, let's go!
+* Player enters the bunker and walk a bit until they find some enemies. After pew pew.
+Ghost: We need to open these doors, but even I can't hack Rasputins systems, let me scan the room...
+Got it, that thing is a cooling cell, if we destroy it the system will overheat and open the door for us
+* Player shoots the thingy
+Rasputin: Chto delayesh'? YA unichtozhu tebya orbital'noy raketoy
+Ghost: I think he is really mad at us
+* Door opens, player goes to electrical room. It has two corridors and there are beams coming from both
+Ghost: Well, I think we shouldn't have shot that thing, but I believe shooting that other thing and the end of the
+corridor will shut down these electric bolts.
+* After player shoots the thing, the door opens. Next room has 3 waves of enemies. After enemies die, door opens and
+player goes to the boss room
+Ghost. He is... he is trying to merge Rasputin's technology with his own body. We got to stop him!
+* After boss battle, player picks up and unlocks handcannon
+Ghost: Ghost to Zavala, the Fallen are defeated and Rasputin is safe
+Zavala: That's another victory to humanity. I just hope one day this AI will consider us as allies.
+Ghost: Hey, that gun you unlocked, its a handcannon, you can select it on your inventory to take your auto rifle's slot.
+You can swap it back anytime you want.
+
+4th mission - The hive
+Zavala: Guardian, he received a distress call from a fellow lightbearer named Osiris, he is a veteran and was on a top
+secret mission. We need you to rescue him
+Ghost: Before I found you, I used to watch Osiris study the City enemies, it was him that told me to search for my
+guardian here on Earth, he needs our help guardian.
+* Player walks to a place with a closed door as a lot of Fallen (miniboss)
+Ghost: That guy was strong, what is he doing defending such a worthless place? Anyway, let me open that door...
+Wow, the Fallen put some good defenses on this system, they really want to lock us out of this place... Got it!
+* Door opens, player goes inside
+????: ROOOAAAAARRRR!!!!!
+Ghost: What was that?
+* A pack of thrall spawn and attack the guardian, after they are dead
+Ghost: Those are Hive! But here on Earth? I understand now, the Fallen weren't trying to lock us out, they were trying
+to lock them here
+Osiris: Help! Please, help me!
+Ghost: That's Osiris, we need to go
+* Another room with Hive enemies pew pew pew
+* Boss room
+Ghost: That's Osiris!
+* Player shoots the boss a little bit and it runs despawns
+Ghost: That thing ran away, he had Osiris and some really strong energy signature.
+Ghost: I am tracking his ship, he is... he is going to the Moon. We will stop him. He may have taken Osiris, but
+he left that gun.
+* Player unlocks Sniper Rifle
+
+5th mission - Ominigul
+Zavala: Welcome to the moon, guardian, I wish your first visit was in better terms but we need you right now.
+We tracked that thing to this location, his name is Ominigul and he is aspiring to the throne of the Hive.
+Ghost: We are rescuing Osiris, no matter what faces us.
+* 2 rooms with enemies tbh no need to new mechanics here, just some pew pew
+* Boss room, after we kill him
+Osiris: Thank you guardian, you saved my live. Ominigul is dead but he delivered the artifact.
+Ghost: What artifact?
+Osiris: It's some sort of supercomputer, it's capable of running infinite simulations of reality. That means the Hive
+would be able to predict the future and defeat the city.
+Ghost: That can't be good... let's get out of here... wait, what it that?
+* Player unlocks Scout Rifle
+
+
+6th mission - Phogoth
+Zavala: Heads up, Osiris just arrived at the tower, he is safe. About your artifact, our intel says it was brought
+here, to be defended but a monstrosity called Phogoth.
+Osiris: Phogoth is some sort of mutant created by the Hive, watch out for him
+Ghost: Don't worry, the city depends on us, and we are going to do everything we can to save it
+* Again, I have no idea about runs here, just pew pew and hack doors
+* Boss room, after we kill it
+Ghost: Phogoth is dead, I am analysing the arti... oh!
+Osiris: What?
+Ghost: The artifact... is not a supercomputer, it's a part of one! And apparently it's almost completed, it's being
+assembled on a place called Vault of Glass
+Osiris: I've heard that name before... I know where to find it
+Zavala: Alright guardian let's move
+Ghost: Is that... a weapon? Why all the bosses drop human weapons? It's almost like we are in some sort of game...
+* Player unlocks Rocket Launcher
+
+7th mission - Vault of Glass
+Zavala: What is this place?
+Osiris: It is a region where time behaves... differently
+Ghost: we are heading in
+* Conflux encounter, defend to blocks
+* Oracles encounter, blinking oracles 5x
+* Templar encounter, shot oracles to break shield
+* Atheon encounter, shot blinking oracles to damage boss

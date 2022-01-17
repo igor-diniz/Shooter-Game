@@ -15,7 +15,7 @@ class ShotgunTest extends Specification
         shotgun1.shoot()
         shotgun1.shoot()
         then:
-        shotgun.getAmmo() == 7
-        shotgun1.getAmmo() == 6
+        shotgun.getAmmo() == 4
+        shotgun1.getAmmo() == 3
     }
 }
