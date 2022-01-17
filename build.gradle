@@ -1,10 +1,11 @@
 plugins {
     id 'groovy'
     id 'java'
+    id 'application'
     id "org.kordamp.gradle.errorprone" version "0.47.0"
 }
 
-group 'com.aor.refactoring'
+group 'game'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -24,3 +25,5 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+mainClassName = 'game.Application'

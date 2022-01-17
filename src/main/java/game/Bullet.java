@@ -3,14 +3,16 @@ package game;
 
 import game.weapons.Weapon;
 
-public class Bullet extends Entity{
+public class Bullet extends MovingEntity{
     private int range;
     private final int damage;
-    public Bullet(Position position, Weapon weapon, char direction) {
+    private final boolean shotByPlayer;
+    public Bullet(Position position, Weapon weapon, char direction, boolean shotByPlayer) {
         super(position);
         this.setDirection(direction);
         damage = weapon.getDamage();
         range = weapon.getRange();
+        this.shotByPlayer = shotByPlayer;
     }
 
     @Override
@@ -21,6 +23,11 @@ public class Bullet extends Entity{
     @Override
     protected char generateCharacter() {
         return 'b';
+    }
+
+    @Override
+    protected String generateColor() {
+        return "#000000";
     }
 
     public boolean decreaseRange()
@@ -50,5 +57,9 @@ public class Bullet extends Entity{
             case 'S':
                 this.setPosition(this.moveDown()); break;
         }
+    }
+
+    public boolean isShotByPlayer() {
+        return shotByPlayer;
     }
 }

@@ -1,6 +1,12 @@
 package game.enemies;
 
 import game.Position;
+
+import game.weapons.EnemyWeapon1;
+
+import game.enemies.strategy.BlindStrategy;
+import game.enemies.strategy.MoveStrategy;
+
 import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
@@ -11,7 +17,12 @@ public class Dreg extends Enemy {
     }
 
     @Override
-    protected int generateActionDelay() { return 3; }
+    protected MoveStrategy generateMoveStrategy() {
+        return new BlindStrategy();
+    }
+
+    @Override
+    protected int generateActionDelay() { return 15; }
 
     @Override
     protected char generateCharacter() {
@@ -20,11 +31,16 @@ public class Dreg extends Enemy {
 
     @Override
     protected int generateHealth() {
-        return 1;
+        return 40;
     }
 
     @Override
     protected Weapon generateWeapon() {
-        return new HandCannon();
+        return new EnemyWeapon1();
+    }
+
+    @Override
+    protected String generateColor() {
+        return "#1064ad";
     }
 }

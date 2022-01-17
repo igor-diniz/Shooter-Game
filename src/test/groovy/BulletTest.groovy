@@ -15,13 +15,13 @@ class BulletTest extends Specification
         player.getPosition() >> new Position(10,10)
         Weapon weapon = new HandCannon()
         Weapon weapon2 = new Shotgun()
-        Bullet bullet = new Bullet(player.getPosition(),weapon, 'N' as char)
-        Bullet bullet1 = new Bullet(player.getPosition(),weapon2, 'N' as char)
+        Bullet bullet = new Bullet(player.getPosition(),weapon, 'N' as char,false)
+        Bullet bullet1 = new Bullet(player.getPosition(),weapon2, 'N' as char,false)
         when:
         int range = bullet.getRange()
         bullet1.decreaseRange()
         then:
         bullet1.getRange() == 1
-        range == 3
+        range == 7
     }
 }

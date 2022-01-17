@@ -1,22 +1,20 @@
 package game;
 
-public class Wall extends Entity {
+public class Wall extends ImmobileEntity {
 
 
     public Wall(Position position)
     {
         super(position);
     }
-
-    @Override
-    protected int generateActionDelay() {
-        return 0;
-    }
-
     @Override
     protected char generateCharacter() {
-        return 'w';
+        return '#';
     }
 
+    @Override
+    protected String generateColor() {
+        return "#96281b";
+    }
 
 }

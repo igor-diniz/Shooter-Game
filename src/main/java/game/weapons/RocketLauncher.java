@@ -5,27 +5,20 @@ public class RocketLauncher extends Weapon {
     //private int xAoE; //AoE stands for Area of Effect
     //private int yAoE;
 
-    public RocketLauncher() {
-
-    }
+    public RocketLauncher() {}
 
     @Override
     protected int generateDamage() {
-        return 5;
+        return 150;
     }
 
     @Override
     protected int generateRange() {
-        return 3;
+        return 10;
     }
 
     @Override
     protected int getStartAmmo() {
-        return 5;
-    }
-
-    @Override
-    protected char generateCharacter() {
-        return 'r';
+        return 1;
     }
 }
