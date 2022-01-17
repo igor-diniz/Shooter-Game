@@ -80,6 +80,15 @@ public class Level
         for(Wall wall: wallList) wall.draw(graphics);
     }
 
+    public void step(TextGraphics graphics)
+    {
+        moveEnemies();
+        moveBullets();
+        checkCollisions();
+        draw(graphics);
+        healPlayer();
+    }
+
     public void processKey(KeyStroke key)
     {
         char choice = key.getCharacter();

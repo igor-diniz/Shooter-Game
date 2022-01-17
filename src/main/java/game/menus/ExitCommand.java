@@ -8,7 +8,7 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    String getText() {
+    public String getText() {
         return "EXIT";
     }
 

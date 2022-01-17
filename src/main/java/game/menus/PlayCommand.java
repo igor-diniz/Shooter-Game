@@ -12,7 +12,7 @@ public class PlayCommand extends Command
     }
 
     @Override
-    String getText() {
+    public String getText() {
         return "PLAY";
     }
 

@@ -8,17 +8,17 @@ public class SetWeapomCommand extends Command{
     }
 
     @Override
-    String getText() {
+    public String getText() {
         return null;
     }
 
     @Override
-    void execute() {
+    public void execute() {
 
     }
 
     @Override
-    void undo() {
+    public void undo() {
 
     }
 }

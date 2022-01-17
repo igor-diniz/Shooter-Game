@@ -10,9 +10,9 @@ public abstract class Command
         this.game = game;
     }
 
-    abstract String getText();
+    public abstract String getText();
 
-    abstract void execute();
+    public abstract void execute();
 
-    abstract void undo();
+    public abstract void undo();
 }

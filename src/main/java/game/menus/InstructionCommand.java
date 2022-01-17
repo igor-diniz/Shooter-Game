@@ -11,7 +11,7 @@ public class InstructionCommand extends Command{
     }
 
     @Override
-    String getText() {
+    public String getText() {
         return "INSTRUCTIONS";
     }
 

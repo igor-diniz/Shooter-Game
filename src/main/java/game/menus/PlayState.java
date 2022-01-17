@@ -22,11 +22,7 @@ public class PlayState implements State
 
     @Override
     public void show(TextGraphics graphics) {
-        level.moveEnemies();
-        level.moveBullets();
-        level.checkCollisions();
-        level.draw(graphics);
-        level.healPlayer();
+        level.step(graphics);
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         graphics.fillRectangle(new TerminalPosition(0, graphics.getSize().getRows()-3),new TerminalSize(graphics.getSize().getColumns(),3),' ');
         graphics.putString(new TerminalPosition(0, graphics.getSize().getRows()-3),"HEALTH :" + level.getPlayer().getHealth());
