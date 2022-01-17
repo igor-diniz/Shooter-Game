@@ -2,6 +2,7 @@ package game;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -65,7 +66,16 @@ public class Game
         level.draw(screen.newTextGraphics());
         screen.refresh();
     }
-
+    /*public void drawMainMenu() throws IOException, InterruptedException {
+        MainMenu a = new MainMenu(this);
+        while(true) {
+            screen.clear();
+            a.showMenu(screen.newTextGraphics());
+            screen.refresh();
+            Thread.sleep(300);
+            a.previousOption();
+        }
+    }*/
 
     public void run() throws IOException, InterruptedException {
         int frameTime = 1000 / this.frameRateInMillis;

@@ -18,7 +18,7 @@ public class Vandal extends Enemy {
 
     @Override
     protected int generateActionDelay() {
-        return 60;
+        return 25;
     }
 
     @Override

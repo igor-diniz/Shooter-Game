@@ -76,7 +76,7 @@ class DregTest extends Specification {
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 9
-        enemy.getRemainingTime() == 6
+        enemy1.getRemainingTime() == 14
+        enemy.getRemainingTime() == 11
     }
 }

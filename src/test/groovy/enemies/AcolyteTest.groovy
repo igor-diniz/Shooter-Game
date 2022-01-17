@@ -77,7 +77,7 @@ class AcolyteTest extends Specification {
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 59
-        enemy.getRemainingTime() == 56
+        enemy1.getRemainingTime() == 24
+        enemy.getRemainingTime() == 21
     }
 }

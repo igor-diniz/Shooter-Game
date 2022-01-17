@@ -18,7 +18,7 @@ public class Thrall extends Enemy {
     }
 
     @Override
-    protected int generateActionDelay() {return 30;}
+    protected int generateActionDelay() {return 15;}
 
     @Override
     protected char generateCharacter() {

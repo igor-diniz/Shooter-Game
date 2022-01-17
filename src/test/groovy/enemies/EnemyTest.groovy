@@ -50,7 +50,7 @@ class EnemyTest extends Specification {
         then:
         level.getCharacterAt(10,10) != 'd'
         enemy2.getPosition() == new Position(7,6)
-        enemy3.getPosition() == new Position(7,6)
+        enemy3.getPosition() == new Position(6,5)
     }
 
     def 'Get Damaged'()
@@ -81,7 +81,7 @@ class EnemyTest extends Specification {
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 59
-        enemy.getRemainingTime() == 56
+        enemy1.getRemainingTime() == 24
+        enemy.getRemainingTime() == 21
     }
 }

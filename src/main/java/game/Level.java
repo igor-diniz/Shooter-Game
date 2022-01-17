@@ -122,7 +122,7 @@ public class Level
             level[enemy.getPosition().getY()][enemy.getPosition().getX()] = enemy.getCharacter();
             if(enemy.getPosition().distanceTo(player.getPosition()) > enemy.getWeapon().getRange()) continue;
             Bullet bullet = enemy.shoot();
-            if (bullet != null)  bulletList.add(enemy.shoot());
+            if (bullet != null)  bulletList.add(bullet);
         }
     }
     public void checkCollisions()
@@ -183,5 +183,9 @@ public class Level
             level[bullet.getPosition().getY()][bullet.getPosition().getX()] = 'b';
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
+    }
+    public void healPlayer(){
+        if (player.getHealing() > 0){player.decreaseHealing();}
+        else {player.increaseHealth();}
     }
 }
