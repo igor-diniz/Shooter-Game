@@ -59,6 +59,10 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawMovingEntity(Position position, String color, char character, int damaged) {
-
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        if (damaged > 0) tg.setForegroundColor(TextColor.Factory.fromString("#ff0000")); // Red for damage color
+        tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf(character));
+        damaged--;
     }
 }
