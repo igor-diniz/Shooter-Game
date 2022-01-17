@@ -83,4 +83,19 @@ class LanternaGUITest extends Specification {
         1 * tg.setForegroundColor(TextColor.Factory.fromString("#ff0000"))
         2 * tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf('p'))
     }
+
+    def 'Draw Menu Test'()
+    {
+        given:
+        Game game = new Game()
+        List<Command> commandsList = new ArrayList<Command>();
+        commandsList.add(new PlayCommand(game));
+        commandsList.add(new InstructionCommand(game));
+        commandsList.add(new ExitCommand(game));
+        int selected = 0
+        when:
+        gui.drawMenu(game,selected,commandsList)
+        then:
+        7 * tg.putString(_)
+    }
 }
