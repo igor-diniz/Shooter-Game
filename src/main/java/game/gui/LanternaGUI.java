@@ -49,4 +49,8 @@ public class LanternaGUI implements GUI {
     public int getHeight() {
         return height;
     }
+
+    @Override
+    public void drawImmobileEntity(Position position, String color, char character) {
+    }
 }
