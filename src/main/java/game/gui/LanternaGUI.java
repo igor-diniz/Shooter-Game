@@ -81,6 +81,20 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawInventory(Game game, int selected) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.putString(1,1,"EQUIPPED WEAPONS");
+        tg.putString(1,2,game.getLevel().getPlayer().getPrimaryWeapon().getName());
+        tg.putString(1,3,game.getLevel().getPlayer().getSpecialWeapon().getName());
+        tg.putString(1,4,game.getLevel().getPlayer().getHeavyWeapon().getName());
 
+        for(int i = 0; i < game.getLevel().getPlayer().getInventory().size(); i++)
+            tg.putString(tg.getSize().getColumns()/3,
+                    tg.getSize().getRows()/4+i,game.getLevel().getPlayer().getInventory().get(i).getName());
+        tg.putString(game.getScreen().getTerminalSize().getColumns()/3 - 2,
+                game.getScreen().getTerminalSize().getRows()/4+selected,"->");
+        tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-4,"UP : W");
+        tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-3,"DW : S");
+        tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-2,"GO : E");
+        tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-1,"BK : Q");
     }
 }
