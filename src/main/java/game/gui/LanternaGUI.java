@@ -52,5 +52,8 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawImmobileEntity(Position position, String color, char character) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf(character));
     }
 }
