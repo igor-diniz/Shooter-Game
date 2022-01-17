@@ -2,7 +2,6 @@ package game.menus;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-
 import game.Level;
 
 public class PlayState implements State
@@ -20,6 +19,7 @@ public class PlayState implements State
         level.moveBullets();
         level.checkCollisions();
         level.draw(graphics);
+        level.healPlayer();
     }
 
     @Override

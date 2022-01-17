@@ -4,6 +4,10 @@ import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import game.Bullet;
+import game.Player;
+import game.Position;
+import game.Wall;
 import game.enemies.Enemy;
 
 import java.util.ArrayList;
