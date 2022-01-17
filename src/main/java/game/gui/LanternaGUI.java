@@ -68,6 +68,14 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawMenu(Game game, int selected, List<Command> commandsList) {
-
+        TextGraphics tg = screen.newTextGraphics();
+        for(int i = 0; i < commandsList.size(); i++)
+            tg.putString(game.getScreen().getTerminalSize().getColumns()/3,
+                    game.getScreen().getTerminalSize().getRows()/3+i,commandsList.get(i).getText());
+        tg.putString(game.getScreen().getTerminalSize().getColumns()/3 - 2,
+                game.getScreen().getTerminalSize().getRows()/3+selected,"->");
+        tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-4,"UP : W");
+        tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-3,"DW : S");
+        tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-2,"GO : E");
     }
 }
