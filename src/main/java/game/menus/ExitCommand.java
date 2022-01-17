@@ -9,7 +9,7 @@ public class ExitCommand extends Command {
 
     @Override
     String getText() {
-
+        return "EXIT";
     }
 
     @Override

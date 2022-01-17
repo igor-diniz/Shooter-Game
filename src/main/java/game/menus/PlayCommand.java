@@ -13,16 +13,17 @@ public class PlayCommand extends Command
 
     @Override
     String getText() {
-
+        return "PLAY";
     }
 
     @Override
     public void execute() {
-
+        oldState = game.getState();
+        game.setState(new PlayState(game.getLevel()));
     }
 
     @Override
     public void undo() {
-        ;
+        game.setState(oldState);
     }
 }

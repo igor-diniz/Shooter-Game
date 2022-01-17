@@ -16,15 +16,16 @@ public class PlayState implements State
 
     @Override
     public void show(TextGraphics graphics) {
-
+        level.moveEnemies();
+        level.moveBullets();
+        level.checkCollisions();
+        level.draw(graphics);
     }
 
     @Override
     public void processInput(KeyStroke keystroke) {
-
+        level.processKey(keystroke);
     }
 
-    public Level getLevel() {
-        return level;
-    }
+    public Level getLevel() {return level;}
 }

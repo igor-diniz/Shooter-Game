@@ -17,9 +17,9 @@ public class MenuState implements State
     {
         this.game = game;
         commandsList = new ArrayList<Command>();
-        commandsList.add(new ExitCommand(game));
-        commandsList.add(new InstructionCommand(game));
         commandsList.add(new PlayCommand(game));
+        commandsList.add(new InstructionCommand(game));
+        commandsList.add(new ExitCommand(game));
         selected = 0;
     }
 
@@ -27,8 +27,10 @@ public class MenuState implements State
     public void show(TextGraphics graphics)
     {
         for(int i = 0; i < commandsList.size(); i++)
-            graphics.putString(game.getScreen().getTerminalSize().getColumns()/5,game.getScreen().getTerminalSize().getRows()/(i+3),commandsList.get(i).getText());
-        graphics.putString(game.getScreen().getTerminalSize().getColumns()/5 - 2,game.getScreen().getTerminalSize().getRows()/(selected+3),"->");
+            graphics.putString(game.getScreen().getTerminalSize().getColumns()/3,
+                    game.getScreen().getTerminalSize().getRows()/3+i,commandsList.get(i).getText());
+        graphics.putString(game.getScreen().getTerminalSize().getColumns()/3 - 2,
+                game.getScreen().getTerminalSize().getRows()/3+selected,"->");
     }
 
     @Override
@@ -53,14 +55,14 @@ public class MenuState implements State
 
     public void nextOption()
     {
-        selected++;
-        if(selected >= commandsList.size()) selected = 0;
+        selected--;
+        if(selected == -1) selected = commandsList.size()-1;
     }
 
     public void previousOption()
     {
-        selected--;
-        if(selected == -1) selected = commandsList.size()-1;
+        selected++;
+        if(selected >= commandsList.size()) selected = 0;
     }
 
     public int getSelected() {
