@@ -65,4 +65,9 @@ public class LanternaGUI implements GUI {
         tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf(character));
         damaged--;
     }
+
+    @Override
+    public void drawMenu(Game game, int selected, List<Command> commandsList) {
+
+    }
 }
