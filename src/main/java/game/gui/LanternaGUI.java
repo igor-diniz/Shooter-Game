@@ -78,4 +78,9 @@ public class LanternaGUI implements GUI {
         tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-3,"DW : S");
         tg.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-2,"GO : E");
     }
+
+    @Override
+    public void drawInventory(Game game, int selected) {
+
+    }
 }
