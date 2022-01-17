@@ -100,6 +100,11 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawGame(Level level) {
-
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        tg.fillRectangle(new TerminalPosition(0, tg.getSize().getRows()-3),new TerminalSize(tg.getSize().getColumns(),3),' ');
+        tg.putString(new TerminalPosition(0, tg.getSize().getRows()-3),"HEALTH :" + level.getPlayer().getHealth());
+        tg.putString(new TerminalPosition(0, tg.getSize().getRows()-2),"WEAPON :" + level.getPlayer().getUsingWeapon().getName());
+        tg.putString(new TerminalPosition(0, tg.getSize().getRows()-1),"AMMO :" + level.getPlayer().getUsingWeapon().getAmmo());
     }
 }
