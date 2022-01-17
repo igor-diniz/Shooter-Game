@@ -72,4 +72,15 @@ class LanternaGUITest extends Specification {
         1 * tg.setForegroundColor(TextColor.Factory.fromString(color))
         1 * tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf('#'));
     }
+
+    def 'Draw Moving Entity Test'()
+    {
+        when:
+        gui.drawMovingEntity(position,color,'p',10)
+        gui.drawMovingEntity(position,color,'p',0)
+        then:
+        2 * tg.setForegroundColor(TextColor.Factory.fromString(color))
+        1 * tg.setForegroundColor(TextColor.Factory.fromString("#ff0000"))
+        2 * tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf('p'))
+    }
 }
