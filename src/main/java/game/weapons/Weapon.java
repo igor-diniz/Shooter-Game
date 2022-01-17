@@ -4,12 +4,22 @@ public abstract class Weapon
     private final int damage;
     private final int range;
     private int ammo;
+    private String name;
+    private char type;
 
     protected Weapon() {
         this.damage = generateDamage();
         this.range = generateRange();
         this.ammo = getStartAmmo();
+        this.name = generateName();
+        this.type = generateType();
     }
+
+    public String getName() {return name;}
+
+    protected abstract char generateType();
+
+    protected abstract String generateName();
 
     protected abstract int generateDamage();
 
@@ -40,4 +50,7 @@ public abstract class Weapon
         return damage;
     }
 
+    public char getType() {
+        return type;
+    }
 }

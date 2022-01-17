@@ -2,6 +2,16 @@ package game.weapons;
 
 public class EnemyWeapon2 extends Weapon {
     @Override
+    protected char generateType() {
+        return 0;
+    }
+
+    @Override
+    protected String generateName() {
+        return null;
+    }
+
+    @Override
     protected int generateDamage() {return 15;}
 
     @Override

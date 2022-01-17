@@ -68,6 +68,7 @@ public class Level
     }
     public void draw(TextGraphics graphics)
     {
+
         graphics.setBackgroundColor(TextColor.Factory.fromString("#567D46"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(NUM_COLUMNS, NUM_ROWS), ' ');
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
@@ -81,12 +82,6 @@ public class Level
 
     public void processKey(KeyStroke key)
     {
-        if(key == null) return;
-        if (key.getKeyType() == KeyType.EOF) {
-            gameOver = true;
-            return;
-        }
-        if(key.getKeyType() != KeyType.Character) return;
         char choice = key.getCharacter();
         level[player.getPosition().getY()][player.getPosition().getX()] = 'x';
         switch(choice)
@@ -101,8 +96,12 @@ public class Level
                 if(isValidMove(player.moveRight())) player.setPosition(player.moveRight()); break;
             case 'E': case 'e':
                 Bullet bullet = player.shoot();
-                if (bullet != null)  bulletList.add(player.shoot());
+                if (bullet != null)  bulletList.add(bullet);
                 break;
+            case '1': player.setWeaponInUse(0); break;
+            case '2': player.setWeaponInUse(1); break;
+            case '3': player.setWeaponInUse(2); break;
+            case 'I':
         }
         level[player.getPosition().getY()][player.getPosition().getX()] = 'p';
     }

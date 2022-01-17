@@ -19,7 +19,7 @@ public class PlayCommand extends Command
     @Override
     public void execute() {
         oldState = game.getState();
-        game.setState(new PlayState(game.getLevel()));
+        game.setState(new PlayState(game));
     }
 
     @Override

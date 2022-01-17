@@ -2,15 +2,19 @@ package game;
 
 import game.weapons.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player extends MovingEntity
 {
     private int health;
     private Weapon primaryWeapon = new HandCannon();
     private Weapon specialWeapon = new Shotgun();
-    private Weapon heavyWeapon = new RocketLauncher();
+    private Weapon heavyWeapon = new NullWeapon();
     private int weaponInUse;
     private int healing;
     private int maxHealth;
+    private List<Weapon> inventory;
 
     Player(Position position)
     {
@@ -19,6 +23,10 @@ public class Player extends MovingEntity
         this.health = maxHealth;
         weaponInUse = 0;
         healing = 0;
+        inventory = new ArrayList<Weapon>();
+        addWeaponToInventory(primaryWeapon);
+        addWeaponToInventory(specialWeapon);
+        addWeaponToInventory(new RocketLauncher());
     }
 
     @Override
@@ -31,7 +39,9 @@ public class Player extends MovingEntity
         return 'p';
     }
 
-    public void setWeaponInUse(int index) {weaponInUse = index;}
+    public void setWeaponInUse(int index) {
+        weaponInUse = index;
+    }
 
     public void takeDamage(int damage)
     {
@@ -39,6 +49,11 @@ public class Player extends MovingEntity
         else health = 0;
         damaged = 25;
         healing = 60;
+    }
+
+    public List<Weapon> getInventory()
+    {
+        return inventory;
     }
 
     @Override
@@ -60,6 +75,21 @@ public class Player extends MovingEntity
                 return null;
         }
     }
+
+    public void equipWeapon(Weapon weapon)
+    {
+        switch(weapon.getType())
+        {
+            case 'P':
+                setPrimaryWeapon(weapon); break;
+            case 'H':
+                setHeavyWeapon(weapon); break;
+            case 'S':
+                setSpecialWeapon(weapon); break;
+        }
+    }
+
+    public void addWeaponToInventory(Weapon weapon){inventory.add(weapon);}
 
     public int getHealth() { return health; }
 

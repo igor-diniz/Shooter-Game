@@ -2,6 +2,16 @@ package game.weapons;
 
 public class ScoutRifle extends Weapon {
     @Override
+    protected char generateType() {
+        return 'S';
+    }
+
+    @Override
+    protected String generateName() {
+        return "SCOUT RIFLE";
+    }
+
+    @Override
     protected int generateDamage() {
         return 30;
     }
