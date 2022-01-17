@@ -36,5 +36,7 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void fillBackground(TextGraphics textGraphics, String color) {
+        textGraphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        textGraphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
     }
 }
