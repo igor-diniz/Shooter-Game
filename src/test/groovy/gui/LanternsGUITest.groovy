@@ -47,4 +47,12 @@ class LanternaGUITest extends Specification {
         1 * tg.setBackgroundColor(TextColor.Factory.fromString(color))
         1 * tg.fillRectangle(_)
     }
+
+    def 'getWidth Test'()
+    {
+        when:
+        int res = gui.getWidth()
+        then:
+        res == 20
+    }
 }
