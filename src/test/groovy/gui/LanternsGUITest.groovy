@@ -38,4 +38,13 @@ class LanternaGUITest extends Specification {
         1 * tg.setBackgroundColor(TextColor.Factory.fromString(color))
         1 * tg.fillRectangle(_)
     }
+
+    def 'Fill Background Test'()
+    {
+        when:
+        gui.fillBackground(tg,color)
+        then:
+        1 * tg.setBackgroundColor(TextColor.Factory.fromString(color))
+        1 * tg.fillRectangle(_)
+    }
 }
