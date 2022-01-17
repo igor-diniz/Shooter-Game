@@ -56,4 +56,9 @@ public class LanternaGUI implements GUI {
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf(character));
     }
+
+    @Override
+    public void drawMovingEntity(Position position, String color, char character, int damaged) {
+
+    }
 }
