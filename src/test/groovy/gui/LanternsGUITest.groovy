@@ -55,4 +55,12 @@ class LanternaGUITest extends Specification {
         then:
         res == 20
     }
+
+    def 'getHeight Test'()
+    {
+        when:
+        int res = gui.getHeight()
+        then:
+        res == 60
+    }
 }
