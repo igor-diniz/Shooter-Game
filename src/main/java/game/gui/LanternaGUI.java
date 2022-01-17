@@ -33,4 +33,8 @@ public class LanternaGUI implements GUI {
         textGraphics.setBackgroundColor(TextColor.Factory.fromString(color));
         textGraphics.fillRectangle(new TerminalPosition(pos.getX(), pos.getY()), new TerminalSize(width, height), ' ');
     }
+
+    @Override
+    public void fillBackground(TextGraphics textGraphics, String color) {
+    }
 }
