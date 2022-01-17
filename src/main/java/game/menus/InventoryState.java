@@ -35,7 +35,6 @@ public class InventoryState implements State
         graphics.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-2,"GO : E");
         graphics.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-1,"BK : Q");
 
-
     }
 
     @Override

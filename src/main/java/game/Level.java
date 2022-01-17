@@ -101,7 +101,6 @@ public class Level
             case '1': player.setWeaponInUse(0); break;
             case '2': player.setWeaponInUse(1); break;
             case '3': player.setWeaponInUse(2); break;
-            case 'I':
         }
         level[player.getPosition().getY()][player.getPosition().getX()] = 'p';
     }
