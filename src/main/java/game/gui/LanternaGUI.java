@@ -1,5 +1,8 @@
 package game.gui;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import game.Game;
@@ -27,5 +30,7 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawRectangle(TextGraphics textGraphics, String color, int width, int height, Position pos) {
+        textGraphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        textGraphics.fillRectangle(new TerminalPosition(pos.getX(), pos.getY()), new TerminalSize(width, height), ' ');
     }
 }
