@@ -2,9 +2,10 @@ package game.enemies;
 
 import game.*;
 import game.enemies.strategy.MoveStrategy;
+import game.menus.State;
 import game.weapons.Weapon;
 
-public abstract class Enemy extends MovingEntity {
+public abstract class Enemy extends MovingEntity{
     private int health;
     private Weapon weapon;
     private MoveStrategy moveStrategy;
