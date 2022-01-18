@@ -2,7 +2,6 @@ package game;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -10,6 +9,8 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import game.enemies.*;
+import game.menus.MenuState;
+import game.menus.State;
 
 
 import java.awt.*;
@@ -28,6 +29,7 @@ public class Game
     private Level level;
     private Terminal terminal;
     private final int frameRateInMillis = 30;
+    private State state;
     public Game() throws IOException, FontFormatException, URISyntaxException {
         loadLevel1();
         URL resource = getClass().getClassLoader().getResource("fate.ttf");
@@ -50,6 +52,12 @@ public class Game
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
+        state = new MenuState(this);
+    }
+
+    public Level getLevel()
+    {
+        return level;
     }
 
     private void draw() throws IOException {
@@ -57,29 +65,17 @@ public class Game
         level.draw(screen.newTextGraphics());
         screen.refresh();
     }
-    /*public void drawMainMenu() throws IOException, InterruptedException {
-        MainMenu a = new MainMenu(this);
-        while(true) {
-            screen.clear();
-            a.showMenu(screen.newTextGraphics());
-            screen.refresh();
-            Thread.sleep(300);
-            a.previousOption();
-        }
-    }*/
 
     public void run() throws IOException, InterruptedException {
         int frameTime = 1000 / this.frameRateInMillis;
         while(!level.isGameOver())
         {
             long startTime = System.currentTimeMillis();
-            draw();
-            KeyStroke key = terminal.pollInput(); //pollInput is non-blocking
-            processKey(key);
-            level.moveEnemies();
-            level.moveBullets();
-            level.checkCollisions();
-            level.healPlayer();
+            screen.clear();
+            state.show(screen.newTextGraphics());
+            screen.refresh();
+            KeyStroke key = terminal.pollInput();
+            state.processInput(key);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
 
@@ -91,15 +87,10 @@ public class Game
         else System.out.println("You lose!");
     }
 
-    private void processKey(KeyStroke key)
-    {
-        level.processKey(key);
-    }
-
     private void loadLevel1()
     {
-
-        level = new Level(25,50);
+        int HUDSize = 3;
+        level = new Level(24,50);
         Player player = new Player(new Position(1,1));
         Dreg dreg = new Dreg(new Position(8,8));
         Dreg dreg2 = new Dreg(new Position(8,5));
@@ -119,7 +110,7 @@ public class Game
         enemyList.add(acolyte);
         enemyList.add(knight);
         List<Wall> wallList = new ArrayList<Wall>();
-        for(int i = 0; i < level.getNumRows();i++)
+        for(int i = 0; i < level.getNumRows()-HUDSize;i++)
         {
             wallList.add(new Wall(new Position(level.getNumColumns()-1,i)));
             wallList.add (new Wall(new Position(0, i)));
@@ -127,7 +118,7 @@ public class Game
         for(int i = 0; i < level.getNumColumns(); i++)
         {
             wallList.add(new Wall(new Position(i,0)));
-            wallList.add(new Wall(new Position(i,level.getNumRows()-1)));
+            wallList.add(new Wall(new Position(i,level.getNumRows()-HUDSize-1)));
         }
         for(int i = 0; i < level.getNumRows()/2;i++)
         {
@@ -138,5 +129,13 @@ public class Game
 
     public Screen getScreen() {
         return screen;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return state;
     }
 }

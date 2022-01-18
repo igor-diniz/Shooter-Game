@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.input.KeyStroke
+import com.googlecode.lanterna.input.KeyType
 import game.Bullet
 import game.Level
 import game.Player
@@ -70,8 +71,8 @@ class LevelTest extends Specification
         given:
         level.generateEntities(player,enemyList,wallList)
         KeyStroke key1 = Stub(KeyStroke.class)
-        key1.getKeyType() >> "ArrowUp" >> "ArrowUp" >> "ArrowLeft" >> "ArrowLeft" >> "ArrowUp"  >> "ArrowUp" >> "ArrowDown" >> "ArrowDown"
-                >> "ArrowRight"  >> "ArrowRight" >> "ArrowDown" >> "ArrowDown"
+        key1.getCharacter() >> 'w' >> 'a' >> 'W' >> 'S' >> 'd' >> 's'
+        key1.getKeyType() >> KeyType.Character
         when:
         level.processKey(key1)//should not work because of wall
         level.processKey(key1)//should not work because of wall
@@ -138,7 +139,8 @@ class LevelTest extends Specification
     {
         level.generateEntities(player,enemyList,wallList)
         KeyStroke key1 = Stub(KeyStroke.class)
-        key1.getKeyType()  >> "ArrowDown" >> "ArrowDown" >> "Enter" >> "Enter"
+        key1.getKeyType()  >> KeyType.Character
+        key1.getCharacter() >> 'S' >> 'e'
         when:
         level.processKey(key1) // this should not generate a bullet
         level.processKey(key1)

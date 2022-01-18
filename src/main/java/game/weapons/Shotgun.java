@@ -5,6 +5,16 @@ public class Shotgun extends Weapon {
     public Shotgun() {}
 
     @Override
+    protected char generateType() {
+        return 'S';
+    }
+
+    @Override
+    protected String generateName() {
+        return "SHOTGUN";
+    }
+
+    @Override
     protected int generateDamage() {
         return 80;
     }
