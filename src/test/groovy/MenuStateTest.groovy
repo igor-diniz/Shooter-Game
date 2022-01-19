@@ -31,6 +31,6 @@ class MenuStateTest extends Specification
         mainMenu.nextOption()
         mainMenu.nextOption()
         then:
-        mainMenu.getSelected() == 1
+        mainMenu.getSelected() == 2
     }
 }

@@ -1,9 +1,8 @@
 package game.gui;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-import game.Game;
-import game.Level;
-import game.Position;
+import com.googlecode.lanterna.input.KeyStroke;
+import game.*;
 import game.menus.Command;
 
 import java.io.IOException;
@@ -19,15 +18,19 @@ public interface GUI
 
     int getHeight();
 
+    KeyStroke pollInput() throws IOException;
+
     void clear() throws IOException;
 
     void refresh() throws IOException;
 
     void close() throws IOException;
 
-    void drawMovingEntity(Position position, String color, char character, int damaged);
+    void drawMovingEntity(MovingEntity movingEntity);
 
-    void drawImmobileEntity(Position position, String color, char character);
+    void drawBullet(Bullet bullet);
+
+    void drawImmobileEntity(ImmobileEntity immobileEntity);
 
     void drawMenu(Game game,int selected,List<Command> commandsList);
 

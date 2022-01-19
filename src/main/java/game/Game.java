@@ -9,6 +9,8 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import game.enemies.*;
+import game.gui.GUI;
+import game.gui.LanternaGUI;
 import game.menus.MenuState;
 import game.menus.State;
 
@@ -25,33 +27,13 @@ import java.util.List;
 
 public class Game
 {
-    private Screen screen;
     private Level level;
-    private Terminal terminal;
     private final int frameRateInMillis = 30;
     private State state;
+    private GUI gui;
     public Game() throws IOException, FontFormatException, URISyntaxException {
+        gui = new LanternaGUI(24,50);
         loadLevel1();
-        URL resource = getClass().getClassLoader().getResource("fate.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-        Font loadedFont = font.deriveFont(Font.PLAIN,45);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        TerminalSize terminalSize = new TerminalSize(level.getNumColumns(), level.getNumRows());
-        terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setForceAWTOverSwing(true)
-                .setTerminalEmulatorFontConfiguration(fontConfig).createTerminal();
-        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                e.getWindow().dispose();
-            }
-        });
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
         state = new MenuState(this);
     }
 
@@ -61,9 +43,10 @@ public class Game
     }
 
     private void draw() throws IOException {
-        screen.clear();
-        level.draw(screen.newTextGraphics());
-        screen.refresh();
+        gui.clear();
+        gui.drawGame(level);
+        //level.draw(gui.newTextGraphics());
+        gui.refresh();
     }
 
     public void run() throws IOException, InterruptedException {
@@ -71,10 +54,10 @@ public class Game
         while(!level.isGameOver())
         {
             long startTime = System.currentTimeMillis();
-            screen.clear();
-            state.show(screen.newTextGraphics());
-            screen.refresh();
-            KeyStroke key = terminal.pollInput();
+            gui.clear();
+            state.show(gui);
+            gui.refresh();
+            KeyStroke key = gui.pollInput();
             state.processInput(key);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
@@ -127,8 +110,8 @@ public class Game
         level.generateEntities(player,enemyList,wallList);
     }
 
-    public Screen getScreen() {
-        return screen;
+    public GUI getGUI() {
+        return gui;
     }
 
     public void setState(State state) {

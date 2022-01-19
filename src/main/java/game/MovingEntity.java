@@ -26,6 +26,9 @@ public abstract class MovingEntity extends Entity
         damaged--;
     }
 
+    public int getDamaged(){return damaged;}
+
+    public void decreaseDamaged(){damaged--;}
 
     public void increaseTimer()
     {

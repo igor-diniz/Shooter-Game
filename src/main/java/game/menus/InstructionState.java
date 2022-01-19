@@ -2,11 +2,12 @@ package game.menus;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import game.gui.GUI;
 
 public class InstructionState implements State {
 
     @Override
-    public void show(TextGraphics graphics) {
+    public void show(GUI gui) {
 
     }
 

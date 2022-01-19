@@ -8,6 +8,11 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import game.Game;
 import game.Level;
+import game.gui.GUI;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class PlayState implements State
 {
@@ -20,14 +25,15 @@ public class PlayState implements State
         this.level = game.getLevel();
     }
 
+    public PlayState(Level level) throws IOException, URISyntaxException, FontFormatException {
+        this.level = level;
+        game = new Game();
+    } //used for tests purposes
+
     @Override
-    public void show(TextGraphics graphics) {
-        level.step(graphics);
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        graphics.fillRectangle(new TerminalPosition(0, graphics.getSize().getRows()-3),new TerminalSize(graphics.getSize().getColumns(),3),' ');
-        graphics.putString(new TerminalPosition(0, graphics.getSize().getRows()-3),"HEALTH :" + level.getPlayer().getHealth());
-        graphics.putString(new TerminalPosition(0, graphics.getSize().getRows()-2),"WEAPON :" + level.getPlayer().getUsingWeapon().getName());
-        graphics.putString(new TerminalPosition(0, graphics.getSize().getRows()-1),"AMMO :" + level.getPlayer().getUsingWeapon().getAmmo());
+    public void show(GUI gui) {
+        level.step(gui);
+        gui.drawGame(level);
     }
 
     @Override
