@@ -120,7 +120,7 @@ class LanternaGUITest extends Specification {
         when:
         gui.drawInventory(game,selected)
         then:
-        12 * tg.putString(_,_,_)
+        13 * tg.putString(_,_,_)
     }
 
     def 'Draw GameState Test'()

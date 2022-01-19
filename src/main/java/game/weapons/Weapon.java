@@ -37,7 +37,7 @@ public abstract class Weapon
 
     public void decreaseAmmo()
     {
-        ammo--;
+        if(ammo > 0) ammo--;
     }
 
     public int getAmmo(){return ammo;}

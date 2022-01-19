@@ -37,21 +37,22 @@ public class Game
         state = new MenuState(this);
     }
 
+    public Game(Level level,GUI gui,State state) throws URISyntaxException, IOException, FontFormatException {
+        this.level = level;
+        this.gui = gui;
+        this.state = state;
+    } //used for testing purposes
+
     public Level getLevel()
     {
         return level;
-    }
-
-    private void draw() throws IOException {
-        gui.clear();
-        gui.drawGame(level);
-        gui.refresh();
     }
 
     public void run() throws IOException, InterruptedException {
         int frameTime = 1000 / this.frameRateInMillis;
         while(!level.isGameOver())
         {
+
             long startTime = System.currentTimeMillis();
             gui.clear();
             state.show(gui);
@@ -62,7 +63,7 @@ public class Game
             long sleepTime = frameTime - elapsedTime;
             if (sleepTime > 0) Thread.sleep(sleepTime);
         }
-        draw();
+        state.show(gui);
         if(level.getPlayer().getHealth() > 0) System.out.println("You won!");
         else System.out.println("You lose!");
     }

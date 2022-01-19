@@ -8,6 +8,8 @@ import game.Wall
 import game.enemies.Dreg
 import game.enemies.Enemy
 import game.enemies.Vandal
+import game.gui.GUI
+import game.gui.LanternaGUI
 import game.weapons.HandCannon
 import spock.lang.Specification
 
@@ -50,7 +52,9 @@ class LevelTest extends Specification
         when:
         int row = level.getNumRows()
         int columns = level.getNumColumns()
+        boolean gameOver = level.isGameOver()
         then:
+        !gameOver
         row == 10
         columns == 10
     }
@@ -137,6 +141,7 @@ class LevelTest extends Specification
 
     def 'Level Bullet Creation'()
     {
+        player.equipWeapon(new HandCannon())
         level.generateEntities(player,enemyList,wallList)
         KeyStroke key1 = Stub(KeyStroke.class)
         key1.getKeyType()  >> KeyType.Character
@@ -148,14 +153,5 @@ class LevelTest extends Specification
         then:
         level.getBullets().get(0).getDirection() == ('S' as char) //the player's bullet
         level.getBullets().size() == 2
-    }
-    def 'Player Healing'()
-    {
-        Player player1 = new Player(new Position(1,1))
-        when:
-        player.takeDamage(5)
-        then:
-        player.getHealing() == 60
-        player1.getHealing() == 0
     }
 }

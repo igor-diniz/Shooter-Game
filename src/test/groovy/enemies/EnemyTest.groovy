@@ -3,11 +3,14 @@ package enemies
 import game.Level
 import game.Player
 import game.Wall
+import game.enemies.Acolyte
 import game.enemies.Captain
 import game.enemies.Dreg
 import game.Position
 import game.enemies.Enemy
 import game.enemies.Vandal
+import game.enemies.strategy.BlindStrategy
+import game.enemies.strategy.TrackStrategy
 import game.weapons.EnemyWeapon1
 import game.weapons.HandCannon
 import game.weapons.Weapon
@@ -40,6 +43,7 @@ class EnemyTest extends Specification {
         Dreg enemy1 = new Dreg(new Position(10,10));
         Vandal enemy2 = new Vandal(new Position(7,8));
         Captain enemy3 = new Captain(new Position(7,7))
+        enemy1.setMoveStrategy(new TrackStrategy())
         when:
         for(int i = 0; i < 90; i++) {
             enemy1.move(level, player)
@@ -49,6 +53,7 @@ class EnemyTest extends Specification {
         }
         then:
         level.getCharacterAt(10,10) != 'd'
+        enemy1.getPosition() == new Position(7,7)
         enemy2.getPosition() == new Position(7,6)
         enemy3.getPosition() == new Position(6,5)
     }

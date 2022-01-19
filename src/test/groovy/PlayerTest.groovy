@@ -1,3 +1,4 @@
+import game.Bullet
 import game.Player
 import game.Position
 import game.weapons.AutoRifle
@@ -40,11 +41,14 @@ class PlayerTest extends Specification
     {
         given:
         Player player = new Player(new Position(10,10))
-        player.setPrimaryWeapon(new AutoRifle())
+        Player player1 = new Player(new Position(10,10))
+        player.setPrimaryWeapon(new Shotgun())
         int ammo = player.getUsingWeapon().getAmmo()
         when:
-        player.getUsingWeapon().shoot();
+        player.getUsingWeapon().shoot()
+        Bullet bullet = player1.shoot()
         then:
+        bullet == null
         player.getUsingWeapon().getAmmo() == ammo -1
     }
 
@@ -60,17 +64,19 @@ class PlayerTest extends Specification
         player.getHealth() == 149
         player1.getHealth() == 0
     }
-    def 'Player healing'()
+
+    def 'Player Healing'()
     {
-        given:
         Player player = new Player(new Position(10,10))
-        Player player1 = new Player(new Position(10,10))
+        Player player1 = new Player(new Position(1,1))
+        player.takeDamage(5)
         when:
-        player.takeDamage(1)
-        player1.takeDamage(160)
+        player.heal()
+        player1.heal()
         then:
-        player.getHealing() == 60
-        player1.getHealing() == 60
+        player
+        player.getHealing() == 59
+        player1.getHealing() == 0
     }
 
     def 'Player weapon changing test'()

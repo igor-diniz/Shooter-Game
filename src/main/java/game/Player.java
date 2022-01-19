@@ -24,9 +24,10 @@ public class Player extends MovingEntity
         weaponInUse = 0;
         healing = 0;
         inventory = new ArrayList<Weapon>();
-        addWeaponToInventory(primaryWeapon);
-        addWeaponToInventory(specialWeapon);
+        addWeaponToInventory(new HandCannon());
+        addWeaponToInventory(new Shotgun());
         addWeaponToInventory(new RocketLauncher());
+        addWeaponToInventory(new AutoRifle());
     }
 
     @Override
@@ -77,14 +78,20 @@ public class Player extends MovingEntity
 
     public void equipWeapon(Weapon weapon)
     {
-
+        switch(weapon.getType())
+        {
+            case 'P':
+                setPrimaryWeapon(weapon); break;
+            case 'H':
+                setHeavyWeapon(weapon); break;
+            case 'S':
+                setSpecialWeapon(weapon); break;
+        }
     }
 
     public void addWeaponToInventory(Weapon weapon){inventory.add(weapon);}
 
     public int getHealth() { return health; }
-
-    public void setHealth(int health) { this.health = health;}
 
     public Weapon getHeavyWeapon() {
         return heavyWeapon;
@@ -116,13 +123,16 @@ public class Player extends MovingEntity
         return null;
     }
 
-    public int getHealing() {
+    public void heal()
+    {
+        if (healing > 0){healing--;}
+        else {increaseHealth();}
+    }
+
+    public int getHealing()
+    {
         return healing;
     }
 
-    public void decreaseHealing() {
-        this.healing -= 1;
-    }
-
-    public void increaseHealth(){if(health < maxHealth) {this.health += 1;}}
+    private void increaseHealth(){if(health < maxHealth) {this.health += 1;}}
 }

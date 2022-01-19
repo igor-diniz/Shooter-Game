@@ -84,7 +84,7 @@ public class Level
         moveBullets();
         checkCollisions();
         draw(gui);
-        healPlayer();
+        player.heal();
     }
 
     public void processKey(KeyStroke key)
@@ -192,9 +192,5 @@ public class Level
             level[bullet.getPosition().getY()][bullet.getPosition().getX()] = 'b';
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
-    }
-    public void healPlayer(){
-        if (player.getHealing() > 0){player.decreaseHealing();}
-        else {player.increaseHealth();}
     }
 }
