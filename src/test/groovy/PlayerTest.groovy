@@ -2,7 +2,11 @@ import game.Player
 import game.Position
 import game.weapons.AutoRifle
 import game.weapons.HandCannon
+import game.weapons.RocketLauncher
+import game.weapons.Shotgun
 import spock.lang.Specification
+import weapons.RocketLauncherTest
+
 class PlayerTest extends Specification
 {
     def 'Player Creation'() {
@@ -68,5 +72,6 @@ class PlayerTest extends Specification
         player.getHealing() == 60
         player1.getHealing() == 60
     }
+
 }
 

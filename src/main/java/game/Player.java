@@ -8,8 +8,8 @@ import java.util.List;
 public class Player extends MovingEntity
 {
     private int health;
-    private Weapon primaryWeapon = new HandCannon();
-    private Weapon specialWeapon = new Shotgun();
+    private Weapon primaryWeapon = new NullWeapon();
+    private Weapon specialWeapon = new NullWeapon();
     private Weapon heavyWeapon = new NullWeapon();
     private int weaponInUse;
     private int healing;
@@ -71,22 +71,13 @@ public class Player extends MovingEntity
                 return specialWeapon;
             case 2:
                 return heavyWeapon;
-            default:
-                return null;
         }
+        return new NullWeapon();
     }
 
     public void equipWeapon(Weapon weapon)
     {
-        switch(weapon.getType())
-        {
-            case 'P':
-                setPrimaryWeapon(weapon); break;
-            case 'H':
-                setHeavyWeapon(weapon); break;
-            case 'S':
-                setSpecialWeapon(weapon); break;
-        }
+
     }
 
     public void addWeaponToInventory(Weapon weapon){inventory.add(weapon);}

@@ -4,8 +4,8 @@ public abstract class Weapon
     private final int damage;
     private final int range;
     private int ammo;
-    private String name;
-    private char type;
+    private final String name;
+    private final char type;
 
     protected Weapon() {
         this.damage = generateDamage();
