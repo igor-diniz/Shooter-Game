@@ -109,7 +109,12 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawBullet(Bullet bullet)
     {
-
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(TextColor.Factory.fromString("#567D46"));
+        tg.setForegroundColor(TextColor.Factory.fromString(bullet.getColor()));
+        tg.enableModifiers(SGR.BOLD);
+        tg.putString(new TerminalPosition(bullet.getPosition().getX(), bullet.getPosition().getY()), String.valueOf(bullet.getCharacter()));
+        tg.disableModifiers(SGR.BOLD);
     }
 
     @Override
