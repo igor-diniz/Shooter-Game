@@ -1,10 +1,12 @@
 package gui
 
+import com.googlecode.lanterna.SGR
 import com.googlecode.lanterna.TerminalPosition
 import com.googlecode.lanterna.TextColor
 import com.googlecode.lanterna.graphics.TextGraphics
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.screen.TerminalScreen
+import game.Bullet
 import game.Game
 import game.Level
 import game.Player
@@ -16,6 +18,7 @@ import game.menus.Command
 import game.menus.ExitCommand
 import game.menus.InstructionCommand
 import game.menus.PlayCommand
+import game.weapons.HandCannon
 import spock.lang.Specification
 
 class LanternaGUITest extends Specification {
@@ -145,5 +148,19 @@ class LanternaGUITest extends Specification {
         1 * screen.refresh()
         1 * screen.close()
         1 * screen.clear()
+    }
+
+    def 'Draw Bullet Test'()
+    {
+        given:
+        Bullet bullet = new Bullet(position,new HandCannon(),'N' as char,true)
+        when:
+        gui.drawBullet(bullet)
+        then:
+        1 * tg.setBackgroundColor(TextColor.Factory.fromString("#567D46"))
+        1 * tg.setForegroundColor(_)
+        1 * tg.enableModifiers(SGR.BOLD)
+        1 * tg.disableModifiers(SGR.BOLD)
+        1 * tg.putString(_,_)
     }
 }
