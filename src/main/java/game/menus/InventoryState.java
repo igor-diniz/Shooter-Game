@@ -25,11 +25,7 @@ public class InventoryState implements State
 
     @Override
     public void processInput(KeyStroke key) {
-        if(key == null) return;
-        if (key.getKeyType() == KeyType.EOF) {
-            return;
-        }
-        if(key.getKeyType() != KeyType.Character) return;
+        if(key == null || key.getKeyType() != KeyType.Character) return;
         char choice = key.getCharacter();
         switch(choice)
         {

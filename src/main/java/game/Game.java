@@ -45,7 +45,6 @@ public class Game
     private void draw() throws IOException {
         gui.clear();
         gui.drawGame(level);
-        //level.draw(gui.newTextGraphics());
         gui.refresh();
     }
 
@@ -61,9 +60,7 @@ public class Game
             state.processInput(key);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
-
             if (sleepTime > 0) Thread.sleep(sleepTime);
-
         }
         draw();
         if(level.getPlayer().getHealth() > 0) System.out.println("You won!");

@@ -133,13 +133,5 @@ public class Player extends MovingEntity
         this.healing -= 1;
     }
 
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
-    }
-
     public void increaseHealth(){if(health < maxHealth) {this.health += 1;}}
 }

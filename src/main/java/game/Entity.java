@@ -20,8 +20,6 @@ public abstract class Entity {
 
     public char getCharacter() {return character;}
 
-    protected abstract void draw(TextGraphics graphics);
-
     public Position getPosition() { return position;}
 
     public void setPosition(Position position)
