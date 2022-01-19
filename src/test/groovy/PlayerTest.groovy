@@ -73,5 +73,26 @@ class PlayerTest extends Specification
         player1.getHealing() == 60
     }
 
+    def 'Player weapon changing test'()
+    {
+        given:
+        Player player = new Player(new Position(10,10))
+        player.equipWeapon(new HandCannon())
+        Player player2 = new Player(new Position(10,10))
+        player2.equipWeapon(new Shotgun())
+        Player player3 = new Player(new Position(10,10))
+        player3.equipWeapon(new RocketLauncher())
+        Player player4 = new Player(new Position(10,10))
+        when:
+        player.setWeaponInUse(0)
+        player2.setWeaponInUse(1)
+        player3.setWeaponInUse(2)
+        player4.setWeaponInUse(3)
+        then:
+        player.getUsingWeapon().getType() == 'P' as char
+        player2.getUsingWeapon().getType() == 'S' as char
+        player3.getUsingWeapon().getType() == 'H' as char
+        player4.getUsingWeapon().getType() == ' ' as char
+    }
 }
 
