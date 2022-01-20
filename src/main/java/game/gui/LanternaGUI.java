@@ -173,8 +173,15 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawInstructions(Game game) {
-
+    public void drawInstructions() {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.putString(1, height/4,"-CONTROLS-");
+        tg.putString(1, height/4 + 1,"USE W, A, S, AND D TO MOVE");
+        tg.putString(1, height/4 + 2,"USE E TO SHOOT");
+        tg.putString(1, height/4 + 3,"ACCESS THE MENU WITH Q AND THE INVENTORY WITH I");
+        tg.putString(1, height/4 + 5,"-GAMEPLAY-");
+        tg.putString(1, height/4 + 6,"KILL THE ENEMIES AND GET TO THE DOOR TO PROGRESS");
+        tg.putString(1, height/4 + 7,"PAY ATTENTION TO THE DIALOGUES AND HAVE FUN :)");
     }
 
     @Override

@@ -35,6 +35,7 @@ public class PlayState implements State
     @Override
     public void processInput(KeyStroke key) {
         if(key.getCharacter() == 'i' || key.getCharacter() == 'I') game.setState(new InventoryState(game));
+        if(key.getCharacter() == 'q' || key.getCharacter() == 'Q') game.setState(new MenuState(game));
         level.processKey(key);
     }
 

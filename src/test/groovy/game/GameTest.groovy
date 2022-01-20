@@ -23,7 +23,6 @@ class GameTest extends Specification
             game.getGUI() == gui
             game.getState() instanceof MenuState
         }catch(Exception e){System.out.println(e)}
-
     }
 
     def 'Game run'()
