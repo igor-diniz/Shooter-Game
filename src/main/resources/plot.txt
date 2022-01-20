@@ -60,7 +60,7 @@ Ghost: The bunker entrance is up ahead, let's go!
 * Player enters the bunker and walk a bit until they find some enemies. After pew pew.
 Ghost: We need to open these doors, but even I can't hack Rasputins systems, let me scan the room...
 Got it, that thing is a cooling cell, if we destroy it the system will overheat and open the door for us
-* Player shoots the thingy
+Gun: Pew pew
 Rasputin: Chto delayesh'? YA unichtozhu tebya orbital'noy raketoy
 Ghost: I think he is really mad at us
 * Door opens, player goes to electrical room. It has two corridors and there are beams coming from both
