@@ -35,7 +35,6 @@ public class MenuState implements State
 
     @Override
     public void processInput(KeyStroke key) {
-        if(key == null || key.getKeyType() != KeyType.Character) return;
         char choice = key.getCharacter();
         switch(choice)
         {

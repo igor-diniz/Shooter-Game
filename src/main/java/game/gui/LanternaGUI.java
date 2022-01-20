@@ -29,9 +29,9 @@ import java.util.List;
 
 public class LanternaGUI implements GUI {
 
-    private TerminalScreen screen;
-    private int width;
-    private int height;
+    private final TerminalScreen screen;
+    private final int width;
+    private final int height;
 
     public LanternaGUI(int height, int width) throws URISyntaxException, IOException, FontFormatException {
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadFont());

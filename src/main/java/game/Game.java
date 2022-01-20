@@ -1,6 +1,7 @@
 package game;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import game.enemies.*;
 import game.entities.Player;
 import game.entities.Position;
@@ -23,11 +24,18 @@ public class Game
     private final int frameRateInMillis = 30;
     private State state;
     private GUI gui;
-    public Game() throws IOException, FontFormatException, URISyntaxException {
-        gui = new LanternaGUI(24,50);
+    public Game()
+    {
+        loadLevel1();
+        state = new MenuState(this);
+    } // used for testing purposes
+
+    public Game(GUI gui) throws IOException, FontFormatException, URISyntaxException {
+        this.gui = gui;
         loadLevel1();
         state = new MenuState(this);
     }
+
 
     public Game(Level level,GUI gui,State state) throws URISyntaxException, IOException, FontFormatException {
         this.level = level;
@@ -50,7 +58,7 @@ public class Game
             state.show(gui);
             gui.refresh();
             KeyStroke key = gui.pollInput();
-            state.processInput(key);
+            if(key != null && key.getKeyType() == KeyType.Character ) state.processInput(key);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
             if (sleepTime > 0) Thread.sleep(sleepTime);

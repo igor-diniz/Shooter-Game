@@ -1,4 +1,4 @@
-package entities
+package game.state
 
 import spock.lang.Specification
 

@@ -1,4 +1,4 @@
-package entities
+package game.state
 
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
@@ -7,6 +7,7 @@ import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.gui.GUI
+import game.gui.LanternaGUI
 import game.state.PlayState
 import spock.lang.Specification
 
@@ -33,17 +34,18 @@ class PlayStateTest extends Specification
 
     def 'PlayState Execution Test'()
     {
-        given:
-        Level level = Mock(Level.class)
-        level.getPlayer() >> new Player(new Position(10,10))
-        PlayState playState = new PlayState(level)
-        GUI gui = game.getGUI()
-        when:
-        playState.processInput(key1)
-        playState.show(gui)
-        then:
-        1 * level.draw(gui);
-        1 * level.step(gui);
+        try {
+            given:
+            Level level = Mock(Level.class)
+            level.getPlayer() >> new Player(new Position(10, 10))
+            PlayState playState = new PlayState(level)
+            when:
+            playState.processInput(key1)
+            playState.show(new LanternaGUI(10, 10))
+            then:
+            1 * level.draw(_);
+            1 * level.step(_);
+        }catch(Exception e){System.out.println(e)}
 
     }
 }

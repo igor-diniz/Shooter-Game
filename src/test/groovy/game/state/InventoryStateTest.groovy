@@ -1,4 +1,4 @@
-package state
+package game.state
 
 
 import game.Game
@@ -9,25 +9,19 @@ import spock.lang.Specification
 
 class InventoryStateTest extends Specification
 {
-    private Game game;
-
-    void 'setup'()
-    {
-        game = new Game();
-    }
+    private Game game = new Game()
+    InventoryState inventoryState = new InventoryState(game)
 
     def 'Inventory Creation'()
     {
         when:
-        InventoryState inventoryState = new InventoryState(game)
+        int res = inventoryState.getSelected()
         then:
-        inventoryState.getSelected() == 0
+        res == 0
     }
 
     def 'Inventory option selection'()
     {
-        given:
-        InventoryState inventoryState = new InventoryState(game)
         when:
         inventoryState.previousOption()
         inventoryState.nextOption()
@@ -38,8 +32,6 @@ class InventoryStateTest extends Specification
 
     def 'Inventory Show Test'()
     {
-        given:
-        InventoryState inventoryState = new InventoryState(game)
         LanternaGUI gui = Mock(LanternaGUI.class)
         when:
         inventoryState.show(gui)

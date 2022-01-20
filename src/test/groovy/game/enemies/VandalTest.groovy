@@ -1,15 +1,16 @@
-package enemies
+package game.enemies
 
 import game.Level
 import game.entities.Player
-import game.entities.Wall
-import game.enemies.Dreg
 import game.entities.Position
+import game.entities.Wall
 import game.enemies.Enemy
-import game.weapons.EnemyWeapon1
+import game.enemies.Vandal
+import game.weapons.EnemyWeapon2
 import game.weapons.Weapon
 import spock.lang.Specification
-class DregTest extends Specification {
+
+class VandalTest extends Specification {
 
     private Level level
     private Player player
@@ -21,22 +22,22 @@ class DregTest extends Specification {
         level.generateEntities(player,new ArrayList<Enemy>(),new ArrayList<Wall>())
     }
 
-    def 'Dreg Creation'() {
+    def 'Vandal Creation'() {
         given:
-        Dreg enemy = new Dreg(new Position(3,3));
+        Vandal enemy = new Vandal(new Position(3,3));
 
         when:
         def health = enemy.getHealth()
         Weapon weapon = enemy.getWeapon();
         then:
-        weapon instanceof EnemyWeapon1;
-        health == 40
+        weapon instanceof EnemyWeapon2;
+        health == 60
     }
 
-    def 'Moving Dreg'() {
+    def 'Moving Vandal'() {
         given:
-        Dreg enemy1 = new Dreg(new Position(10,10));
-        Dreg enemy2 = new Dreg(new Position(10,10));
+        Vandal enemy1 = new Vandal(new Position(10,10));
+        Vandal enemy2 = new Vandal(new Position(10,10));
         when:
         enemy1.setPosition(enemy1.moveUp())
         enemy1.setPosition(enemy1.moveRight())
@@ -50,22 +51,22 @@ class DregTest extends Specification {
     def 'Get Damaged'()
     {
         given:
-        Dreg dreg = new Dreg(new Position(10,10))
-        Dreg dreg1 = new Dreg(new Position(10,10))
+        Vandal Vandal = new Vandal(new Position(10,10))
+        Vandal Vandal1 = new Vandal(new Position(10,10))
         when:
-        dreg.takeDamage(10,true)
-        dreg1.takeDamage(20,true)
+        Vandal.takeDamage(10,true)
+        Vandal1.takeDamage(20,true)
         then:
-        dreg.getHealth() == 30
-        dreg1.getHealth() == 20
+        Vandal.getHealth() == 50
+        Vandal1.getHealth() == 40
 
     }
 
     def 'Delay Test'()
     {
         given:
-        Dreg enemy = new Dreg(new Position(10,10));
-        Dreg enemy1 = new Dreg(new Position(10,10));
+        Vandal enemy = new Vandal(new Position(10,10));
+        Vandal enemy1 = new Vandal(new Position(10,10));
         when:
         enemy1.move(level,player)
         enemy1.move(level,player)
@@ -75,7 +76,7 @@ class DregTest extends Specification {
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 14
-        enemy.getRemainingTime() == 11
+        enemy1.getRemainingTime() == 24
+        enemy.getRemainingTime() == 21
     }
 }

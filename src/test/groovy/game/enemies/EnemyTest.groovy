@@ -1,4 +1,4 @@
-package enemies
+package game.enemies
 
 import game.Level
 import game.entities.Player

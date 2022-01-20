@@ -1,43 +1,43 @@
-package enemies
+package game.enemies
 
 import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.entities.Wall
+import game.enemies.Acolyte
 import game.enemies.Enemy
-import game.enemies.Thrall
-import game.weapons.EnemyWeapon1
+import game.weapons.EnemyWeapon2
 import game.weapons.Weapon
 import spock.lang.Specification
 
-class ThrallTest extends Specification{
+class AcolyteTest extends Specification {
 
     private Level level
     private Player player
 
     void 'setup'()
     {
-      level = new Level(20,20)
-     player = new Player(new Position(1,1))
-      level.generateEntities(player,new ArrayList<Enemy>(),new ArrayList<Wall>())
+        level = new Level(20,20)
+        player = new Player(new Position(1,1))
+        level.generateEntities(player,new ArrayList<Enemy>(),new ArrayList<Wall>())
     }
 
-    def 'Thrall Creation'() {
+    def 'Acolyte Creation'() {
         given:
-        Thrall enemy = new Thrall(new Position(3,3));
+        Acolyte enemy = new Acolyte(new Position(3,3));
 
         when:
         def health = enemy.getHealth()
         Weapon weapon = enemy.getWeapon();
         then:
-        weapon instanceof EnemyWeapon1;
-        health == 30
+        weapon instanceof EnemyWeapon2;
+        health == 60
     }
 
-    def 'Moving Thrall'() {
+    def 'Moving Acolyte'() {
         given:
-        Thrall enemy1 = new Thrall(new Position(10,10));
-        Thrall enemy2 = new Thrall(new Position(10,10));
+        Acolyte enemy1 = new Acolyte(new Position(10,10));
+        Acolyte enemy2 = new Acolyte(new Position(10,10));
         when:
         enemy1.setPosition(enemy1.moveUp())
         enemy1.setPosition(enemy1.moveRight())
@@ -51,22 +51,22 @@ class ThrallTest extends Specification{
     def 'Get Damaged'()
     {
         given:
-        Thrall Thrall = new Thrall(new Position(10,10))
-        Thrall Thrall1 = new Thrall(new Position(10,10))
+        Acolyte Acolyte = new Acolyte(new Position(10,10))
+        Acolyte Acolyte1 = new Acolyte(new Position(10,10))
         when:
-        Thrall.takeDamage(10,true)
-        Thrall1.takeDamage(20,true)
+        Acolyte.takeDamage(50,true)
+        Acolyte1.takeDamage(60,true)
         then:
-        Thrall.getHealth() == 20
-        Thrall1.getHealth() == 10
+        Acolyte.getHealth() == 10
+        Acolyte1.getHealth() == 0
 
     }
 
     def 'Delay Test'()
     {
         given:
-        Thrall enemy = new Thrall(new Position(10,10));
-        Thrall enemy1 = new Thrall(new Position(10,10));
+        Acolyte enemy = new Acolyte(new Position(10,10));
+        Acolyte enemy1 = new Acolyte(new Position(10,10));
         when:
         enemy1.move(level,player)
         enemy1.move(level,player)
@@ -76,7 +76,7 @@ class ThrallTest extends Specification{
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 14
-        enemy.getRemainingTime() == 11
+        enemy1.getRemainingTime() == 24
+        enemy.getRemainingTime() == 21
     }
 }

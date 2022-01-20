@@ -1,4 +1,4 @@
-package entities
+package game.entities
 
 import game.entities.Position
 import spock.lang.Specification

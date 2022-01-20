@@ -1,16 +1,16 @@
-package enemies
+package game.enemies
 
 import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.entities.Wall
-import game.enemies.Acolyte
 import game.enemies.Enemy
-import game.weapons.EnemyWeapon2
+import game.enemies.Knight
+import game.weapons.EnemyWeapon3
 import game.weapons.Weapon
 import spock.lang.Specification
 
-class AcolyteTest extends Specification {
+class KnightTest extends Specification {
 
     private Level level
     private Player player
@@ -22,22 +22,22 @@ class AcolyteTest extends Specification {
         level.generateEntities(player,new ArrayList<Enemy>(),new ArrayList<Wall>())
     }
 
-    def 'Acolyte Creation'() {
+    def 'Knight Creation'() {
         given:
-        Acolyte enemy = new Acolyte(new Position(3,3));
+        Knight enemy = new Knight(new Position(3,3));
 
         when:
         def health = enemy.getHealth()
         Weapon weapon = enemy.getWeapon();
         then:
-        weapon instanceof EnemyWeapon2;
-        health == 60
+        weapon instanceof EnemyWeapon3;
+        health == 100
     }
 
-    def 'Moving Acolyte'() {
+    def 'Moving Knight'() {
         given:
-        Acolyte enemy1 = new Acolyte(new Position(10,10));
-        Acolyte enemy2 = new Acolyte(new Position(10,10));
+        Knight enemy1 = new Knight(new Position(10,10));
+        Knight enemy2 = new Knight(new Position(10,10));
         when:
         enemy1.setPosition(enemy1.moveUp())
         enemy1.setPosition(enemy1.moveRight())
@@ -51,22 +51,22 @@ class AcolyteTest extends Specification {
     def 'Get Damaged'()
     {
         given:
-        Acolyte Acolyte = new Acolyte(new Position(10,10))
-        Acolyte Acolyte1 = new Acolyte(new Position(10,10))
+        Knight Knight = new Knight(new Position(10,10))
+        Knight Knight1 = new Knight(new Position(10,10))
         when:
-        Acolyte.takeDamage(50,true)
-        Acolyte1.takeDamage(60,true)
+        Knight.takeDamage(90,true)
+        Knight1.takeDamage(100,true)
         then:
-        Acolyte.getHealth() == 10
-        Acolyte1.getHealth() == 0
+        Knight.getHealth() == 10
+        Knight1.getHealth() == 0
 
     }
 
     def 'Delay Test'()
     {
         given:
-        Acolyte enemy = new Acolyte(new Position(10,10));
-        Acolyte enemy1 = new Acolyte(new Position(10,10));
+        Knight enemy = new Knight(new Position(10,10));
+        Knight enemy1 = new Knight(new Position(10,10));
         when:
         enemy1.move(level,player)
         enemy1.move(level,player)
@@ -76,7 +76,7 @@ class AcolyteTest extends Specification {
         enemy.move(level,player)
         enemy.move(level,player)
         then:
-        enemy1.getRemainingTime() == 24
-        enemy.getRemainingTime() == 21
+        enemy1.getRemainingTime() == 34
+        enemy.getRemainingTime() == 31
     }
 }

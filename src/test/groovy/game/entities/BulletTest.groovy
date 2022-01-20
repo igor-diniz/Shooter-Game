@@ -1,4 +1,4 @@
-package entities
+package game.entities
 
 import game.entities.Bullet
 import game.entities.Player

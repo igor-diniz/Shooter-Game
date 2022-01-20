@@ -1,6 +1,7 @@
-package state
+package game.state
 
-
+import com.googlecode.lanterna.input.KeyStroke
+import com.googlecode.lanterna.input.KeyType
 import game.Game
 import game.gui.GUI
 import game.state.MenuState
@@ -35,7 +36,7 @@ class MenuStateTest extends Specification
         mainMenu.getSelected() == 2
     }
 
-   /* def 'Menu Show'()
+   def 'Menu Show'()
     {
         given:
         MenuState mainMenu = new MenuState(game)
@@ -44,23 +45,25 @@ class MenuStateTest extends Specification
         mainMenu.show(gui)
         then:
         1 * gui.drawMenu(game,_,_)
-    }*/
+    }
 
 
 
-    /*def 'Menu Process Input'()
-    {
+    def 'Menu Process Input'() {
         given:
-        MenuState mainMenu = new MenuState(game)
-        KeyStroke key = Mock(KeyStroke.class)
-        key.getKeyType() >> KeyType.Backspace >> KeyType.Character >> KeyType.Character
-        key.getCharacter() >> 'w' >> 's' >> 'e'
+        MenuState mainMenu = Spy(constructorArgs: [game])
+        KeyStroke key = Stub(KeyStroke)
+        key.getKeyType() >> KeyType.Character
+        key.getCharacter() >>> ['w', 'w', 'S', 's', 'E', 'e']
         when:
         mainMenu.processInput(key)
         mainMenu.processInput(key)
         mainMenu.processInput(key)
+        mainMenu.processInput(key)
+        mainMenu.processInput(key)
+        mainMenu.processInput(key)
         then:
-        3 * key.getKeyType()
-        2 * key.getCharacter()
-    }*/
+        2 * mainMenu.nextOption()
+        2 * mainMenu.previousOption()
+    }
 }

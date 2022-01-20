@@ -1,3 +1,5 @@
+package game
+
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
 import game.entities.Bullet
@@ -15,23 +17,17 @@ import spock.lang.Specification
 class LevelTest extends Specification
 {
 
-    private Level level
-    private Player player
-    private Vandal vandal
-    private Vandal vandal2
-    private List<Enemy> enemyList
-    private List<Wall> wallList
+    private Level level  = new Level(10,10)
+    private Player player = new Player(new Position(1,1))
+    private Vandal vandal = new Vandal(new Position(8,8))
+    private Vandal vandal2 = new Vandal(new Position(8,5))
+    private List<Enemy> enemyList  = new ArrayList<Enemy>()
+    private List<Wall> wallList = new ArrayList<Wall>()
 
     void 'setup'()
     {
-        level = new Level(10,10)
-        player = new Player(new Position(1,1))
-        vandal = new Vandal(new Position(8,8))
-        vandal2 = new Vandal(new Position(8,5))
-        enemyList = new ArrayList<Enemy>()
         enemyList.add(vandal)
         enemyList.add(vandal2)
-        wallList = new ArrayList<Wall>()
         for(int i = 0; i < level.getNumRows();i++)
         {
             wallList.add(new Wall(new Position(level.getNumRows()-1,i)))
@@ -42,6 +38,14 @@ class LevelTest extends Specification
             wallList.add(new Wall(new Position(i,0)))
             wallList.add(new Wall(new Position(i,level.getNumColumns()-1)))
         }
+    }
+
+    void 'cleanup'()
+    {
+        wallList = null
+        wallList = new ArrayList<Wall>()
+        enemyList = null
+        enemyList  = new ArrayList<Enemy>()
     }
 
     def 'Level Creation'()

@@ -1,4 +1,4 @@
-package weapons
+package game.weapons
 
 import game.weapons.Shotgun
 import spock.lang.Specification
