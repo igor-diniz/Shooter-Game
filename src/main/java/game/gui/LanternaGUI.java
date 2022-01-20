@@ -182,6 +182,7 @@ public class LanternaGUI implements GUI {
         tg.putString(1, height/4 + 5,"-GAMEPLAY-");
         tg.putString(1, height/4 + 6,"KILL THE ENEMIES AND GET TO THE DOOR TO PROGRESS");
         tg.putString(1, height/4 + 7,"PAY ATTENTION TO THE DIALOGUES AND HAVE FUN :)");
+        tg.putString(width-9,height-1,"BK : Q");
     }
 
     @Override
