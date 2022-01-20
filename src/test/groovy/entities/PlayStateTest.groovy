@@ -7,7 +7,7 @@ import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.gui.GUI
-import game.menus.PlayState
+import game.state.PlayState
 import spock.lang.Specification
 
 class PlayStateTest extends Specification

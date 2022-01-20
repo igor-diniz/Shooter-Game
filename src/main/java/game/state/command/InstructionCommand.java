@@ -1,27 +1,26 @@
-package game.menus.command;
+package game.state.command;
 
 import game.Game;
-import game.menus.PlayState;
-import game.menus.State;
+import game.state.InstructionState;
+import game.state.State;
 
-public class PlayCommand extends Command
-{
+public class InstructionCommand extends Command{
 
     private State oldState;
 
-    public PlayCommand(Game game) {
+    public InstructionCommand(Game game) {
         super(game);
     }
 
     @Override
     public String getText() {
-        return "PLAY";
+        return "INSTRUCTIONS";
     }
 
     @Override
     public void execute() {
         oldState = game.getState();
-        game.setState(new PlayState(game));
+        game.setState(new InstructionState());
     }
 
     @Override

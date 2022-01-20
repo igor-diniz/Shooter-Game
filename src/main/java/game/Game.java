@@ -7,8 +7,8 @@ import game.entities.Position;
 import game.entities.Wall;
 import game.gui.GUI;
 import game.gui.LanternaGUI;
-import game.menus.MenuState;
-import game.menus.State;
+import game.state.MenuState;
+import game.state.State;
 
 
 import java.awt.*;

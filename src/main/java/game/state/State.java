@@ -1,4 +1,4 @@
-package game.menus;
+package game.state;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;

@@ -1,15 +1,14 @@
 package state
 
-import com.googlecode.lanterna.input.KeyStroke
-import com.googlecode.lanterna.input.KeyType
+
 import game.Game
 import game.gui.GUI
-import game.menus.MenuState
+import game.state.MenuState
 import spock.lang.Specification
 
 class MenuStateTest extends Specification
 {
-    private Game game;
+    private Game game
 
     void 'setup'()
     {
@@ -36,7 +35,7 @@ class MenuStateTest extends Specification
         mainMenu.getSelected() == 2
     }
 
-    def 'Menu Show'()
+   /* def 'Menu Show'()
     {
         given:
         MenuState mainMenu = new MenuState(game)
@@ -45,7 +44,9 @@ class MenuStateTest extends Specification
         mainMenu.show(gui)
         then:
         1 * gui.drawMenu(game,_,_)
-    }
+    }*/
+
+
 
     /*def 'Menu Process Input'()
     {

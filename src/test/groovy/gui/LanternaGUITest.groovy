@@ -13,10 +13,10 @@ import game.entities.Position
 import game.entities.Wall
 import game.enemies.Enemy
 import game.gui.LanternaGUI
-import game.menus.command.Command
-import game.menus.command.ExitCommand
-import game.menus.command.InstructionCommand
-import game.menus.command.PlayCommand
+import game.state.command.Command
+import game.state.command.ExitCommand
+import game.state.command.InstructionCommand
+import game.state.command.PlayCommand
 import game.weapons.HandCannon
 import spock.lang.Specification
 
@@ -162,4 +162,5 @@ class LanternaGUITest extends Specification {
         1 * tg.disableModifiers(SGR.BOLD)
         1 * tg.putString(_,_)
     }
+
 }

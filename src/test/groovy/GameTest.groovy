@@ -3,7 +3,7 @@ import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.gui.GUI
-import game.menus.State
+import game.state.State
 import spock.lang.Specification
 
 class GameTest extends Specification

@@ -16,7 +16,7 @@ import game.entities.Bullet;
 import game.entities.ImmobileEntity;
 import game.entities.MovingEntity;
 import game.entities.Position;
-import game.menus.command.Command;
+import game.state.command.Command;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;

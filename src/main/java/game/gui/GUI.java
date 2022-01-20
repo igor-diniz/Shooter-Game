@@ -7,7 +7,7 @@ import game.entities.Bullet;
 import game.entities.ImmobileEntity;
 import game.entities.MovingEntity;
 import game.entities.Position;
-import game.menus.command.Command;
+import game.state.command.Command;
 
 import java.io.IOException;
 import java.util.List;
