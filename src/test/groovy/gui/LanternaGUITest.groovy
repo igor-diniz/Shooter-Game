@@ -1,72 +1,95 @@
 package gui
 
+import com.googlecode.lanterna.SGR
 import com.googlecode.lanterna.TerminalPosition
-import com.googlecode.lanterna.TerminalSize
 import com.googlecode.lanterna.TextColor
 import com.googlecode.lanterna.graphics.TextGraphics
 import com.googlecode.lanterna.screen.TerminalScreen
+import game.entities.Bullet
 import game.Game
 import game.Level
-import game.Position
+import game.entities.Player
+import game.entities.Position
+import game.entities.Wall
+import game.enemies.Enemy
 import game.gui.LanternaGUI
-import game.menus.Command
-import game.menus.ExitCommand
-import game.menus.InstructionCommand
-import game.menus.PlayCommand
+import game.state.command.Command
+import game.state.command.ExitCommand
+import game.state.command.InstructionCommand
+import game.state.command.PlayCommand
+import game.weapons.HandCannon
 import spock.lang.Specification
 
-class LanternaGUITest extends Specification
-{
+class LanternaGUITest extends Specification {
 
     LanternaGUI gui
     TextGraphics tg
     Position position
     String color
+    TerminalScreen screen
 
-    void 'setup'()
-    {
-        position = new Position(10,10)
+    void 'setup'() {
+        position = new Position(10, 10)
         color = "#000000"
         tg = Mock(TextGraphics.class);
-        TerminalScreen screen = Mock(TerminalScreen.class);
+        screen = Mock(TerminalScreen.class);
         gui = new LanternaGUI(screen)
         screen.newTextGraphics() >> tg
+    }
+    def 'Draw Rectangle Test'()
+    {
+        when:
+        gui.drawRectangle(tg,color,20,50,position)
+        then:
+        1 * tg.setBackgroundColor(TextColor.Factory.fromString(color))
+        1 * tg.fillRectangle(_,_,_)
+    }
+
+    def 'Fill Background Test'()
+    {
+        when:
+        gui.fillBackground(tg,color)
+        then:
+        1 * tg.setBackgroundColor(TextColor.Factory.fromString(color))
+        1 * tg.fillRectangle(_,_,_)
     }
 
     def 'getWidth Test'()
     {
-        given:
-        LanternaGUI normalGUI = new LanternaGUI(20,60)
         when:
-        int res = normalGUI.getWidth()
+        int res = gui.getWidth()
         then:
-        res == 20
+        res == 10
     }
 
     def 'getHeight Test'()
     {
-        given:
-        LanternaGUI normalGUI = new LanternaGUI(20,60)
         when:
-        int res = normalGUI.getHeight()
+        int res = gui.getHeight()
         then:
-        res == 60
+        res == 10
     }
 
     def 'Draw Immobile Entity Test'()
     {
+        given:
+        Wall wall = new Wall(position)
         when:
-        gui.drawImmobileEntity(position,color,'#' as char)
+        gui.drawImmobileEntity(wall)
         then:
-        1 * tg.setForegroundColor(TextColor.Factory.fromString(color))
-        1 * tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf('#'));
+        1 * tg.setForegroundColor(_)
+        1 * tg.putString(new TerminalPosition(position.getX(), position.getY()), String.valueOf('#'))
     }
 
     def 'Draw Moving Entity Test'()
     {
+        given:
+        Player player = new Player(position)
+        player.takeDamage(3)
+        Player player1 = new Player(position)
         when:
-        gui.drawMovingEntity(position,color,'p',10)
-        gui.drawMovingEntity(position,color,'p',0)
+        gui.drawMovingEntity(player)
+        gui.drawMovingEntity(player1)
         then:
         2 * tg.setForegroundColor(TextColor.Factory.fromString(color))
         1 * tg.setForegroundColor(TextColor.Factory.fromString("#ff0000"))
@@ -85,7 +108,7 @@ class LanternaGUITest extends Specification
         when:
         gui.drawMenu(game,selected,commandsList)
         then:
-        7 * tg.putString(_)
+        7 * tg.putString(_,_,_)
     }
 
     def 'Draw Inventory Test'()
@@ -96,37 +119,48 @@ class LanternaGUITest extends Specification
         when:
         gui.drawInventory(game,selected)
         then:
-        13 * tg.putString(_)
+        13 * tg.putString(_,_,_)
     }
 
     def 'Draw GameState Test'()
     {
         given:
         Level level = new Level(20,50)
+        level.generateEntities(new Player(position),new ArrayList<Enemy>(),new ArrayList<Wall>())
         when:
         gui.drawGame(level)
         then:
         1 * tg.setBackgroundColor(TextColor.Factory.fromString("#000000"))
-        1 * tg.fillRectangle(_)
-        3 * tg.putString(_)
-        gui.drawRectangle()
+        2 * tg.fillRectangle(_,_,_)
+        4 * tg.putString(_,_)
     }
 
-    def 'Draw Rectangle Test'()
+    def 'Generic screen tests'()
     {
         when:
-        gui.drawRectangle(tg,color,20,50,position)
+        gui.clear()
+        gui.pollInput()
+        gui.refresh()
+        gui.close()
         then:
-        1 * tg.setBackgroundColor(TextColor.Factory.fromString(color))
-        1 * tg.fillRectangle(_)
+        1 * screen.pollInput()
+        1 * screen.refresh()
+        1 * screen.close()
+        1 * screen.clear()
     }
 
-    def 'Fill Background Test'()
+    def 'Draw Bullet Test'()
     {
+        given:
+        Bullet bullet = new Bullet(position,new HandCannon(),'N' as char,true)
         when:
-        gui.fillBackground(tg,color)
+        gui.drawBullet(bullet)
         then:
-        1 * tg.setBackgroundColor(TextColor.Factory.fromString(color))
-        1 * tg.fillRectangle(_)
+        1 * tg.setBackgroundColor(TextColor.Factory.fromString("#567D46"))
+        1 * tg.setForegroundColor(_)
+        1 * tg.enableModifiers(SGR.BOLD)
+        1 * tg.disableModifiers(SGR.BOLD)
+        1 * tg.putString(_,_)
     }
+
 }

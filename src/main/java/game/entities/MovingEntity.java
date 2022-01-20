@@ -1,8 +1,4 @@
-package game;
-
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
+package game.entities;
 
 public abstract class MovingEntity extends Entity
 {
@@ -18,14 +14,9 @@ public abstract class MovingEntity extends Entity
     }
     protected abstract int generateActionDelay();
 
-    @Override
-    public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString(getColor()));
-        if (damaged > 0) graphics.setForegroundColor(TextColor.Factory.fromString("#ff0000")); // Red for damage color
-        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()), String.valueOf(getCharacter()));
-        damaged--;
-    }
+    public int getDamaged(){return damaged;}
 
+    public void decreaseDamaged(){damaged--;}
 
     public void increaseTimer()
     {
@@ -73,5 +64,4 @@ public abstract class MovingEntity extends Entity
 
     public int getRemainingTime() { return actionDelay - timer; }
 
-    public int getActionDelay() {return actionDelay;}
 }

@@ -1,6 +1,4 @@
-package game;
-
-import com.googlecode.lanterna.graphics.TextGraphics;
+package game.entities;
 
 public abstract class Entity {
     private Position position;
@@ -19,8 +17,6 @@ public abstract class Entity {
     protected abstract String generateColor();
 
     public char getCharacter() {return character;}
-
-    protected abstract void draw(TextGraphics graphics);
 
     public Position getPosition() { return position;}
 

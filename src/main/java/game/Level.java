@@ -1,14 +1,12 @@
 package game;
 
-import com.googlecode.lanterna.*;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import game.Bullet;
-import game.Player;
-import game.Position;
-import game.Wall;
+import game.entities.Bullet;
+import game.entities.Player;
+import game.entities.Position;
+import game.entities.Wall;
 import game.enemies.Enemy;
+import game.gui.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,27 +64,24 @@ public class Level
             level[wall.getPosition().getY()][wall.getPosition().getX()] = wall.getCharacter();
         }
     }
-    public void draw(TextGraphics graphics)
+    public void draw(GUI gui)
     {
-
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#567D46"));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(NUM_COLUMNS, NUM_ROWS), ' ');
-        graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
-        player.draw(graphics);
-        for(Enemy enemy: enemyList) enemy.draw(graphics);
-        graphics.enableModifiers(SGR.BOLD);
-        for(Bullet bullet: bulletList) bullet.draw(graphics);
-        graphics.disableModifiers(SGR.BOLD);
-        for(Wall wall: wallList) wall.draw(graphics);
+        gui.drawMovingEntity(player);
+       // player.draw(graphics);
+        for(Enemy enemy: enemyList) gui.drawMovingEntity(enemy); //enemy.draw(graphics);
+        //graphics.enableModifiers(SGR.BOLD);
+        for(Bullet bullet: bulletList) gui.drawBullet(bullet); //bullet.draw(graphics);
+        //graphics.disableModifiers(SGR.BOLD);
+        for(Wall wall: wallList) gui.drawImmobileEntity(wall); //wall.draw(graphics) ;
     }
 
-    public void step(TextGraphics graphics)
+    public void step(GUI gui)
     {
         moveEnemies();
         moveBullets();
         checkCollisions();
-        draw(graphics);
-        healPlayer();
+        draw(gui);
+        player.heal();
     }
 
     public void processKey(KeyStroke key)
@@ -194,9 +189,5 @@ public class Level
             level[bullet.getPosition().getY()][bullet.getPosition().getX()] = 'b';
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
-    }
-    public void healPlayer(){
-        if (player.getHealing() > 0){player.decreaseHealing();}
-        else {player.increaseHealth();}
     }
 }

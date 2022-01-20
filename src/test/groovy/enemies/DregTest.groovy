@@ -1,13 +1,12 @@
 package enemies
 
 import game.Level
-import game.Player
-import game.Wall
+import game.entities.Player
+import game.entities.Wall
 import game.enemies.Dreg
-import game.Position
+import game.entities.Position
 import game.enemies.Enemy
 import game.weapons.EnemyWeapon1
-import game.weapons.HandCannon
 import game.weapons.Weapon
 import spock.lang.Specification
 class DregTest extends Specification {

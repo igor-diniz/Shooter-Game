@@ -1,7 +1,7 @@
 package game.enemies.strategy;
 
 import game.Level;
-import game.MovingEntity;
+import game.entities.MovingEntity;
 import game.enemies.Enemy;
 
 public class TrackStrategy implements MoveStrategy

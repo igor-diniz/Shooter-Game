@@ -1,10 +1,9 @@
 package game.enemies;
 
-import game.Position;
+import game.entities.Position;
 import game.weapons.EnemyWeapon3;
 import game.enemies.strategy.MoveStrategy;
 import game.enemies.strategy.TrackStrategy;
-import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
 public class Captain extends Enemy {

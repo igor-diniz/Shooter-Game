@@ -1,20 +1,20 @@
-package game.menus;
+package game.state.command;
 
 import game.Game;
 
-public class SetWeapomCommand extends Command{
-    public SetWeapomCommand(Game game) {
+public class ExitCommand extends Command {
+    public ExitCommand(Game game) {
         super(game);
     }
 
     @Override
     public String getText() {
-        return null;
+        return "EXIT";
     }
 
     @Override
     public void execute() {
-
+        System.exit(0);
     }
 
     @Override

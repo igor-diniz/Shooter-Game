@@ -1,9 +1,13 @@
-package game.menus;
+package game.state;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import game.Game;
+import game.gui.GUI;
+import game.state.command.Command;
+import game.state.command.ExitCommand;
+import game.state.command.InstructionCommand;
+import game.state.command.PlayCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,26 +28,14 @@ public class MenuState implements State
     }
 
     @Override
-    public void show(TextGraphics graphics)
+    public void show(GUI gui)
     {
-        for(int i = 0; i < commandsList.size(); i++)
-            graphics.putString(game.getScreen().getTerminalSize().getColumns()/3,
-                    game.getScreen().getTerminalSize().getRows()/3+i,commandsList.get(i).getText());
-        graphics.putString(game.getScreen().getTerminalSize().getColumns()/3 - 2,
-                game.getScreen().getTerminalSize().getRows()/3+selected,"->");
-        graphics.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-4,"UP : W");
-        graphics.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-3,"DW : S");
-        graphics.putString(game.getScreen().getTerminalSize().getColumns()-9,game.getScreen().getTerminalSize().getRows()-2,"GO : E");
+        gui.drawMenu(game,selected,commandsList);
     }
 
     @Override
     public void processInput(KeyStroke key) {
-        if(key == null) return;
-        if (key.getKeyType() == KeyType.EOF) {
-            //gameOver = true;
-            return;
-        }
-        if(key.getKeyType() != KeyType.Character) return;
+        if(key == null || key.getKeyType() != KeyType.Character) return;
         char choice = key.getCharacter();
         switch(choice)
         {

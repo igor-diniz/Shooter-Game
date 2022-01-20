@@ -4,8 +4,8 @@ public abstract class Weapon
     private final int damage;
     private final int range;
     private int ammo;
-    private String name;
-    private char type;
+    private final String name;
+    private final char type;
 
     protected Weapon() {
         this.damage = generateDamage();
@@ -37,7 +37,7 @@ public abstract class Weapon
 
     public void decreaseAmmo()
     {
-        ammo--;
+        if(ammo > 0) ammo--;
     }
 
     public int getAmmo(){return ammo;}

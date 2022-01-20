@@ -1,10 +1,11 @@
-package game.menus;
+package game.state;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import game.gui.GUI;
 
 public interface State
 {
-    void show(TextGraphics graphics);
+    void show(GUI gui);
     void processInput(KeyStroke keystroke);
 }

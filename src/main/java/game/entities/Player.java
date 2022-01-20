@@ -1,4 +1,4 @@
-package game;
+package game.entities;
 
 import game.weapons.*;
 
@@ -8,15 +8,15 @@ import java.util.List;
 public class Player extends MovingEntity
 {
     private int health;
-    private Weapon primaryWeapon = new HandCannon();
-    private Weapon specialWeapon = new Shotgun();
+    private Weapon primaryWeapon = new NullWeapon();
+    private Weapon specialWeapon = new NullWeapon();
     private Weapon heavyWeapon = new NullWeapon();
     private int weaponInUse;
     private int healing;
     private int maxHealth;
     private List<Weapon> inventory;
 
-    Player(Position position)
+    public Player(Position position)
     {
         super(position);
         this.maxHealth = 150;
@@ -24,9 +24,10 @@ public class Player extends MovingEntity
         weaponInUse = 0;
         healing = 0;
         inventory = new ArrayList<Weapon>();
-        addWeaponToInventory(primaryWeapon);
-        addWeaponToInventory(specialWeapon);
+        addWeaponToInventory(new HandCannon());
+        addWeaponToInventory(new Shotgun());
         addWeaponToInventory(new RocketLauncher());
+        addWeaponToInventory(new AutoRifle());
     }
 
     @Override
@@ -71,9 +72,8 @@ public class Player extends MovingEntity
                 return specialWeapon;
             case 2:
                 return heavyWeapon;
-            default:
-                return null;
         }
+        return new NullWeapon();
     }
 
     public void equipWeapon(Weapon weapon)
@@ -92,8 +92,6 @@ public class Player extends MovingEntity
     public void addWeaponToInventory(Weapon weapon){inventory.add(weapon);}
 
     public int getHealth() { return health; }
-
-    public void setHealth(int health) { this.health = health;}
 
     public Weapon getHeavyWeapon() {
         return heavyWeapon;
@@ -125,21 +123,16 @@ public class Player extends MovingEntity
         return null;
     }
 
-    public int getHealing() {
+    public void heal()
+    {
+        if (healing > 0){healing--;}
+        else {increaseHealth();}
+    }
+
+    public int getHealing()
+    {
         return healing;
     }
 
-    public void decreaseHealing() {
-        this.healing -= 1;
-    }
-
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
-    }
-
-    public void increaseHealth(){if(health < maxHealth) {this.health += 1;}}
+    private void increaseHealth(){if(health < maxHealth) {this.health += 1;}}
 }

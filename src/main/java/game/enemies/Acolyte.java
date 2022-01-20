@@ -1,10 +1,9 @@
 package game.enemies;
 
-import game.Position;
+import game.entities.Position;
 import game.enemies.strategy.BlindStrategy;
 import game.enemies.strategy.MoveStrategy;
 import game.weapons.EnemyWeapon2;
-import game.weapons.HandCannon;
 import game.weapons.Weapon;
 
 public class Acolyte extends Enemy {
