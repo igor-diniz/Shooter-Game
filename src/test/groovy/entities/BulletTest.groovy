@@ -1,6 +1,8 @@
-import game.Bullet
-import game.Player
-import game.Position
+package entities
+
+import game.entities.Bullet
+import game.entities.Player
+import game.entities.Position
 import game.weapons.HandCannon
 import game.weapons.Shotgun
 import game.weapons.Weapon

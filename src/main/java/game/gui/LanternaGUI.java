@@ -6,14 +6,17 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import game.*;
-import game.menus.Command;
+import game.entities.Bullet;
+import game.entities.ImmobileEntity;
+import game.entities.MovingEntity;
+import game.entities.Position;
+import game.menus.command.Command;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -39,6 +42,7 @@ public class LanternaGUI implements GUI {
             @Override
             public void windowClosing(WindowEvent e) {
                 e.getWindow().dispose();
+                System.exit(0);
             }
         });
         this.height=height;

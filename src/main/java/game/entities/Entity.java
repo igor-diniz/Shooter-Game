@@ -1,6 +1,4 @@
-package game;
-
-import com.googlecode.lanterna.graphics.TextGraphics;
+package game.entities;
 
 public abstract class Entity {
     private Position position;

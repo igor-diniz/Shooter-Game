@@ -1,12 +1,12 @@
-import game.Bullet
-import game.Player
-import game.Position
-import game.weapons.AutoRifle
+package entities
+
+import game.entities.Bullet
+import game.entities.Player
+import game.entities.Position
 import game.weapons.HandCannon
 import game.weapons.RocketLauncher
 import game.weapons.Shotgun
 import spock.lang.Specification
-import weapons.RocketLauncherTest
 
 class PlayerTest extends Specification
 {

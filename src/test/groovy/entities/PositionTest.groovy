@@ -1,4 +1,6 @@
-import game.Position
+package entities
+
+import game.entities.Position
 import spock.lang.Specification
 class PositionTest extends Specification
 {

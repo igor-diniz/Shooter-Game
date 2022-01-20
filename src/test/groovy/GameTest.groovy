@@ -1,8 +1,7 @@
-import com.googlecode.lanterna.input.KeyStroke
 import game.Game
 import game.Level
-import game.Player
-import game.Position
+import game.entities.Player
+import game.entities.Position
 import game.gui.GUI
 import game.menus.State
 import spock.lang.Specification

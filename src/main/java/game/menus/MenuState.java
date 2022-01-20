@@ -1,10 +1,13 @@
 package game.menus;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import game.Game;
 import game.gui.GUI;
+import game.menus.command.Command;
+import game.menus.command.ExitCommand;
+import game.menus.command.InstructionCommand;
+import game.menus.command.PlayCommand;
 
 import java.util.ArrayList;
 import java.util.List;

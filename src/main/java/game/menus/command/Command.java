@@ -1,4 +1,4 @@
-package game.menus;
+package game.menus.command;
 
 import game.Game;
 

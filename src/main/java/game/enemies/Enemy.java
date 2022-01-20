@@ -2,10 +2,13 @@ package game.enemies;
 
 import game.*;
 import game.enemies.strategy.MoveStrategy;
-import game.menus.State;
+import game.entities.Bullet;
+import game.entities.Entity;
+import game.entities.MovingEntity;
+import game.entities.Position;
 import game.weapons.Weapon;
 
-public abstract class Enemy extends MovingEntity{
+public abstract class Enemy extends MovingEntity {
     private int health;
     private Weapon weapon;
     private MoveStrategy moveStrategy;
@@ -22,7 +25,7 @@ public abstract class Enemy extends MovingEntity{
         this.moveStrategy = moveStrategy;
     }
 
-    public char getMinimalDirectionTo(Entity entity,Level level)
+    public char getMinimalDirectionTo(Entity entity, Level level)
     {
         char direction = ' ';
         char oldDirection = getDirection();

@@ -1,18 +1,15 @@
 package enemies
 
 import game.Level
-import game.Player
-import game.Wall
-import game.enemies.Acolyte
+import game.entities.Player
+import game.entities.Wall
 import game.enemies.Captain
 import game.enemies.Dreg
-import game.Position
+import game.entities.Position
 import game.enemies.Enemy
 import game.enemies.Vandal
-import game.enemies.strategy.BlindStrategy
 import game.enemies.strategy.TrackStrategy
 import game.weapons.EnemyWeapon1
-import game.weapons.HandCannon
 import game.weapons.Weapon
 import spock.lang.Specification
 class EnemyTest extends Specification {

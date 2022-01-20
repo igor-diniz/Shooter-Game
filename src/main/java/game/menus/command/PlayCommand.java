@@ -1,6 +1,8 @@
-package game.menus;
+package game.menus.command;
 
 import game.Game;
+import game.menus.PlayState;
+import game.menus.State;
 
 public class PlayCommand extends Command
 {

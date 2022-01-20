@@ -1,15 +1,12 @@
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
-import game.Bullet
+import game.entities.Bullet
 import game.Level
-import game.Player
-import game.Position
-import game.Wall
-import game.enemies.Dreg
+import game.entities.Player
+import game.entities.Position
+import game.entities.Wall
 import game.enemies.Enemy
 import game.enemies.Vandal
-import game.gui.GUI
-import game.gui.LanternaGUI
 import game.weapons.HandCannon
 import spock.lang.Specification
 

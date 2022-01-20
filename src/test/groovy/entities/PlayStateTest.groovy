@@ -1,11 +1,11 @@
-
+package entities
 
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
 import game.Game
 import game.Level
-import game.Player
-import game.Position
+import game.entities.Player
+import game.entities.Position
 import game.gui.GUI
 import game.menus.PlayState
 import spock.lang.Specification

@@ -1,4 +1,4 @@
-package game;
+package game.entities;
 
 import game.weapons.*;
 
@@ -16,7 +16,7 @@ public class Player extends MovingEntity
     private int maxHealth;
     private List<Weapon> inventory;
 
-    Player(Position position)
+    public Player(Position position)
     {
         super(position);
         this.maxHealth = 150;

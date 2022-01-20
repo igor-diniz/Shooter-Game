@@ -2,9 +2,12 @@ package game.gui;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
 import game.*;
-import game.menus.Command;
+import game.entities.Bullet;
+import game.entities.ImmobileEntity;
+import game.entities.MovingEntity;
+import game.entities.Position;
+import game.menus.command.Command;
 
 import java.io.IOException;
 import java.util.List;
