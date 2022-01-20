@@ -1,106 +1,69 @@
 package game;
 
-import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import game.enemies.*;
-import game.menus.MenuState;
-import game.menus.State;
+import game.entities.Player;
+import game.entities.Position;
+import game.entities.Wall;
+import game.gui.GUI;
+import game.gui.LanternaGUI;
+import game.state.MenuState;
+import game.state.State;
 
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game
 {
-    private Screen screen;
     private Level level;
-    private Terminal terminal;
     private final int frameRateInMillis = 30;
     private State state;
+    private GUI gui;
     public Game() throws IOException, FontFormatException, URISyntaxException {
+        gui = new LanternaGUI(24,50);
         loadLevel1();
-        URL resource = getClass().getClassLoader().getResource("fate.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-        Font loadedFont = font.deriveFont(Font.PLAIN,45);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        TerminalSize terminalSize = new TerminalSize(level.getNumColumns(), level.getNumRows());
-        terminal = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setForceAWTOverSwing(true)
-                .setTerminalEmulatorFontConfiguration(fontConfig).createTerminal();
-        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                e.getWindow().dispose();
-            }
-        });
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
         state = new MenuState(this);
     }
+
+    public Game(Level level,GUI gui,State state) throws URISyntaxException, IOException, FontFormatException {
+        this.level = level;
+        this.gui = gui;
+        this.state = state;
+    } //used for testing purposes
 
     public Level getLevel()
     {
         return level;
     }
 
-    private void draw() throws IOException {
-        screen.clear();
-        level.draw(screen.newTextGraphics());
-        screen.refresh();
-    }
-    /*public void drawMainMenu() throws IOException, InterruptedException {
-        MainMenu a = new MainMenu(this);
-        while(true) {
-            screen.clear();
-            a.showMenu(screen.newTextGraphics());
-            screen.refresh();
-            Thread.sleep(300);
-            a.previousOption();
-        }
-    }*/
-
     public void run() throws IOException, InterruptedException {
         int frameTime = 1000 / this.frameRateInMillis;
         while(!level.isGameOver())
         {
+
             long startTime = System.currentTimeMillis();
-            screen.clear();
-            state.show(screen.newTextGraphics());
-            screen.refresh();
-            KeyStroke key = terminal.pollInput();
+            gui.clear();
+            state.show(gui);
+            gui.refresh();
+            KeyStroke key = gui.pollInput();
             state.processInput(key);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
-
             if (sleepTime > 0) Thread.sleep(sleepTime);
-
         }
-        draw();
+        state.show(gui);
         if(level.getPlayer().getHealth() > 0) System.out.println("You won!");
         else System.out.println("You lose!");
     }
 
     private void loadLevel1()
     {
-
-        level = new Level(25,50);
+        int HUDSize = 3;
+        level = new Level(24,50);
         Player player = new Player(new Position(1,1));
         Dreg dreg = new Dreg(new Position(8,8));
         Dreg dreg2 = new Dreg(new Position(8,5));
@@ -120,7 +83,7 @@ public class Game
         enemyList.add(acolyte);
         enemyList.add(knight);
         List<Wall> wallList = new ArrayList<Wall>();
-        for(int i = 0; i < level.getNumRows();i++)
+        for(int i = 0; i < level.getNumRows()-HUDSize;i++)
         {
             wallList.add(new Wall(new Position(level.getNumColumns()-1,i)));
             wallList.add (new Wall(new Position(0, i)));
@@ -128,7 +91,7 @@ public class Game
         for(int i = 0; i < level.getNumColumns(); i++)
         {
             wallList.add(new Wall(new Position(i,0)));
-            wallList.add(new Wall(new Position(i,level.getNumRows()-1)));
+            wallList.add(new Wall(new Position(i,level.getNumRows()-HUDSize-1)));
         }
         for(int i = 0; i < level.getNumRows()/2;i++)
         {
@@ -137,8 +100,8 @@ public class Game
         level.generateEntities(player,enemyList,wallList);
     }
 
-    public Screen getScreen() {
-        return screen;
+    public GUI getGUI() {
+        return gui;
     }
 
     public void setState(State state) {

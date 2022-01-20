@@ -8,6 +8,22 @@ public class HandCannon extends Weapon{
     }
 
     @Override
+    protected char generateType() {
+        return 'P';
+    }
+
+    @Override
+    protected String generateName() {
+        return "HAND CANNON";
+    }
+
+    @Override
+    public void decreaseAmmo()
+    {
+
+    }
+
+    @Override
     protected int generateDamage() {
         return 40;
     }

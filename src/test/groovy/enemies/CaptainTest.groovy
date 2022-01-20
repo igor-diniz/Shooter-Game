@@ -1,13 +1,12 @@
 package enemies
 
 import game.Level
-import game.Player
-import game.Position
-import game.Wall
+import game.entities.Player
+import game.entities.Position
+import game.entities.Wall
 import game.enemies.Captain
 import game.enemies.Enemy
 import game.weapons.EnemyWeapon3
-import game.weapons.HandCannon
 import game.weapons.Weapon
 import spock.lang.Specification
 

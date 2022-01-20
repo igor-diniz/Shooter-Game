@@ -8,6 +8,16 @@ public class RocketLauncher extends Weapon {
     public RocketLauncher() {}
 
     @Override
+    protected char generateType() {
+        return 'H';
+    }
+
+    @Override
+    protected String generateName() {
+        return "ROCKET LAUNCHER";
+    }
+
+    @Override
     protected int generateDamage() {
         return 150;
     }
