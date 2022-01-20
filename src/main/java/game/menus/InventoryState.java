@@ -17,7 +17,7 @@ public class InventoryState implements State
 
     @Override
     public void show(GUI gui) {
-
+        gui.drawInventory(game,selected);
     }
 
     @Override
@@ -38,11 +38,14 @@ public class InventoryState implements State
     }
     public void nextOption()
     {
-
+        selected--;
+        if(selected == -1) selected = game.getLevel().getPlayer().getInventory().size()-1;
     }
 
     public void previousOption()
     {
+        selected++;
+        if(selected >= game.getLevel().getPlayer().getInventory().size()) selected = 0;
     }
 
     public int getSelected() {
