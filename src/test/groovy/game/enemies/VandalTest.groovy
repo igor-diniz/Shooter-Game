@@ -4,8 +4,6 @@ import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.entities.Wall
-import game.enemies.Enemy
-import game.enemies.Vandal
 import game.weapons.EnemyWeapon2
 import game.weapons.Weapon
 import spock.lang.Specification
@@ -19,7 +17,7 @@ class VandalTest extends Specification {
     {
         level = new Level(20,20)
         player = new Player(new Position(1,1))
-        level.generateEntities(player,new ArrayList<Enemy>(),new ArrayList<Wall>())
+        level.generateEntities(player, new ArrayList<Enemy>(), new ArrayList<Wall>(), gateList)
     }
 
     def 'Vandal Creation'() {

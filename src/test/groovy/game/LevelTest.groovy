@@ -3,14 +3,12 @@ package game
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
 import game.entities.Bullet
-import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.entities.Wall
 import game.enemies.Enemy
 import game.enemies.Vandal
 import game.gui.LanternaGUI
-import game.state.MenuState
 import game.weapons.HandCannon
 import spock.lang.Specification
 
@@ -65,7 +63,7 @@ class LevelTest extends Specification
     def 'Level Entity Introduction'()
     {
         when:
-        level.generateEntities(player,enemyList,wallList)
+        level.generateEntities(player, enemyList, wallList, gateList)
         then:
         level.getCharacterAt(1,1) == ('p' as char)
         level.getCharacterAt(8,5) == ('v' as char)
@@ -76,7 +74,7 @@ class LevelTest extends Specification
     def 'Level player movement'()
     {
         given:
-        level.generateEntities(player,enemyList,wallList)
+        level.generateEntities(player, enemyList, wallList, gateList)
         KeyStroke key1 = Stub(KeyStroke.class)
         key1.getCharacter() >> 'w' >> 'a' >> 'W' >> 'S' >> 'd' >> 's'
         key1.getKeyType() >> KeyType.Character
@@ -95,7 +93,7 @@ class LevelTest extends Specification
     def 'Level Enemy movement'()
     {
         given:
-        level.generateEntities(player,enemyList,wallList)
+        level.generateEntities(player, enemyList, wallList, gateList)
         when:
         level.moveEnemies()
 
@@ -106,7 +104,7 @@ class LevelTest extends Specification
 
     def 'Level Move Bullets'()
     {
-        level.generateEntities(player,enemyList,wallList)
+        level.generateEntities(player, enemyList, wallList, gateList)
         Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'S' as char,true)
         Bullet bullet2 = new Bullet(new Position(5,5),new HandCannon(), 'N' as char,true)
         Bullet bullet3 = new Bullet(new Position(5,3),new HandCannon(), 'W' as char,true)
@@ -126,7 +124,7 @@ class LevelTest extends Specification
 
     def 'Collisions'()
     {
-        level.generateEntities(player,enemyList,wallList)
+        level.generateEntities(player, enemyList, wallList, gateList)
         Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'N' as char,true)
         Bullet bullet2 = new Bullet(new Position(8,5),new HandCannon(), 'N' as char,true)
         Bullet bullet3 = new Bullet(new Position(8,3),new HandCannon(), 'N' as char,true)
@@ -145,7 +143,7 @@ class LevelTest extends Specification
     def 'Level Bullet Creation'()
     {
         player.equipWeapon(new HandCannon())
-        level.generateEntities(player,enemyList,wallList)
+        level.generateEntities(player, enemyList, wallList, gateList)
         KeyStroke key1 = Stub(KeyStroke.class)
         key1.getKeyType()  >> KeyType.Character
         key1.getCharacter() >> 'S' >> 'e'
@@ -164,7 +162,7 @@ class LevelTest extends Specification
         Level level1 = Spy(constructorArgs: [10,10])
         Player player1 = Mock(Player.class)
         player1.getPosition() >> new Position(8,8)
-        level1.generateEntities(player1,enemyList,wallList)
+        level1.generateEntities(player1, enemyList, wallList, gateList)
         LanternaGUI gui = Mock(LanternaGUI.class)
         when:
         level1.step(gui)

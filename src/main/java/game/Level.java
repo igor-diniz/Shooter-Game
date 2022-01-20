@@ -1,10 +1,7 @@
 package game;
 
 import com.googlecode.lanterna.input.KeyStroke;
-import game.entities.Bullet;
-import game.entities.Player;
-import game.entities.Position;
-import game.entities.Wall;
+import game.entities.*;
 import game.enemies.Enemy;
 import game.gui.GUI;
 
@@ -21,6 +18,8 @@ public class Level
     private List<Wall> wallList;
     private List<Bullet> bulletList = new ArrayList<>();
     private boolean gameOver = false;
+    private List<Gate> gateList;
+
     public Level(int numRows,int numColumns)
     {
         NUM_ROWS = numRows;
@@ -42,7 +41,7 @@ public class Level
         return level[row][column];
     }
 
-    public void generateEntities(Player player, List<Enemy> enemyList, List<Wall> wallList)
+    public void generateEntities(Player player, List<Enemy> enemyList, List<Wall> wallList, List<Gate> gateList)
     {
         for(int i = 0; i< NUM_ROWS; i++)
         {
@@ -54,6 +53,7 @@ public class Level
         this.enemyList = enemyList;
         this.player = player;
         this.wallList = wallList;
+        this.gateList = gateList;
         level[player.getPosition().getY()][player.getPosition().getX()] = player.getCharacter();
         for (Enemy enemy : enemyList)
         {
@@ -62,6 +62,10 @@ public class Level
         for (Wall wall : wallList)
         {
             level[wall.getPosition().getY()][wall.getPosition().getX()] = wall.getCharacter();
+        }
+        for (Gate gate : gateList)
+        {
+            level[gate.getPosition().getY()][gate.getPosition().getX()] = gate.getCharacter();
         }
     }
     public void draw(GUI gui)
@@ -73,6 +77,8 @@ public class Level
         for(Bullet bullet: bulletList) gui.drawBullet(bullet); //bullet.draw(graphics);
         //graphics.disableModifiers(SGR.BOLD);
         for(Wall wall: wallList) gui.drawImmobileEntity(wall); //wall.draw(graphics) ;
+
+        for (Gate gate: gateList) {gui.drawImmobileEntity(gate);};
     }
 
     public void step(GUI gui)
@@ -161,7 +167,7 @@ public class Level
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
         for(Enemy enemy : enemiesToRemove) enemyList.remove(enemy);
-        if(enemyList.size() == 0 || player.getHealth() == 0) gameOver = true;
+        if(player.getHealth() == 0) gameOver = true;
     }
     public void addBullet(Bullet bullet)
     {

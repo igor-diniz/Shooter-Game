@@ -12,7 +12,6 @@ import game.entities.Player
 import game.entities.Position
 import game.entities.Wall
 import game.enemies.Enemy
-import game.gui.LanternaGUI
 import game.state.command.Command
 import game.state.command.ExitCommand
 import game.state.command.InstructionCommand
@@ -136,7 +135,7 @@ class LanternaGUITest extends Specification {
     {
         given:
         Level level = new Level(20,50)
-        level.generateEntities(new Player(position),new ArrayList<Enemy>(),new ArrayList<Wall>())
+        level.generateEntities(new Player(position), new ArrayList<Enemy>(), new ArrayList<Wall>(), gateList)
         when:
         gui.drawGame(level)
         then:

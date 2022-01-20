@@ -2,7 +2,7 @@ package game.entities;
 
 public abstract class Entity {
     private Position position;
-    private final char character;
+    private char character;
     private final String color;
 
     protected Entity(Position position)
@@ -11,6 +11,8 @@ public abstract class Entity {
         character = generateCharacter();
         color = generateColor();
     }
+
+    public void setCharacter(char character){this.character = character;}
 
     protected abstract char generateCharacter();
 

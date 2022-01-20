@@ -3,11 +3,7 @@ package game.enemies
 import game.Level
 import game.entities.Player
 import game.entities.Wall
-import game.enemies.Captain
-import game.enemies.Dreg
 import game.entities.Position
-import game.enemies.Enemy
-import game.enemies.Vandal
 import game.enemies.strategy.TrackStrategy
 import game.weapons.EnemyWeapon1
 import game.weapons.Weapon
@@ -21,7 +17,7 @@ class EnemyTest extends Specification {
     {
         level = new Level(20,20)
         player = new Player(new Position(1,1))
-        level.generateEntities(player,new ArrayList<Enemy>(),new ArrayList<Wall>())
+        level.generateEntities(player, new ArrayList<Enemy>(), new ArrayList<Wall>(), gateList)
     }
 
     def 'Enemy Creation'() {
