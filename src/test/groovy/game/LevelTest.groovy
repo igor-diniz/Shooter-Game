@@ -9,6 +9,8 @@ import game.entities.Position
 import game.entities.Wall
 import game.enemies.Enemy
 import game.enemies.Vandal
+import game.gui.LanternaGUI
+import game.state.MenuState
 import game.weapons.HandCannon
 import spock.lang.Specification
 
@@ -154,5 +156,23 @@ class LevelTest extends Specification
         then:
         level.getBullets().get(0).getDirection() == ('S' as char) //the player's bullet
         level.getBullets().size() == 2
+    }
+
+    def 'Level Step'()
+    {
+        given:
+        Level level1 = Spy(constructorArgs: [10,10])
+        Player player1 = Mock(Player.class)
+        player1.getPosition() >> new Position(8,8)
+        level1.generateEntities(player1,enemyList,wallList)
+        LanternaGUI gui = Mock(LanternaGUI.class)
+        when:
+        level1.step(gui)
+        then:
+        1 * level1.moveEnemies()
+        1 * level1.moveBullets()
+        1 * level1.checkCollisions()
+        1 * level1.draw(gui)
+        1 * player1.heal()
     }
 }

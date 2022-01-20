@@ -36,6 +36,16 @@ class LanternaGUITest extends Specification {
         gui = new LanternaGUI(screen)
         screen.newTextGraphics() >> tg
     }
+
+    def 'Lanterna GUI creation'()
+    {
+        when:
+        LanternaGUI lanternaGUI = new LanternaGUI(10,10)
+        then:
+        lanternaGUI.getWidth() == 10
+        lanternaGUI.getHeight() == 10
+    }
+
     def 'Draw Rectangle Test'()
     {
         when:
@@ -161,6 +171,14 @@ class LanternaGUITest extends Specification {
         1 * tg.enableModifiers(SGR.BOLD)
         1 * tg.disableModifiers(SGR.BOLD)
         1 * tg.putString(_,_)
+    }
+
+    def 'Draw Instruction Test'()
+    {
+        when:
+        gui.drawInstructions()
+        then:
+        8 * tg.putString(_,_,_)
     }
 
 }

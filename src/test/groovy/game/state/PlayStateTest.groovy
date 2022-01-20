@@ -11,17 +11,23 @@ import game.gui.LanternaGUI
 import game.state.PlayState
 import spock.lang.Specification
 
+import java.awt.Menu
+
 class PlayStateTest extends Specification
 {
     private Game game
     private KeyStroke key1
+    private KeyStroke key2
     void 'setup'()
     {
         game = new Game()
         game.setState(new PlayState(game))
         key1 = Stub(KeyStroke.class)
         key1.getKeyType() >> KeyType.Character >> KeyType.Character
-        key1.getCharacter() >> 'w' >> 's'
+        key1.getCharacter() >> 'i'
+        key2 = Stub(KeyStroke.class)
+        key2.getKeyType() >> KeyType.Character >> KeyType.Character
+        key2.getCharacter() >> 'q'
     }
 
     def 'PlayStateCreation Test'()
@@ -34,18 +40,32 @@ class PlayStateTest extends Specification
 
     def 'PlayState Execution Test'()
     {
-        try {
-            given:
-            Level level = Mock(Level.class)
-            level.getPlayer() >> new Player(new Position(10, 10))
-            PlayState playState = new PlayState(level)
-            when:
-            playState.processInput(key1)
-            playState.show(new LanternaGUI(10, 10))
-            then:
-            1 * level.draw(_);
-            1 * level.step(_);
-        }catch(Exception e){System.out.println(e)}
+        given:
+        Level level = Mock(Level.class)
+        level.getPlayer() >> new Player(new Position(10, 10))
+        PlayState playState = new PlayState(level)
+        LanternaGUI gui = Mock(LanternaGUI.class)
+        when:
+        playState.processInput(key1)
+        playState.show(gui)
+        then:
+        1 * level.processKey(_)
+        1 * gui.drawGame(_)
+        1 * level.step(_);
+    }
 
+    def 'PlayState State Change Test'()
+    {
+        given:
+        Game game2 = new Game()
+        game2.setState(new PlayState(game2))
+        PlayState playState = new PlayState(game)
+        PlayState playState2 = new PlayState(game2)
+        when:
+        playState.processInput(key1)
+        playState2.processInput(key2)
+        then:
+        game2.getState() instanceof MenuState
+        game.getState() instanceof InventoryState
     }
 }

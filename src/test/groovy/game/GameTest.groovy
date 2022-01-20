@@ -14,15 +14,13 @@ class GameTest extends Specification
 {
     def 'Game creation'()
     {
-        try {
-            given:
-            LanternaGUI gui = new LanternaGUI(24, 50)
-            when:
-            Game game = new Game(gui)
-            then:
-            game.getGUI() == gui
-            game.getState() instanceof MenuState
-        }catch(Exception e){System.out.println(e)}
+        given:
+        LanternaGUI gui = Mock(LanternaGUI.class)
+        when:
+        Game game = new Game(gui)
+        then:
+        game.getGUI() == gui
+        game.getState() instanceof MenuState
     }
 
     def 'Game run'()
