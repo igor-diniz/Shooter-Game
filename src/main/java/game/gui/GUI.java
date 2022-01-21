@@ -40,7 +40,9 @@ public interface GUI
 
     void drawInventory(Game game,int selected);
 
-    void drawInstructions(Game game);
+    void drawInstructions();
 
     void drawGame(Level level);
+
+    void drawGameOver();
 }

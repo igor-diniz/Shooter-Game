@@ -7,13 +7,14 @@ import game.Level;
 import game.gui.GUI;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class PlayState implements State
 {
     private final Game game;
-    private final Level level;
+    private Level level;
 
     public PlayState(Game game)
     {
@@ -21,21 +22,26 @@ public class PlayState implements State
         this.level = game.getLevel();
     }
 
-    public PlayState(Level level) throws IOException, URISyntaxException, FontFormatException {
+    public PlayState(Level level) throws FileNotFoundException {
         this.level = level;
         game = new Game();
     } //used for tests purposes
 
     @Override
-    public void show(GUI gui) {
+    public void show(GUI gui) throws FileNotFoundException {
         level.step(gui);
+        if(game.getLevel().getPlayer().getHealth() == 0) game.setState(new GameOverState(game));
+        if(game.getLevel().isNextLevel()) {
+            game.loadLevelFromFile();
+            this.level = game.getLevel();
+        }
         gui.drawGame(level);
     }
 
     @Override
     public void processInput(KeyStroke key) {
-        if(key == null || key.getKeyType() != KeyType.Character) return;
         if(key.getCharacter() == 'i' || key.getCharacter() == 'I') game.setState(new InventoryState(game));
+        if(key.getCharacter() == 'q' || key.getCharacter() == 'Q') game.setState(new MenuState(game));
         level.processKey(key);
     }
 

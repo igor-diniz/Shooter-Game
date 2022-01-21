@@ -1,6 +1,7 @@
 package game;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import game.enemies.*;
 import game.entities.Player;
 import game.entities.Position;
@@ -9,13 +10,18 @@ import game.gui.GUI;
 import game.gui.LanternaGUI;
 import game.state.MenuState;
 import game.state.State;
+import sun.nio.cs.US_ASCII;
 
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game
 {
@@ -23,11 +29,18 @@ public class Game
     private final int frameRateInMillis = 30;
     private State state;
     private GUI gui;
-    public Game() throws IOException, FontFormatException, URISyntaxException {
-        gui = new LanternaGUI(24,50);
-        loadLevel1();
+    int levelCounter = 0;
+    public Game() throws FileNotFoundException {
+        loadLevelFromFile();
+        state = new MenuState(this);
+    } // used for testing purposes
+
+    public Game(GUI gui) throws IOException, FontFormatException, URISyntaxException {
+        this.gui = gui;
+        loadLevelFromFile();
         state = new MenuState(this);
     }
+
 
     public Game(Level level,GUI gui,State state) throws URISyntaxException, IOException, FontFormatException {
         this.level = level;
@@ -40,62 +53,54 @@ public class Game
         return level;
     }
 
-    public void run() throws IOException, InterruptedException {
+    public void run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         int frameTime = 1000 / this.frameRateInMillis;
         while(!level.isGameOver())
         {
-
             long startTime = System.currentTimeMillis();
             gui.clear();
             state.show(gui);
             gui.refresh();
             KeyStroke key = gui.pollInput();
-            state.processInput(key);
+            if(key != null && key.getKeyType() == KeyType.Character ) state.processInput(key);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
             if (sleepTime > 0) Thread.sleep(sleepTime);
         }
-        state.show(gui);
-        if(level.getPlayer().getHealth() > 0) System.out.println("You won!");
-        else System.out.println("You lose!");
     }
 
-    private void loadLevel1()
-    {
-        int HUDSize = 3;
-        level = new Level(24,50);
-        Player player = new Player(new Position(1,1));
-        Dreg dreg = new Dreg(new Position(8,8));
-        Dreg dreg2 = new Dreg(new Position(8,5));
-        Vandal vandal = new Vandal(new Position (8,2));
-        Captain captain = new Captain(new Position(10,5));
-        Thrall thrall = new Thrall(new Position(12,8));
-        Thrall thrall1 = new Thrall(new Position(15,9));
-        Acolyte acolyte = new Acolyte(new Position(14,6));
-        Knight knight = new Knight(new Position(13,8));
+    public void loadLevelFromFile() throws FileNotFoundException {
+        String theString;
+
+        levelCounter++;
+        if(levelCounter == 6) System.exit(0);
+        File file = new File("src/main/resources/"+levelCounter+".txt");
+        Scanner scanner = new Scanner(file, Charset.defaultCharset().name());
+
+        theString = scanner.nextLine();
+        while (scanner.hasNextLine()) {
+            theString = theString + scanner.nextLine();
+        }
+        char[] charArray = theString.toCharArray();
+
         List<Enemy> enemyList = new ArrayList<Enemy>();
-        enemyList.add(vandal);
-        enemyList.add(dreg);
-        enemyList.add(dreg2);
-        enemyList.add(captain);
-        enemyList.add(thrall);
-        enemyList.add(thrall1);
-        enemyList.add(acolyte);
-        enemyList.add(knight);
         List<Wall> wallList = new ArrayList<Wall>();
-        for(int i = 0; i < level.getNumRows()-HUDSize;i++)
-        {
-            wallList.add(new Wall(new Position(level.getNumColumns()-1,i)));
-            wallList.add (new Wall(new Position(0, i)));
-        }
-        for(int i = 0; i < level.getNumColumns(); i++)
-        {
-            wallList.add(new Wall(new Position(i,0)));
-            wallList.add(new Wall(new Position(i,level.getNumRows()-HUDSize-1)));
-        }
-        for(int i = 0; i < level.getNumRows()/2;i++)
-        {
-            wallList.add(new Wall(new Position(5,i)));
+        Player player = new Player(new Position(10,10));
+
+        level = new Level(24, 50);
+        for (int row = 0; row < level.getNumRows() - 3; row++) {
+            for (int col = 0; col < level.getNumColumns(); col++) {
+                switch (charArray[col + row * level.getNumColumns()]) {
+                    case 'p': player = new Player(new Position(col, row));break;
+                    case '#': wallList.add(new Wall(new Position(col, row)));break;
+                    case 'a': enemyList.add(new Acolyte(new Position(col, row)));break;
+                    case 'c': enemyList.add(new Captain(new Position(col, row)));break;
+                    case 'd': enemyList.add(new Dreg(new Position(col, row)));break;
+                    case 'k': enemyList.add(new Knight(new Position(col, row)));break;
+                    case 't': enemyList.add(new Thrall(new Position(col, row)));break;
+                    case 'v': enemyList.add(new Vandal(new Position(col, row)));break;
+                }
+            }
         }
         level.generateEntities(player,enemyList,wallList);
     }

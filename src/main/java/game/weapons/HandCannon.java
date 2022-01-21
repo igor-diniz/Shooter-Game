@@ -5,6 +5,12 @@ public class HandCannon extends Weapon{
 
     public HandCannon(){
 
+        super();
+    }
+
+    @Override
+    protected char generateBulletChar() {
+        return 'b';
     }
 
     @Override

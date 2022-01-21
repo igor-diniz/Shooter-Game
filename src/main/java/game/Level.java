@@ -21,6 +21,7 @@ public class Level
     private List<Wall> wallList;
     private List<Bullet> bulletList = new ArrayList<>();
     private boolean gameOver = false;
+    private boolean nextLevel = false;
     public Level(int numRows,int numColumns)
     {
         NUM_ROWS = numRows;
@@ -161,7 +162,8 @@ public class Level
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
         for(Enemy enemy : enemiesToRemove) enemyList.remove(enemy);
-        if(enemyList.size() == 0 || player.getHealth() == 0) gameOver = true;
+        if(player.getHealth() == 0) gameOver = true;
+        if(enemyList.isEmpty()) nextLevel = true;
     }
     public void addBullet(Bullet bullet)
     {
@@ -189,5 +191,9 @@ public class Level
             level[bullet.getPosition().getY()][bullet.getPosition().getX()] = 'b';
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
+    }
+
+    public boolean isNextLevel() {
+        return nextLevel;
     }
 }

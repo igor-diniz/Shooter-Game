@@ -1,6 +1,15 @@
 package game.weapons;
 
 public class NullWeapon extends Weapon{
+    public NullWeapon() {
+        super();
+    }
+
+    @Override
+    protected char generateBulletChar() {
+        return 'b';
+    }
+
     @Override
     protected char generateType() {
         return ' ';

@@ -9,6 +9,9 @@ import game.state.command.ExitCommand;
 import game.state.command.InstructionCommand;
 import game.state.command.PlayCommand;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +37,7 @@ public class MenuState implements State
     }
 
     @Override
-    public void processInput(KeyStroke key) {
-        if(key == null || key.getKeyType() != KeyType.Character) return;
+    public void processInput(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         char choice = key.getCharacter();
         switch(choice)
         {

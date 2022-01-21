@@ -1,6 +1,15 @@
 package game.weapons;
 
 public class MachineGun extends Weapon{
+    public MachineGun() {
+        super();
+    }
+
+    @Override
+    protected char generateBulletChar() {
+        return 'l';
+    }
+
     @Override
     protected char generateType() {
         return 'H';
@@ -20,5 +29,5 @@ public class MachineGun extends Weapon{
     }
 
     @Override
-    protected int getStartAmmo() {return 12;}
+    protected int getStartAmmo() {return 25;}
 }

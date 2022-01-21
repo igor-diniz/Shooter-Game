@@ -29,9 +29,9 @@ import java.util.List;
 
 public class LanternaGUI implements GUI {
 
-    private TerminalScreen screen;
-    private int width;
-    private int height;
+    private final TerminalScreen screen;
+    private final int width;
+    private final int height;
 
     public LanternaGUI(int height, int width) throws URISyntaxException, IOException, FontFormatException {
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadFont());
@@ -143,6 +143,11 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawMenu(Game game, int selected, List<Command> commandsList) {
         TextGraphics tg = screen.newTextGraphics();
+        tg.putString(width/5,2,"pppppp  pppppp  pppppp  pppppp ");
+        tg.putString(width/5,3,"pp      p    p    pp    pp    ");
+        tg.putString(width/5,4,"ppppp   pppppp    pp    ppppp ");
+        tg.putString(width/5,5,"pp      pp  pp    pp    pp    ");
+        tg.putString(width/5,6,"pp      pp  pp    pp    pppppp");
         for(int i = 0; i < commandsList.size(); i++)
             tg.putString(width/3,
                     height/3+i,commandsList.get(i).getText());
@@ -173,8 +178,17 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawInstructions(Game game) {
-
+    public void drawInstructions() {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.putString(1, height/4,"-CONTROLS-");
+        tg.putString(1, height/4 + 1,"USE W, A, S, AND D TO MOVE");
+        tg.putString(1, height/4 + 2,"USE E TO SHOOT");
+        tg.putString(1, height/4 + 3,"ACCESS THE MENU WITH Q AND THE INVENTORY WITH I");
+        tg.putString(1, height/4 + 5,"-GAMEPLAY-");
+        tg.putString(1, height/4 + 6,"KILL ALL ENEMIES TO PROGRESS TO NEXT LEVEL");
+        tg.putString(1, height/4 + 7,"STAY AWAY FROM COMBAT TO GET HEALING");
+        tg.putString(1, height/4 + 8,"p HAVE FUN! :) p");
+        tg.putString(width-9,height-1,"BK : Q");
     }
 
     @Override
@@ -187,7 +201,16 @@ public class LanternaGUI implements GUI {
         tg.fillRectangle(new TerminalPosition(0, height-3),new TerminalSize(width,3),' ');
         tg.putString(new TerminalPosition(0, height-3),"HEALTH :" + level.getPlayer().getHealth());
         tg.putString(new TerminalPosition(0, height-2),"WEAPON :" + level.getPlayer().getUsingWeapon().getName());
-        tg.putString(new TerminalPosition(0, height-1),"AMMO :" + level.getPlayer().getUsingWeapon().getAmmo());
+        if(level.getPlayer().getUsingWeapon().getAmmo() >= 0){tg.putString(new TerminalPosition(0, height-1),"AMMO :" + level.getPlayer().getUsingWeapon().getAmmo());}
+        else {tg.putString(new TerminalPosition(0, height-1),"AMMO :" + "e");}
+    }
+
+    @Override
+    public void drawGameOver()
+    {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.putString(width/3, height/3, "YOU LOSE");
+        tg.putString(width/3 - 2, height/2, "->EXIT");
     }
 
 }

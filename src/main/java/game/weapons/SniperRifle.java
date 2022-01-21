@@ -1,9 +1,17 @@
 package game.weapons;
 
 public class SniperRifle extends Weapon {
+    public SniperRifle() {
+        super();
+    }
+
+    @Override
+    protected char generateBulletChar() {
+        return 'b';
+    }
     @Override
     protected char generateType() {
-        return 'H';
+        return 'S';
     }
 
     @Override
@@ -22,5 +30,5 @@ public class SniperRifle extends Weapon {
     }
 
     @Override
-    protected int getStartAmmo() {return 6;}
+    protected int getStartAmmo() {return 7;}
 }

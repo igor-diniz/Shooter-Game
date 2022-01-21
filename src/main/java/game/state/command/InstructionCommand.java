@@ -20,7 +20,7 @@ public class InstructionCommand extends Command{
     @Override
     public void execute() {
         oldState = game.getState();
-        game.setState(new InstructionState());
+        game.setState(new InstructionState(game));
     }
 
     @Override
