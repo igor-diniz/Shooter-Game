@@ -143,6 +143,11 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawMenu(Game game, int selected, List<Command> commandsList) {
         TextGraphics tg = screen.newTextGraphics();
+        tg.putString(width/5,2,"pppppp  pppppp  pppppp  pppppp ");
+        tg.putString(width/5,3,"pp      p    p    pp    pp    ");
+        tg.putString(width/5,4,"ppppp   pppppp    pp    ppppp ");
+        tg.putString(width/5,5,"pp      pp  pp    pp    pp    ");
+        tg.putString(width/5,6,"pp      pp  pp    pp    pppppp");
         for(int i = 0; i < commandsList.size(); i++)
             tg.putString(width/3,
                     height/3+i,commandsList.get(i).getText());
@@ -180,8 +185,9 @@ public class LanternaGUI implements GUI {
         tg.putString(1, height/4 + 2,"USE E TO SHOOT");
         tg.putString(1, height/4 + 3,"ACCESS THE MENU WITH Q AND THE INVENTORY WITH I");
         tg.putString(1, height/4 + 5,"-GAMEPLAY-");
-        tg.putString(1, height/4 + 6,"KILL THE ENEMIES AND GET TO THE DOOR TO PROGRESS");
-        tg.putString(1, height/4 + 7,"PAY ATTENTION TO THE DIALOGUES AND HAVE FUN :)");
+        tg.putString(1, height/4 + 6,"KILL ALL ENEMIES TO PROGRESS TO NEXT LEVEL");
+        tg.putString(1, height/4 + 7,"STAY AWAY FROM COMBAT TO GET HEALING");
+        tg.putString(1, height/4 + 8,"p HAVE FUN! :) p");
         tg.putString(width-9,height-1,"BK : Q");
     }
 

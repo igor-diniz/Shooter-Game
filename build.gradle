@@ -32,6 +32,7 @@ pitest {
     pitestVersion = '1.6.7'
     verbose = true
     excludedClasses = ['game.Application']
+    excludedTestClasses = ['game.gui.LanternaGUICreationTest']
 }
 
 mainClassName = 'game.Application'

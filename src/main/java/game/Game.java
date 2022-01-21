@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -74,7 +75,7 @@ public class Game
         levelCounter++;
         if(levelCounter == 6) System.exit(0);
         File file = new File("src/main/resources/"+levelCounter+".txt");
-        Scanner scanner = new Scanner(file);
+        Scanner scanner = new Scanner(file, Charset.defaultCharset().name());
 
         theString = scanner.nextLine();
         while (scanner.hasNextLine()) {

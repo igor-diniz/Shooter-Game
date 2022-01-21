@@ -36,15 +36,6 @@ class LanternaGUITest extends Specification {
         screen.newTextGraphics() >> tg
     }
 
-    def 'Lanterna GUI creation'()
-    {
-        when:
-        LanternaGUI lanternaGUI = new LanternaGUI(10,10)
-        then:
-        lanternaGUI.getWidth() == 10
-        lanternaGUI.getHeight() == 10
-    }
-
     def 'Draw Rectangle Test'()
     {
         when:
