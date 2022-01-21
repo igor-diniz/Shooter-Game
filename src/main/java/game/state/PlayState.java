@@ -30,8 +30,8 @@ public class PlayState implements State
     @Override
     public void show(GUI gui) throws FileNotFoundException {
         level.step(gui);
-        if(game.getLevel().getPlayer().getHealth() == 0) game.setState(new GameOverState(game));
-        if(game.getLevel().isNextLevel()) {
+        if(level.getPlayer().getHealth() == 0) game.setState(new GameOverState(game));
+        if(level.isNextLevel()) {
             game.loadLevelFromFile();
             this.level = game.getLevel();
         }

@@ -27,7 +27,6 @@ public abstract class Weapon
 
     protected abstract char generateBulletChar();
 
-
     public char getBulletChar(){ return bulletChar;}
 
     protected abstract int generateRange();

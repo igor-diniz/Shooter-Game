@@ -159,7 +159,6 @@ public class Level
         }
         for(Bullet bullet: bulletsToRemove) bulletList.remove(bullet);
         for(Enemy enemy : enemiesToRemove) enemyList.remove(enemy);
-        if(player.getHealth() == 0) gameOver = true;
         if(enemyList.isEmpty()) nextLevel = true;
     }
     public void addBullet(Bullet bullet)
