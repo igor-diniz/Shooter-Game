@@ -8,7 +8,7 @@ import java.util.List;
 public class Player extends MovingEntity
 {
     private int health;
-    private Weapon primaryWeapon = new NullWeapon();
+    private Weapon primaryWeapon = new HandCannon();
     private Weapon specialWeapon = new NullWeapon();
     private Weapon heavyWeapon = new NullWeapon();
     private int weaponInUse;
@@ -25,9 +25,12 @@ public class Player extends MovingEntity
         healing = 0;
         inventory = new ArrayList<Weapon>();
         addWeaponToInventory(new HandCannon());
-        addWeaponToInventory(new Shotgun());
-        addWeaponToInventory(new RocketLauncher());
         addWeaponToInventory(new AutoRifle());
+        addWeaponToInventory(new ScoutRifle());
+        addWeaponToInventory(new Shotgun());
+        addWeaponToInventory(new SniperRifle());
+        addWeaponToInventory(new RocketLauncher());
+        addWeaponToInventory(new MachineGun());
     }
 
     @Override
