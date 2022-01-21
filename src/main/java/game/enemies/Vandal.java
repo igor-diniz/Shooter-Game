@@ -11,7 +11,6 @@ import game.weapons.Weapon;
 public class Vandal extends Enemy {
     public Vandal(Position position) {
         super(position);
-        //this.setColor("#1064ad");
     }
 
     @Override

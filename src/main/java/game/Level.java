@@ -68,12 +68,9 @@ public class Level
     public void draw(GUI gui)
     {
         gui.drawMovingEntity(player);
-       // player.draw(graphics);
-        for(Enemy enemy: enemyList) gui.drawMovingEntity(enemy); //enemy.draw(graphics);
-        //graphics.enableModifiers(SGR.BOLD);
-        for(Bullet bullet: bulletList) gui.drawBullet(bullet); //bullet.draw(graphics);
-        //graphics.disableModifiers(SGR.BOLD);
-        for(Wall wall: wallList) gui.drawImmobileEntity(wall); //wall.draw(graphics) ;
+        for(Enemy enemy: enemyList) gui.drawMovingEntity(enemy);
+        for(Bullet bullet: bulletList) gui.drawBullet(bullet);
+        for(Wall wall: wallList) gui.drawImmobileEntity(wall);
     }
 
     public void step(GUI gui)

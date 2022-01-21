@@ -9,7 +9,6 @@ import game.weapons.Weapon;
 public class Captain extends Enemy {
     public Captain(Position position) {
         super(position);
-        //this.setColor("#1064ad");
     }
 
     @Override
