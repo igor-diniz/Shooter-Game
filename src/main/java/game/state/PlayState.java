@@ -7,6 +7,7 @@ import game.Level;
 import game.gui.GUI;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -21,7 +22,7 @@ public class PlayState implements State
         this.level = game.getLevel();
     }
 
-    public PlayState(Level level){
+    public PlayState(Level level) throws FileNotFoundException {
         this.level = level;
         game = new Game();
     } //used for tests purposes

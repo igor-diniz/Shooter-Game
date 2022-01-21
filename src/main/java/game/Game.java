@@ -10,13 +10,17 @@ import game.gui.GUI;
 import game.gui.LanternaGUI;
 import game.state.MenuState;
 import game.state.State;
+import sun.nio.cs.US_ASCII;
 
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game
 {
@@ -24,15 +28,15 @@ public class Game
     private final int frameRateInMillis = 30;
     private State state;
     private GUI gui;
-    public Game()
-    {
-        loadLevel1();
+    int levelCounter = 0;
+    public Game() throws FileNotFoundException {
+        loadLevelFromFile();
         state = new MenuState(this);
     } // used for testing purposes
 
     public Game(GUI gui) throws IOException, FontFormatException, URISyntaxException {
         this.gui = gui;
-        loadLevel1();
+        loadLevelFromFile();
         state = new MenuState(this);
     }
 
@@ -64,7 +68,58 @@ public class Game
         }
     }
 
-    private void loadLevel1()
+    private void loadLevelFromFile() throws FileNotFoundException {
+        String theString = "";
+
+        levelCounter++;
+        File file = new File("src/main/resources/2_4.txt");
+        Scanner scanner = new Scanner(file);
+
+        theString = scanner.nextLine();
+        while (scanner.hasNextLine()) {
+            theString = theString + scanner.nextLine();
+        }
+        char[] charArray = theString.toCharArray();
+
+        List<Enemy> enemyList = new ArrayList<Enemy>();
+        List<Wall> wallList = new ArrayList<Wall>();
+        Player player = new Player(new Position(10,10));
+
+        level = new Level(24, 50);
+        for (int row = 0; row < level.getNumRows() - 3; row++) {
+            for (int col = 0; col < level.getNumColumns(); col++) {
+                switch (charArray[col + row * level.getNumColumns()]) {
+                    case 'p':
+                        player = new Player(new Position(col, row));
+                        break;
+                    case '#':
+                        wallList.add(new Wall(new Position(col, row)));
+                        break;
+                    case 'a':
+                        enemyList.add(new Acolyte(new Position(col, row)));
+                        break;
+                    case 'c':
+                        enemyList.add(new Captain(new Position(col, row)));
+                        break;
+                    case 'd':
+                        enemyList.add(new Dreg(new Position(col, row)));
+                        break;
+                    case 'k':
+                        enemyList.add(new Knight(new Position(col, row)));
+                        break;
+                    case 't':
+                        enemyList.add(new Thrall(new Position(col, row)));
+                        break;
+                    case 'v':
+                        enemyList.add(new Vandal(new Position(col, row)));
+                        break;
+                }
+            }
+        }
+        level.generateEntities(player,enemyList,wallList);
+    }
+
+    /*private void loadLevel1()
     {
         int HUDSize = 3;
         level = new Level(24,50);
@@ -102,7 +157,7 @@ public class Game
             wallList.add(new Wall(new Position(5,i)));
         }
         level.generateEntities(player,enemyList,wallList);
-    }
+    }*/
 
     public GUI getGUI() {
         return gui;
