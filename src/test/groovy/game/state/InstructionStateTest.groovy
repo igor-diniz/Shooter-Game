@@ -30,7 +30,8 @@ class InstructionStateTest extends Specification
         instructionState.processInput(key)
         then:
         1 * game.setState(_)
-
     }
+
+
 
 }
