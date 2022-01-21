@@ -119,7 +119,8 @@ public class Player extends MovingEntity
 
     public Bullet shoot()
     {
-        if(getUsingWeapon().shoot()) return new Bullet(getPosition(),getUsingWeapon(),getDirection(),true);
+        if(getUsingWeapon().shoot()) return new Bullet(getPosition(),getUsingWeapon(),getDirection(),
+                true,getUsingWeapon().getBulletChar());
         return null;
     }
 

@@ -12,7 +12,6 @@ import game.entities.Player
 import game.entities.Position
 import game.entities.Wall
 import game.enemies.Enemy
-import game.gui.LanternaGUI
 import game.state.command.Command
 import game.state.command.ExitCommand
 import game.state.command.InstructionCommand
@@ -162,7 +161,7 @@ class LanternaGUITest extends Specification {
     def 'Draw Bullet Test'()
     {
         given:
-        Bullet bullet = new Bullet(position,new HandCannon(),'N' as char,true)
+        Bullet bullet = new Bullet(position, new HandCannon(), 'N' as char, true, character)
         when:
         gui.drawBullet(bullet)
         then:

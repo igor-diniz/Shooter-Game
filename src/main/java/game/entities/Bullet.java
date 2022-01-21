@@ -7,8 +7,10 @@ public class Bullet extends MovingEntity{
     private int range;
     private final int damage;
     private final boolean shotByPlayer;
-    public Bullet(Position position, Weapon weapon, char direction, boolean shotByPlayer) {
+    private final char character;
+    public Bullet(Position position, Weapon weapon, char direction, boolean shotByPlayer, char character) {
         super(position);
+        this.character = character;
         this.setDirection(direction);
         damage = weapon.getDamage();
         range = weapon.getRange();
@@ -61,5 +63,10 @@ public class Bullet extends MovingEntity{
 
     public boolean isShotByPlayer() {
         return shotByPlayer;
+    }
+
+    @Override
+    public char getCharacter() {
+        return character;
     }
 }

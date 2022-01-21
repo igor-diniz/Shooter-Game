@@ -3,14 +3,12 @@ package game
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
 import game.entities.Bullet
-import game.Level
 import game.entities.Player
 import game.entities.Position
 import game.entities.Wall
 import game.enemies.Enemy
 import game.enemies.Vandal
 import game.gui.LanternaGUI
-import game.state.MenuState
 import game.weapons.HandCannon
 import spock.lang.Specification
 
@@ -107,10 +105,10 @@ class LevelTest extends Specification
     def 'Level Move Bullets'()
     {
         level.generateEntities(player,enemyList,wallList)
-        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'S' as char,true)
-        Bullet bullet2 = new Bullet(new Position(5,5),new HandCannon(), 'N' as char,true)
-        Bullet bullet3 = new Bullet(new Position(5,3),new HandCannon(), 'W' as char,true)
-        Bullet bullet4 = new Bullet(new Position(5,6),new HandCannon(), 'E' as char,true)
+        Bullet bullet1 = new Bullet(new Position(1, 1), new HandCannon(), 'S' as char, true, character)
+        Bullet bullet2 = new Bullet(new Position(5, 5), new HandCannon(), 'N' as char, true, character)
+        Bullet bullet3 = new Bullet(new Position(5, 3), new HandCannon(), 'W' as char, true, character)
+        Bullet bullet4 = new Bullet(new Position(5, 6), new HandCannon(), 'E' as char, true, character)
         level.addBullet(bullet1)
         level.addBullet(bullet2)
         level.addBullet(bullet3)
@@ -127,9 +125,9 @@ class LevelTest extends Specification
     def 'Collisions'()
     {
         level.generateEntities(player,enemyList,wallList)
-        Bullet bullet1 = new Bullet(new Position(1,1),new HandCannon(), 'N' as char,true)
-        Bullet bullet2 = new Bullet(new Position(8,5),new HandCannon(), 'N' as char,true)
-        Bullet bullet3 = new Bullet(new Position(8,3),new HandCannon(), 'N' as char,true)
+        Bullet bullet1 = new Bullet(new Position(1, 1), new HandCannon(), 'N' as char, true, character)
+        Bullet bullet2 = new Bullet(new Position(8, 5), new HandCannon(), 'N' as char, true, character)
+        Bullet bullet3 = new Bullet(new Position(8, 3), new HandCannon(), 'N' as char, true, character)
         level.addBullet(bullet1)
         level.addBullet(bullet2)
         level.addBullet(bullet3)
