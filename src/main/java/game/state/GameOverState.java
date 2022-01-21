@@ -23,11 +23,16 @@ public class GameOverState implements State{
 
     @Override
     public void show(GUI gui) {
-
+        gui.drawGameOver();
     }
 
     @Override
     public void processInput(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
-
+        char choice = key.getCharacter();
+        switch(choice)
+        {
+            case 'E': case 'e':
+            command.execute(); break;
+        }
     }
 }

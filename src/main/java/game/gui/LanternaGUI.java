@@ -201,7 +201,9 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawGameOver()
     {
-
+        TextGraphics tg = screen.newTextGraphics();
+        tg.putString(width/3, height/3, "YOU LOSE");
+        tg.putString(width/3 - 2, height/2, "->EXIT");
     }
 
 }

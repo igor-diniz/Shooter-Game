@@ -9,7 +9,7 @@ public class RocketLauncher extends Weapon {
 
     @Override
     protected char generateBulletChar() {
-        return 'm';
+        return 'o';
     }
 
     @Override
