@@ -7,7 +7,7 @@ public class MachineGun extends Weapon{
 
     @Override
     protected char generateBulletChar() {
-        return 'b';
+        return 'l';
     }
 
     @Override

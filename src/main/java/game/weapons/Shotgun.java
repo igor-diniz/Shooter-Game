@@ -8,7 +8,7 @@ public class Shotgun extends Weapon {
 
     @Override
     protected char generateBulletChar() {
-        return 'b';
+        return 'i';
     }
     @Override
     protected char generateType() {
