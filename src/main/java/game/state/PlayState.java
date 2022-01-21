@@ -21,7 +21,7 @@ public class PlayState implements State
         this.level = game.getLevel();
     }
 
-    public PlayState(Level level) throws IOException, URISyntaxException, FontFormatException {
+    public PlayState(Level level){
         this.level = level;
         game = new Game();
     } //used for tests purposes
@@ -29,6 +29,7 @@ public class PlayState implements State
     @Override
     public void show(GUI gui) {
         level.step(gui);
+        if(game.getLevel().getPlayer().getHealth() == 0) game.setState(new GameOverState(game));
         gui.drawGame(level);
     }
 

@@ -198,4 +198,10 @@ public class LanternaGUI implements GUI {
         tg.putString(new TerminalPosition(0, height-1),"AMMO :" + level.getPlayer().getUsingWeapon().getAmmo());
     }
 
+    @Override
+    public void drawGameOver()
+    {
+
+    }
+
 }

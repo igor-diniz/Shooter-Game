@@ -43,4 +43,6 @@ public interface GUI
     void drawInstructions();
 
     void drawGame(Level level);
+
+    void drawGameOver();
 }

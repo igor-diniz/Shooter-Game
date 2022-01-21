@@ -48,9 +48,9 @@ public class Game
         return level;
     }
 
-    public void run() throws IOException, InterruptedException {
+    public void run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         int frameTime = 1000 / this.frameRateInMillis;
-        while(!level.isGameOver())
+        while(true)
         {
 
             long startTime = System.currentTimeMillis();
@@ -63,9 +63,6 @@ public class Game
             long sleepTime = frameTime - elapsedTime;
             if (sleepTime > 0) Thread.sleep(sleepTime);
         }
-        state.show(gui);
-        if(level.getPlayer().getHealth() > 0) System.out.println("You won!");
-        else System.out.println("You lose!");
     }
 
     private void loadLevel1()
