@@ -6,9 +6,10 @@ public abstract class Weapon
     private int ammo;
     private final String name;
     private final char type;
-    private final char BulletChar;
+    private final char bulletChar;
 
     protected Weapon() {
+        this.bulletChar = generateBulletChar();
         this.damage = generateDamage();
         this.range = generateRange();
         this.ammo = getStartAmmo();
@@ -24,9 +25,10 @@ public abstract class Weapon
 
     protected abstract int generateDamage();
 
-    protected abstract char getBulletChar();
+    protected abstract char generateBulletChar();
 
-    public char getBulletChar(){ return character;};
+
+    public char getBulletChar(){ return bulletChar;}
 
     protected abstract int generateRange();
 

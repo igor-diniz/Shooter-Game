@@ -2,10 +2,15 @@ package game.weapons;
 
 
 public class RocketLauncher extends Weapon {
-    //private int xAoE; //AoE stands for Area of Effect
-    //private int yAoE;
 
-    public RocketLauncher() {}
+    public RocketLauncher() {
+        super();
+    }
+
+    @Override
+    protected char generateBulletChar() {
+        return 'm';
+    }
 
     @Override
     protected char generateType() {

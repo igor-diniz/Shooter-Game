@@ -1,6 +1,10 @@
 package game.weapons;
 
 public class EnemyWeapon1 extends Weapon {
+    public EnemyWeapon1() {
+        super(bulletChar);
+    }
+
     @Override
     protected char generateType() {
         return 0;

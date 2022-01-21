@@ -1,6 +1,15 @@
 package game.weapons;
 
 public class ScoutRifle extends Weapon {
+    public ScoutRifle() {
+        super();
+    }
+
+    @Override
+    protected char generateBulletChar() {
+        return 'b';
+    }
+
     @Override
     protected char generateType() {
         return 'S';
