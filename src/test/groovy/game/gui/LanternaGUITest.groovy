@@ -180,4 +180,12 @@ class LanternaGUITest extends Specification {
         8 * tg.putString(_,_,_)
     }
 
+    def 'Draw GameOver Test'()
+    {
+        when:
+        gui.drawGameOver()
+        then:
+        2 * tg.putString(_,_,_)
+    }
+
 }
