@@ -72,8 +72,7 @@ public abstract class Enemy extends MovingEntity {
     public Bullet shoot()
     {
         if(getTimer() != 0) return null;
-        if(weapon.shoot()) return new Bullet(getPosition(),weapon,getDirection(),false);
-        return null;
+        return weapon.shoot();
     }
 
     public Weapon getWeapon(){return weapon;}
