@@ -52,7 +52,6 @@ public class Game
         int frameTime = 1000 / this.frameRateInMillis;
         while(true)
         {
-
             long startTime = System.currentTimeMillis();
             gui.clear();
             state.show(gui);
