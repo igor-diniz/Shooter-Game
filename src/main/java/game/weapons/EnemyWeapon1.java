@@ -3,11 +3,6 @@ package game.weapons;
 public class EnemyWeapon1 extends Weapon {
 
     @Override
-    protected char generateBulletChar() {
-        return 'b';
-    }
-
-    @Override
     protected char generateType() {
         return 'p';
     }
@@ -30,6 +25,11 @@ public class EnemyWeapon1 extends Weapon {
     @Override
     protected int getStartAmmo() {
         return -1;
+    }
+
+    @Override
+    protected char generateBulletChar() {
+        return 'b';
     }
 
 }

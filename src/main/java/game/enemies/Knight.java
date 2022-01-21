@@ -20,13 +20,13 @@ public class Knight extends Enemy {
     protected int generateActionDelay() {return 35;}
 
     @Override
-    protected char generateCharacter() {
-        return 'k';
+    protected int generateHealth() {
+        return 100;
     }
 
     @Override
-    protected int generateHealth() {
-        return 100;
+    protected char generateCharacter() {
+        return 'k';
     }
 
     @Override
