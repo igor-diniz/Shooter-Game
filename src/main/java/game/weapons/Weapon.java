@@ -1,7 +1,4 @@
 package game.weapons;
-
-import game.entities.Bullet;
-
 public abstract class Weapon
 {
     private final int damage;
@@ -9,7 +6,6 @@ public abstract class Weapon
     private int ammo;
     private final String name;
     private final char type;
-    private final Bullet bullet;
 
     protected Weapon() {
         this.damage = generateDamage();
@@ -17,10 +13,7 @@ public abstract class Weapon
         this.ammo = getStartAmmo();
         this.name = generateName();
         this.type = generateType();
-        this.bullet = generateBullet();
     }
-
-    protected abstract Bullet generateBullet();
 
     public String getName() {return name;}
 
@@ -34,12 +27,12 @@ public abstract class Weapon
 
     protected abstract int getStartAmmo();
 
-    public Bullet shoot() {
+    public boolean shoot() {
         if(ammo != 0) {
             decreaseAmmo();
-            return bullet;
+            return true;
         }
-        return null;
+        return false;
     }
 
     public void decreaseAmmo()

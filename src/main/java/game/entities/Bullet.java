@@ -6,16 +6,13 @@ import game.weapons.Weapon;
 public class Bullet extends MovingEntity{
     private int range;
     private final int damage;
-    private boolean shotByPlayer = false;
-    public Bullet(Position position, Weapon weapon, char direction) {
+    private final boolean shotByPlayer;
+    public Bullet(Position position, Weapon weapon, char direction, boolean shotByPlayer) {
         super(position);
         this.setDirection(direction);
         damage = weapon.getDamage();
         range = weapon.getRange();
-    }
-
-    public void setShotByPlayer() {
-        shotByPlayer = true;
+        this.shotByPlayer = shotByPlayer;
     }
 
     @Override
