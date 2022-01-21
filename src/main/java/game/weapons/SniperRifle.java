@@ -1,9 +1,6 @@
 package game.weapons;
 
 public class SniperRifle extends Weapon {
-    public SniperRifle() {
-        super();
-    }
 
     @Override
     protected char generateBulletChar() {

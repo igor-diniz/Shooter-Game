@@ -1,9 +1,6 @@
 package game.weapons;
 
 public class AutoRifle extends Weapon {
-    public AutoRifle() {
-        super();
-    }
 
     @Override
     protected char generateBulletChar() {
@@ -11,13 +8,13 @@ public class AutoRifle extends Weapon {
     }
 
     @Override
-    protected char generateType() {
-        return 'P';
+    protected String generateName() {
+        return "AUTO RIFLE";
     }
 
     @Override
-    protected String generateName() {
-        return "AUTO RIFLE";
+    protected char generateType() {
+        return 'P';
     }
 
     @Override

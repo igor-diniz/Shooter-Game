@@ -3,10 +3,6 @@ package game.weapons;
 
 public class RocketLauncher extends Weapon {
 
-    public RocketLauncher() {
-        super();
-    }
-
     @Override
     protected char generateBulletChar() {
         return 'o';

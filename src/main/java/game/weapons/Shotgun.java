@@ -2,10 +2,6 @@ package game.weapons;
 
 public class Shotgun extends Weapon {
 
-    public Shotgun() {
-        super();
-    }
-
     @Override
     protected char generateBulletChar() {
         return 'i';

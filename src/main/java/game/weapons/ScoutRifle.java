@@ -1,13 +1,10 @@
 package game.weapons;
 
 public class ScoutRifle extends Weapon {
-    public ScoutRifle() {
-        super();
-    }
 
     @Override
-    protected char generateBulletChar() {
-        return 'b';
+    protected String generateName() {
+        return "SCOUT RIFLE";
     }
 
     @Override
@@ -16,8 +13,8 @@ public class ScoutRifle extends Weapon {
     }
 
     @Override
-    protected String generateName() {
-        return "SCOUT RIFLE";
+    protected char generateBulletChar() {
+        return 'b';
     }
 
     @Override

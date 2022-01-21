@@ -2,12 +2,6 @@ package game.weapons;
 
 public class HandCannon extends Weapon{
 
-
-    public HandCannon(){
-
-        super();
-    }
-
     @Override
     protected char generateBulletChar() {
         return 'b';
@@ -21,12 +15,6 @@ public class HandCannon extends Weapon{
     @Override
     protected String generateName() {
         return "HAND CANNON";
-    }
-
-    @Override
-    public void decreaseAmmo()
-    {
-
     }
 
     @Override

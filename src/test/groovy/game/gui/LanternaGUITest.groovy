@@ -108,7 +108,7 @@ class LanternaGUITest extends Specification {
         when:
         gui.drawMenu(game,selected,commandsList)
         then:
-        7 * tg.putString(_,_,_)
+        12 * tg.putString(_,_,_)
     }
 
     def 'Draw Inventory Test'()
@@ -168,7 +168,7 @@ class LanternaGUITest extends Specification {
         when:
         gui.drawInstructions()
         then:
-        8 * tg.putString(_,_,_)
+        9 * tg.putString(_,_,_)
     }
 
     def 'Draw GameOver Test'()
