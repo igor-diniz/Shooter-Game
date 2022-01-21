@@ -26,6 +26,6 @@ public class PlayCommand extends Command
 
     @Override
     public void undo() {
-        game.setState(oldState);
+
     }
 }

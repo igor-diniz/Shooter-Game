@@ -25,6 +25,6 @@ public class InstructionCommand extends Command{
 
     @Override
     public void undo() {
-        game.setState(oldState);
+
     }
 }
