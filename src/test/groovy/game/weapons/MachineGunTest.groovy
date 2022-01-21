@@ -14,7 +14,7 @@ class MachineGunTest extends Specification{
         MachineGun1.shoot()
         MachineGun1.shoot()
         then:
-        MachineGun.getAmmo() == 11
-        MachineGun1.getAmmo() == 10
+        MachineGun.getAmmo() == 24
+        MachineGun1.getAmmo() == 23
     }
 }

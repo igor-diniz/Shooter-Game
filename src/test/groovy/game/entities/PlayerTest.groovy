@@ -39,6 +39,7 @@ class PlayerTest extends Specification
     {
         player.setPrimaryWeapon(new Shotgun())
         int ammo = player.getUsingWeapon().getAmmo()
+        player1.setWeaponInUse(2)
         when:
         player.getUsingWeapon().shoot()
         Bullet bullet = player1.shoot()
@@ -66,7 +67,7 @@ class PlayerTest extends Specification
         then:
         player
         player.getHealing() == 59
-        player1.getHealing() == 0
+        player1.getHealing() == 1
     }
 
     def 'Player weapon changing test'()

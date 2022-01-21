@@ -32,6 +32,6 @@ public class Shotgun extends Weapon {
 
     @Override
     protected int getStartAmmo() {
-        return 5;
+        return 8;
     }
 }

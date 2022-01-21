@@ -34,6 +34,6 @@ public class RocketLauncher extends Weapon {
 
     @Override
     protected int getStartAmmo() {
-        return 1;
+        return 3;
     }
 }

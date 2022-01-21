@@ -12,7 +12,7 @@ public class ScoutRifle extends Weapon {
 
     @Override
     protected char generateType() {
-        return 'S';
+        return 'P';
     }
 
     @Override

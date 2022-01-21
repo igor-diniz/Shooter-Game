@@ -128,7 +128,7 @@ class LanternaGUITest extends Specification {
         when:
         gui.drawInventory(game,selected)
         then:
-        13 * tg.putString(_,_,_)
+        16 * tg.putString(_,_,_)
     }
 
     def 'Draw GameState Test'()
@@ -161,7 +161,7 @@ class LanternaGUITest extends Specification {
     def 'Draw Bullet Test'()
     {
         given:
-        Bullet bullet = new Bullet(position, new HandCannon(), 'N' as char, true, character)
+        Bullet bullet = new Bullet(position, new HandCannon(), 'N' as char, true, 'b'as char)
         when:
         gui.drawBullet(bullet)
         then:

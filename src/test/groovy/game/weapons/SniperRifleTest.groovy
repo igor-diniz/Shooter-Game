@@ -14,7 +14,7 @@ class SniperRifleTest extends Specification {
         Sniper1.shoot()
         Sniper1.shoot()
         then:
-        Sniper.getAmmo() == 5
-        Sniper1.getAmmo() == 4
+        Sniper.getAmmo() == 6
+        Sniper1.getAmmo() == 5
     }
 }

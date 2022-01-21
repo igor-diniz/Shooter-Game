@@ -33,7 +33,7 @@ class InventoryStateTest extends Specification
         inventoryState.nextOption()
         inventoryState.nextOption()
         then:
-        inventoryState.getSelected() == 3
+        inventoryState.getSelected() == 6
     }
 
     def 'Inventory Show Test'()

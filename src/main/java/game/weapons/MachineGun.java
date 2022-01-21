@@ -29,5 +29,5 @@ public class MachineGun extends Weapon{
     }
 
     @Override
-    protected int getStartAmmo() {return 12;}
+    protected int getStartAmmo() {return 25;}
 }

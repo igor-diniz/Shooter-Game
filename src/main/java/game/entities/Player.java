@@ -130,7 +130,7 @@ public class Player extends MovingEntity
     public void heal()
     {
         if (healing > 0){healing--;}
-        else {increaseHealth();}
+        else {increaseHealth();healing++;}
     }
 
     public int getHealing()

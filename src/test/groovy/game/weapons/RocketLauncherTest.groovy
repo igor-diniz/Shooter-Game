@@ -12,7 +12,7 @@ class RocketLauncherTest extends Specification{
         when:
         RocketLauncher1.shoot()
         then:
-        RocketLauncher.getAmmo() == 1
-        RocketLauncher1.getAmmo() == 0
+        RocketLauncher.getAmmo() == 3
+        RocketLauncher1.getAmmo() == 2
     }
 }

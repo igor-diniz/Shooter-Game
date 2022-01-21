@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 public class PlayState implements State
 {
     private final Game game;
-    private final Level level;
+    private Level level;
 
     public PlayState(Game game)
     {
@@ -28,9 +28,13 @@ public class PlayState implements State
     } //used for tests purposes
 
     @Override
-    public void show(GUI gui) {
+    public void show(GUI gui) throws FileNotFoundException {
         level.step(gui);
         if(game.getLevel().getPlayer().getHealth() == 0) game.setState(new GameOverState(game));
+        if(game.getLevel().isNextLevel()) {
+            game.loadLevelFromFile();
+            this.level = game.getLevel();
+        }
         gui.drawGame(level);
     }
 

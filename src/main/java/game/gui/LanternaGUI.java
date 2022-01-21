@@ -195,7 +195,8 @@ public class LanternaGUI implements GUI {
         tg.fillRectangle(new TerminalPosition(0, height-3),new TerminalSize(width,3),' ');
         tg.putString(new TerminalPosition(0, height-3),"HEALTH :" + level.getPlayer().getHealth());
         tg.putString(new TerminalPosition(0, height-2),"WEAPON :" + level.getPlayer().getUsingWeapon().getName());
-        tg.putString(new TerminalPosition(0, height-1),"AMMO :" + level.getPlayer().getUsingWeapon().getAmmo());
+        if(level.getPlayer().getUsingWeapon().getAmmo() >= 0){tg.putString(new TerminalPosition(0, height-1),"AMMO :" + level.getPlayer().getUsingWeapon().getAmmo());}
+        else {tg.putString(new TerminalPosition(0, height-1),"AMMO :" + "e");}
     }
 
     @Override

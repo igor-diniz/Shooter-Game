@@ -54,7 +54,7 @@ public class Game
 
     public void run() throws IOException, InterruptedException, URISyntaxException, FontFormatException {
         int frameTime = 1000 / this.frameRateInMillis;
-        while(true)
+        while(!level.isGameOver())
         {
             long startTime = System.currentTimeMillis();
             gui.clear();
@@ -68,11 +68,12 @@ public class Game
         }
     }
 
-    private void loadLevelFromFile() throws FileNotFoundException {
-        String theString = "";
+    public void loadLevelFromFile() throws FileNotFoundException {
+        String theString;
 
         levelCounter++;
-        File file = new File("src/main/resources/2_4.txt");
+        if(levelCounter == 6) System.exit(0);
+        File file = new File("src/main/resources/"+levelCounter+".txt");
         Scanner scanner = new Scanner(file);
 
         theString = scanner.nextLine();
@@ -89,75 +90,19 @@ public class Game
         for (int row = 0; row < level.getNumRows() - 3; row++) {
             for (int col = 0; col < level.getNumColumns(); col++) {
                 switch (charArray[col + row * level.getNumColumns()]) {
-                    case 'p':
-                        player = new Player(new Position(col, row));
-                        break;
-                    case '#':
-                        wallList.add(new Wall(new Position(col, row)));
-                        break;
-                    case 'a':
-                        enemyList.add(new Acolyte(new Position(col, row)));
-                        break;
-                    case 'c':
-                        enemyList.add(new Captain(new Position(col, row)));
-                        break;
-                    case 'd':
-                        enemyList.add(new Dreg(new Position(col, row)));
-                        break;
-                    case 'k':
-                        enemyList.add(new Knight(new Position(col, row)));
-                        break;
-                    case 't':
-                        enemyList.add(new Thrall(new Position(col, row)));
-                        break;
-                    case 'v':
-                        enemyList.add(new Vandal(new Position(col, row)));
-                        break;
+                    case 'p': player = new Player(new Position(col, row));break;
+                    case '#': wallList.add(new Wall(new Position(col, row)));break;
+                    case 'a': enemyList.add(new Acolyte(new Position(col, row)));break;
+                    case 'c': enemyList.add(new Captain(new Position(col, row)));break;
+                    case 'd': enemyList.add(new Dreg(new Position(col, row)));break;
+                    case 'k': enemyList.add(new Knight(new Position(col, row)));break;
+                    case 't': enemyList.add(new Thrall(new Position(col, row)));break;
+                    case 'v': enemyList.add(new Vandal(new Position(col, row)));break;
                 }
             }
         }
         level.generateEntities(player,enemyList,wallList);
     }
-
-    /*private void loadLevel1()
-    {
-        int HUDSize = 3;
-        level = new Level(24,50);
-        Player player = new Player(new Position(1,1));
-        Dreg dreg = new Dreg(new Position(8,8));
-        Dreg dreg2 = new Dreg(new Position(8,5));
-        Vandal vandal = new Vandal(new Position (8,2));
-        Captain captain = new Captain(new Position(10,5));
-        Thrall thrall = new Thrall(new Position(12,8));
-        Thrall thrall1 = new Thrall(new Position(15,9));
-        Acolyte acolyte = new Acolyte(new Position(14,6));
-        Knight knight = new Knight(new Position(13,8));
-        List<Enemy> enemyList = new ArrayList<Enemy>();
-        enemyList.add(vandal);
-        enemyList.add(dreg);
-        enemyList.add(dreg2);
-        enemyList.add(captain);
-        enemyList.add(thrall);
-        enemyList.add(thrall1);
-        enemyList.add(acolyte);
-        enemyList.add(knight);
-        List<Wall> wallList = new ArrayList<Wall>();
-        for(int i = 0; i < level.getNumRows()-HUDSize;i++)
-        {
-            wallList.add(new Wall(new Position(level.getNumColumns()-1,i)));
-            wallList.add (new Wall(new Position(0, i)));
-        }
-        for(int i = 0; i < level.getNumColumns(); i++)
-        {
-            wallList.add(new Wall(new Position(i,0)));
-            wallList.add(new Wall(new Position(i,level.getNumRows()-HUDSize-1)));
-        }
-        for(int i = 0; i < level.getNumRows()/2;i++)
-        {
-            wallList.add(new Wall(new Position(5,i)));
-        }
-        level.generateEntities(player,enemyList,wallList);
-    }*/
 
     public GUI getGUI() {
         return gui;

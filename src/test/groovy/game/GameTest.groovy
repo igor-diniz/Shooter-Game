@@ -36,7 +36,7 @@ class GameTest extends Specification
         game.run()
         then:
         1 * gui.clear();
-        2 * state.show(gui);
+        1 * state.show(gui);
         1 * gui.refresh();
         1 * gui.pollInput();
     }
