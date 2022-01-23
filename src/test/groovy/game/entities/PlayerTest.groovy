@@ -3,6 +3,7 @@ package game.entities
 import game.entities.Bullet
 import game.entities.Player
 import game.entities.Position
+import game.weapons.AutoRifle
 import game.weapons.HandCannon
 import game.weapons.RocketLauncher
 import game.weapons.Shotgun
@@ -22,6 +23,9 @@ class PlayerTest extends Specification
         color == "#000000"
         health == 150
         player.getPosition() == new Position(10,10)
+        player.getPrimaryWeapon().getName() == "HAND CANNON"
+        player.getHeavyWeapon().getName() == " "
+        player.getSpecialWeapon().getBulletChar() == 'b' as char
     }
     def 'Move Player'()
     {
@@ -37,15 +41,15 @@ class PlayerTest extends Specification
 
     def 'Player Shoot'()
     {
-        player.setPrimaryWeapon(new Shotgun())
         int ammo = player.getUsingWeapon().getAmmo()
         player1.setWeaponInUse(2)
         when:
-        player.getUsingWeapon().shoot()
+        player.getUsingWeapon().shoot() //this weapon bullets are infinite, so he should not lose bullets
         Bullet bullet = player1.shoot()
         then:
+        player.getUsingWeapon().getBulletChar() == 'b' as char
         bullet == null
-        player.getUsingWeapon().getAmmo() == ammo -1
+        player.getUsingWeapon().getAmmo() == ammo
     }
 
     def 'Player damaged'()
@@ -73,7 +77,7 @@ class PlayerTest extends Specification
     def 'Player weapon changing test'()
     {
         given:
-        player.equipWeapon(new HandCannon())
+        player.equipWeapon(new AutoRifle())
         player1.equipWeapon(new Shotgun())
         player2.equipWeapon(new RocketLauncher())
         Player player4 = new Player(new Position(10,10))
@@ -83,6 +87,8 @@ class PlayerTest extends Specification
         player2.setWeaponInUse(2)
         player4.setWeaponInUse(3)
         then:
+        player.getUsingWeapon().getAmmo() == -1
+        player.getUsingWeapon().getName() == "AUTO RIFLE"
         player.getUsingWeapon().getType() == 'P' as char
         player1.getUsingWeapon().getType() == 'S' as char
         player2.getUsingWeapon().getType() == 'H' as char

@@ -22,15 +22,18 @@ class DregTest extends Specification {
     }
 
     def 'Dreg Creation'() {
-        given:
-        Dreg enemy = new Dreg(new Position(3,3));
-
         when:
-        def health = enemy.getHealth()
+        Dreg enemy = new Dreg(new Position(3,3));
         Weapon weapon = enemy.getWeapon();
+
         then:
-        weapon instanceof EnemyWeapon1;
-        health == 40
+        enemy.getHealth() == 40
+        enemy.getCharacter() == 'd' as char
+        enemy.getColor() == "#1064ad"
+        weapon.getName() == "ENEMY WEAPON 1"
+        weapon.getBulletChar() == 'b'as char
+        weapon.getDamage() == 10
+        weapon.getRange() == 5
     }
 
     def 'Moving Dreg'() {
@@ -77,5 +80,6 @@ class DregTest extends Specification {
         then:
         enemy1.getRemainingTime() == 14
         enemy.getRemainingTime() == 11
+        enemy.getWeapon().getAmmo() == -1
     }
 }

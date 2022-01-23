@@ -54,8 +54,10 @@ class LevelTest extends Specification
         int row = level.getNumRows()
         int columns = level.getNumColumns()
         boolean gameOver = level.isGameOver()
+        boolean nextLevel = level.isNextLevel()
         then:
         !gameOver
+        !nextLevel
         row == 10
         columns == 10
     }

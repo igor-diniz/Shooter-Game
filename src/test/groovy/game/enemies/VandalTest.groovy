@@ -23,15 +23,18 @@ class VandalTest extends Specification {
     }
 
     def 'Vandal Creation'() {
-        given:
-        Vandal enemy = new Vandal(new Position(3,3));
-
         when:
-        def health = enemy.getHealth()
-        Weapon weapon = enemy.getWeapon();
+        Vandal enemy = new Vandal(new Position(3,3))
+        Weapon weapon = enemy.getWeapon()
         then:
-        weapon instanceof EnemyWeapon2;
-        health == 60
+        enemy.getHealth() == 60
+        enemy.getCharacter() == 'v' as char
+        enemy.getColor() == "#1064ad"
+        weapon.getName() == "ENEMY WEAPON 2"
+        weapon.getBulletChar() == 'b'as char
+        weapon.getDamage() == 15
+        weapon.getRange() == 8
+
     }
 
     def 'Moving Vandal'() {
@@ -78,5 +81,6 @@ class VandalTest extends Specification {
         then:
         enemy1.getRemainingTime() == 24
         enemy.getRemainingTime() == 21
+        enemy.getWeapon().getAmmo() == -1
     }
 }

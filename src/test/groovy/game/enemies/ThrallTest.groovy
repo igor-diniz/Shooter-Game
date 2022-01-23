@@ -23,15 +23,19 @@ class ThrallTest extends Specification{
     }
 
     def 'Thrall Creation'() {
-        given:
-        Thrall enemy = new Thrall(new Position(3,3));
-
         when:
-        def health = enemy.getHealth()
+        Thrall enemy = new Thrall(new Position(3,3))
         Weapon weapon = enemy.getWeapon();
+
         then:
-        weapon instanceof EnemyWeapon1;
-        health == 30
+        enemy.getHealth() == 30
+        enemy.getCharacter() == 't' as char
+        enemy.getColor() == "#f27935"
+        weapon.getName() == "ENEMY WEAPON 1"
+        weapon.getBulletChar() == 'b'as char
+        weapon.getDamage() == 10
+        weapon.getRange() == 5
+
     }
 
     def 'Moving Thrall'() {
@@ -78,5 +82,6 @@ class ThrallTest extends Specification{
         then:
         enemy1.getRemainingTime() == 14
         enemy.getRemainingTime() == 11
+        enemy.getWeapon().getAmmo() == -1
     }
 }

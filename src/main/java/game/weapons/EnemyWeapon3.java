@@ -14,7 +14,7 @@ public class EnemyWeapon3 extends Weapon {
 
     @Override
     protected String generateName() {
-        return null;
+        return "ENEMY WEAPON 3";
     }
 
     @Override

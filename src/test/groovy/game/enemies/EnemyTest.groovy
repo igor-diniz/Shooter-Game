@@ -37,22 +37,25 @@ class EnemyTest extends Specification {
 
     def 'Moving Enemy'() {
         given:
-        Dreg enemy1 = new Dreg(new Position(10,10));
-        Vandal enemy2 = new Vandal(new Position(7,8));
-        Captain enemy3 = new Captain(new Position(7,7))
-        enemy1.setMoveStrategy(new TrackStrategy())
+        Player player2 = new Player(new Position(18,18))
+        Acolyte acolyte = new Acolyte(new Position(15,15))
+        Vandal vandal = new Vandal(new Position(7,8));
+        Captain captain = new Captain(new Position(7,7))
+        Thrall thrall = new Thrall(new Position(10,10))
+        Level mockedLevel = Mock(Level.class)
         when:
         for(int i = 0; i < 90; i++) {
-            enemy1.move(level, player)
-            enemy2.move(level, player)
-            enemy2.move(level, player)
-            enemy3.move(level, player)
+            vandal.move(level, player)
+            captain.move(level, player)
+            acolyte.move(level,player2)
+            thrall.move(mockedLevel,player2) //his test is different cause his move is random
         }
         then:
-        level.getCharacterAt(10,10) != 'd'
-        enemy1.getPosition() == new Position(7,7)
-        enemy2.getPosition() == new Position(7,6)
-        enemy3.getPosition() == new Position(6,5)
+        vandal.getPosition() == new Position(7,6)
+        captain.getPosition() == new Position(6,5)
+        acolyte.getPosition() == new Position(17,17)
+        thrall.getRemainingTime() == 6
+        6 * mockedLevel.isValidMove(_)
     }
 
     def 'Get Damaged'()

@@ -1,5 +1,6 @@
 package game.enemies;
 
+import game.enemies.strategy.TrackStrategy;
 import game.entities.Position;
 import game.enemies.strategy.BlindStrategy;
 import game.enemies.strategy.MoveStrategy;
@@ -13,7 +14,7 @@ public class Acolyte extends Enemy {
 
     @Override
     protected MoveStrategy generateMoveStrategy() {
-        return new BlindStrategy();
+        return new TrackStrategy();
     }
 
     @Override

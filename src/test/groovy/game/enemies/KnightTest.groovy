@@ -23,15 +23,18 @@ class KnightTest extends Specification {
     }
 
     def 'Knight Creation'() {
-        given:
-        Knight enemy = new Knight(new Position(3,3));
-
         when:
-        def health = enemy.getHealth()
+        Knight enemy = new Knight(new Position(3,3));
         Weapon weapon = enemy.getWeapon();
+
         then:
-        weapon instanceof EnemyWeapon3;
-        health == 100
+        enemy.getHealth() == 100
+        enemy.getCharacter() == 'k' as char
+        enemy.getColor() == "#f27935"
+        weapon.getName() == "ENEMY WEAPON 3"
+        weapon.getBulletChar() == 'l'as char
+        weapon.getDamage() == 20
+        weapon.getRange() == 10
     }
 
     def 'Moving Knight'() {
@@ -78,5 +81,6 @@ class KnightTest extends Specification {
         then:
         enemy1.getRemainingTime() == 34
         enemy.getRemainingTime() == 31
+        enemy.getWeapon().getAmmo() == -1
     }
 }

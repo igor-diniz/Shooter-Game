@@ -7,14 +7,24 @@ class SniperRifleTest extends Specification {
     def 'Sniper Test'()
     {
         given:
-        SniperRifle Sniper = new SniperRifle()
-        SniperRifle Sniper1 = new SniperRifle()
+        SniperRifle sniper = new SniperRifle()
+        SniperRifle sniper1 = new SniperRifle()
         when:
-        Sniper.shoot()
-        Sniper1.shoot()
-        Sniper1.shoot()
+        char bulletChar = sniper.getBulletChar()
+        char type  = sniper.getType()
+        String name = sniper.getName()
+        int damage = sniper.getDamage()
+        int range = sniper.getRange()
+        sniper.shoot()
+        sniper1.shoot()
+        sniper1.shoot()
         then:
-        Sniper.getAmmo() == 6
-        Sniper1.getAmmo() == 5
+        sniper.getAmmo() == 6
+        sniper1.getAmmo() == 5
+        bulletChar == 'b' as char
+        type == 'S' as char
+        name == "SNIPER RIFLE"
+        damage == 80
+        range == 10
     }
 }
