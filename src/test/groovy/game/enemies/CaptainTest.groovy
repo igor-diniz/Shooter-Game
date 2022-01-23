@@ -29,7 +29,6 @@ class CaptainTest extends Specification{
 
         then:
         enemy.getHealth() == 100
-        enemy.getHealth() == 60
         enemy.getCharacter() == 'c' as char
         enemy.getColor() == "#1064ad"
         weapon.getName() == "ENEMY WEAPON 3"
