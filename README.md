@@ -99,7 +99,7 @@ The following screenshots illustrate the general look of our game, as well as th
 
 ![](docs/images/screenshots/level5.jpeg)
 <p>
-  <b><i>Fig 8. Level 3 </i></b>
+  <b><i>Fig 9. Level 5 </i></b>
 </p>
 
 <br>
@@ -119,5 +119,5 @@ The following screenshots illustrate the general look of our game, as well as th
 
 ![](docs/images/screenshots/youLose.png)
 <p>
-  <b><i>Fig 9. Lost message</i></b>
+  <b><i>Fig 10. Lost message</i></b>
 </p>
