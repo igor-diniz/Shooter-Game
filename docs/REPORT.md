@@ -13,11 +13,14 @@ This project was developed by Eduardo da Silva (up202004999@fe.up.pt), Ian Gomes
 - **Keyboard control** - The keyboard inputs are received through the respective events and interpreted according to the current game state.
 - **Player control** - The player may move with the keyboard control (keys - a,w,s,d) and shoot his gun when the space-bar is pressed.
 - **Animations** - In this game, damage caused by the player or by the enemies is seen in animated forms.
-<!-- - **Connected Menus** - The user has the capability of browsing through the different menus including in game ones. (Ex: Main Menu, Instructions, Play, Pause).-->
-<!-- - **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Obstacles).-->
-<!-- - **Different levels** - 8 different levels with an increasing difficulty were implemented.-->
-<!-- - **Different weapons** - 3 different types of weapons.-->
-<!-- - #**Different enemies** - 6 different types of monsters with distinct speed, health and damage.-->
+- **Connected Menus** - The user has the capability of browsing through the different menus including in game ones. (Ex: Main Menu, Instructions, Play, Pause).
+- **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Obstacles).
+- **Different levels** - 8 different levels with an increasing difficulty were implemented.
+- **Different weapons** - 3 different types of weapons and 7 weapons (3 primaries, 2 specials and 2 heavies).
+- **Different enemies** - 6 different types of monsters with distinct speed, health and damage.
+
+### Planned Features
+All planned features were implemented.
 
 ###  **Overview**
 
@@ -35,14 +38,6 @@ This project was developed by Eduardo da Silva (up202004999@fe.up.pt), Ian Gomes
 
 <br>
 <br />
-
-### Planned Features
-
-- **Different enemies** - 6 different types of monsters with distinct speed, health and damage. Three enemies have been implemented so far.
-- **Different weapons** - 3 different types of weapons, with different types of bullets.
-- **Collisions detection** - Collisions between different objects should be verified. (Ex: Player, Bullet, Enemies, Obstacles). This feature is almost done, but there are some bugs yet.
-- **Different levels** - 8 different levels with an increasing difficulty were implemented.
-- **Connected Menus** - The user will have the capability of browsing through the different menus including in game ones. (Ex: Main Menu, Instructions, Play, Pause).
 
 ###  **GUI Mockups**
 ### Menus
@@ -62,9 +57,9 @@ This project was developed by Eduardo da Silva (up202004999@fe.up.pt), Ian Gomes
 <br>
 <br />
 
-![](images/screenshots/pauseMenu.png)
+![](images/screenshots/inventoryMenu.png)
 <p>
-  <b><i>Fig 3. Pause Menu </i></b>
+  <b><i>Fig 3. Inventory Menu </i></b>
 </p>  
 
 
@@ -118,7 +113,7 @@ The following figure shows how the pattern’s roles were mapped to the applicat
 
 These classes can be found in the following files:
 
-- [Entity](../src/main/java/game/Entity.java)
+- [Entity](../src/main/java/game/entities/Entity.java)
 - [Enemy](../src/main/java/game/enemies/Enemy.java)
 - [Captain](../src/main/java/game/enemies/Captain.java)
 - [Dreg](../src/main/java/game/enemies/Dreg.java)
@@ -160,9 +155,40 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 </br>
 <p></p>
 
+![](images/screenshots/CoverageReport/game.enemies.strategy.png)
+<br>
+<b><i>Fig 11. Game.enemies.strategy Code coverage screenshot</i></b>
+</br>
+<p></p>
+
+![](images/screenshots/CoverageReport/game.entities.png)
+<br>
+<b><i>Fig 12. Game.entities Code coverage screenshot</i></b>
+</br>
+<p></p>
+
+![](images/screenshots/CoverageReport/game.gui.png)
+<br>
+<b><i>Fig 13. Game.gui Code coverage screenshot</i></b>
+</br>
+<p></p>
+
+![](images/screenshots/CoverageReport/game.state.command.png)
+<br>
+<b><i>Fig 14. Game.state.command Code coverage screenshot</i></b>
+</br>
+<p></p>
+
+![](images/screenshots/CoverageReport/game.state.png)
+<br>
+<b><i>Fig 15. Game.state Code coverage screenshot</i></b>
+</br>
+<p></p>
+
+
 ![](images/screenshots/CoverageReport/game.weapons.png)
 <br>
-<b><i>Fig 11. Game.weapons Code coverage screenshot</i></b>
+<b><i>Fig 16. Game.weapons Code coverage screenshot</i></b>
 </br>
 <p></p>
 
@@ -170,7 +196,7 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 
 ### Link to mutation testing report
-[Mutation tests](../build/reports/pitest/202105302045/index.html)
+[Mutation tests](../build/reports/pitest/202201282235/index.html)
 
 ### Self-evaluation
 
