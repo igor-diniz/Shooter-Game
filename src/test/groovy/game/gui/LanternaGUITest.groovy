@@ -173,10 +173,13 @@ class LanternaGUITest extends Specification {
 
     def 'Draw GameOver Test'()
     {
+        given:
+        Integer i = gui.getHeight()
         when:
         gui.drawGameOver()
         then:
-        2 * tg.putString(_,_,_)
+        1 * tg.putString(_, (i/3).toInteger(), "YOU LOSE")
+        1 * tg.putString(_, _, "->EXIT")
     }
 
 }
