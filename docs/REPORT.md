@@ -91,16 +91,16 @@ All planned features were implemented.
 
 ### Design
 
-### Creating new Enemies
+### Creating new Enemies and new Weapons
 
 
 **Problem in Context**
 
-As new types of enemies were created, it was necessary to make big changes in the main code of the game, in order to change the behavior of the game according to the enemy that had been created. Thus, many conditionals were needed to effect this behavior change.
+As new types of enemies and of weapons were created, it was necessary to make big changes in the main code of the game, in order to change the behavior of the game according to the enemy and weapon that had been created. Thus, many conditionals were needed to effect this behavior change.
 
 **The Pattern**
 
-The factory method pattern was used to replace direct entity construction methods with calls to an enemy factory. This pattern allowed to solve the problem, since it was possible to create enemies without significantly changing the code, through the abstract method generateCharacter.
+The factory method pattern was used to replace direct entity construction methods with calls to an enemy factory. This pattern allowed to solve the problem, since it was possible to create enemies and weapons without significantly changing the code, through the abstract method generateCharacter.
 
 **Implementation**
 
@@ -123,7 +123,7 @@ These classes can be found in the following files:
 
 The use of the Factory Method Pattern in the current design allows the following benefits:
 
-- It's very easy to add new enemies to the game without having to make changes to the main code.
+- It's very easy to add new enemies and new weapons to the game without having to make changes to the main code.
 - Removes the need to recreate the same code every time a new enemy is created.
 
 
