@@ -7,15 +7,14 @@ The game consists of one player and different monsters, which depend on differen
 
 ### Features
 
-- **Connected Menus** - The user has the capability of browsing through the different menus including in game ones. (Ex: Main Menu, Instructions, Play, Pause).
+- **Connected Menus** - The user has the capability of browsing through the different menus including in game ones. (Ex: Main Menu, Instructions, Play, Inventory).
 - **Buttons** - Functional and interactive buttons.
 - **Keyboard control** - The keyboard inputs are received through the respective events and interpreted according to the current game state.
-- **Player control** - The player may move with the keyboard control (keys - a,w,s,d) and shoot his gun when the space-bar is pressed.
-- **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Obstacles).
-- **Different levels** - 8 different levels with an increasing difficulty were implemented.
-- **Different weapons** - The player will be able to earn and collect 3 weapons from different types, classes and rarity.
+- **Player control** - The player may move with the keyboard control (keys - a,w,s,d) and shoot his gun when the 'e' is pressed.
+- **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Walls).
+- **Different levels** - 5 different levels with an increasing difficulty were implemented.
+- **Different weapons** - The player is able to earn and collect 3 weapons from different types, classes and rarity.
 - **Different enemies** - 6 different types of enemies with distinct speed, health and damage.
-- **Hub** - There is a hub called Tower, where the player can interact with different npcs and proceed the history, as well as replay the missions if they want to.
 - **Animations** - In this game, damage caused by the player or by the enemies is seen in animated forms.
 
 ### Mockups
@@ -47,9 +46,9 @@ The following screenshots illustrate the general look of our game, as well as th
 <br>
 <br />
 
-![](docs/images/screenshots/pauseMenu.png)
+![](docs/images/screenshots/inventoryMenu.png)
 <p>
-  <b><i>Fig 3. Pause Menu </i></b>
+  <b><i>Fig 3. Inventory Menu </i></b>
 </p>  
 
 <br>
@@ -82,9 +81,17 @@ The following screenshots illustrate the general look of our game, as well as th
 <br />
 
 ### Levels
-![](docs/images/screenshots/level1.png)
+![](docs/images/screenshots/level1.jpeg)
 <p>
   <b><i>Fig 7. Level 1 </i></b>
+</p>
+
+<br>
+<br />
+
+![](docs/images/screenshots/level3.jpeg)
+<p>
+  <b><i>Fig 8. Level 3 </i></b>
 </p>
 
 <br>
@@ -101,14 +108,6 @@ The following screenshots illustrate the general look of our game, as well as th
 
 
 ### End Game
-
-![](docs/images/screenshots/youWon.png)
-<p>
-  <b><i>Fig 8. Won message</i></b>
-</p>
-
-<br>
-<br />
 
 ![](docs/images/screenshots/youLose.png)
 <p>
