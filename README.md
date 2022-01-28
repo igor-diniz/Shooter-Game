@@ -97,6 +97,14 @@ The following screenshots illustrate the general look of our game, as well as th
 <br>
 <br />
 
+![](docs/images/screenshots/level5.jpeg)
+<p>
+  <b><i>Fig 8. Level 3 </i></b>
+</p>
+
+<br>
+<br />
+
 ### Animations
 ![](docs/gifs/damageAnimation.gif)
 <p>
