@@ -91,7 +91,7 @@ All planned features were implemented.
 
 ### Design
 
-#### Creating new Enemies
+### Creating new Enemies
 
 
 **Problem in Context**
@@ -127,7 +127,48 @@ The use of the Factory Method Pattern in the current design allows the following
 - Removes the need to recreate the same code every time a new enemy is created.
 
 
-### Know Code Smells and Refactoring suggestions
+
+
+### Changing game state
+
+**Problem in Context**
+
+As the number of states of our game increased, the need to
+organize this different states and how they change to it other increased as well.
+
+**The Pattern**
+
+To solve this problem we used the State Pattern which is a behavioral design pattern that lets an object alter its behavior when its internal state changes.
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+<br></br>
+![](images/UML/statePattern.png)
+<br>
+<b><i>Fig 7. Factory Method implementation</i></b>
+</br>
+
+These classes can be found in the following files:
+
+- [Game](../src/main/java/game/Game.java)
+- [State](../src/main/java/game/state/State.java)
+- [GameOverState](../src/main/java/game/state/GameOverState.java)
+- [InventoryState](../src/main/java/game/state/InventoryState.java)
+- [InstructionState](../src/main/java/game/state/InstructionState.java)
+- [MenuState](../src/main/java/game/state/MenuState.java)
+- [PlayState](../src/main/java/game/state/PlayState.java)
+
+**Consequences**
+
+The use of the State Pattern in the current design allows the following benefits:
+- The several states of the game become explicit in the code, instead of relying on a series of flags.
+- Easy to add new states to the game during the development
+- A well organized code acknowledging the Single Responsibility Principle.
+
+
+
+### Known Code Smells and Refactoring suggestions
 #### Code Smell 1
 The `PlatformSegment` class is a **Data Class**, as it contains only fields, and no behavior. This is problematic because […].
 
@@ -200,7 +241,7 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 ### Self-evaluation
 
-The work was divided in a mutual way and we all contributed with our best. It helped us to enrich our java and principle/pattern knwoledge, as well as our team work.
+The work was divided in a mutual way, and we all contributed with our best. It helped us to enrich our java and principle/pattern knowledge, as well as our team work.
 
 - Eduardo da Silva: 33.3%
 - Ian Gomes: 33.3%
