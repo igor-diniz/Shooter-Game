@@ -196,7 +196,7 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 
 ### Link to mutation testing report
-[Mutation tests](../build/reports/pitest/202201282235/index.html)
+[Mutation tests](../docs/pitestReport/pitest/202201282235/index.html)
 
 ### Self-evaluation
 
