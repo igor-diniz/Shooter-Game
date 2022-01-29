@@ -204,6 +204,41 @@ These classes can be found in the following files:
 
 
 
+### Menu Bottoms
+
+**Problem in Context**
+
+When we were creating the menus for the game, we saw that each buttom had its way of executing a task, and since we thought many other buttoms would show up with the more menus we added, the need to refactor the way we were doing this increased.
+
+**The Pattern**
+
+We have applied the Command Pattern. This pattern turns a request into a stand-alone object that contains all information about the request.
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+<br></br>
+![](images/UML/commandPattern.png)
+<br>
+<b><i>Fig 10. Command Pattern implementation</i></b>
+</br>
+
+These classes can be found in the following files:
+
+- [Command](../src/main/java/game/state/command/Command.java)
+- [ExitCommand](../src/main/java/game/state/command/ExitCommand.java)
+- [InstructionCommand](../src/main/java/game/state/command/InstructionCommand.java)
+- [PlayCommand](../src/main/java/game/state/command/PlayCommand.java)
+
+**Consequences**
+
+- We can decouple classes that invoke operations from classes that perform these operations (SRP).
+- We can implement undo/redo.
+- We can assemble a set of simple commands into a complex one.
+- The code may become more complicated since you’re introducing a whole new layer between senders and receivers.
+
+
+
 
 
 ### Known Code Smells and Refactoring suggestions
