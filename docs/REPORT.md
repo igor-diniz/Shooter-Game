@@ -11,11 +11,11 @@ This project was developed by Eduardo da Silva (up202004999@fe.up.pt), Ian Gomes
 
 - **Buttons** - Functional and interactive buttons.
 - **Keyboard control** - The keyboard inputs are received through the respective events and interpreted according to the current game state.
-- **Player control** - The player may move with the keyboard control (keys - a,w,s,d) and shoot his gun when the space-bar is pressed.
+- **Player control** - The player may move with the keyboard control (keys - a,w,s,d) and shoot his gun when the 'e' is pressed.
 - **Animations** - In this game, damage caused by the player or by the enemies is seen in animated forms.
 - **Connected Menus** - The user has the capability of browsing through the different menus including in game ones. (Ex: Main Menu, Instructions, Play, Pause).
 - **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Obstacles).
-- **Different levels** - 8 different levels with an increasing difficulty were implemented.
+- **Different levels** - 5 different levels with an increasing difficulty were implemented.
 - **Different weapons** - 3 different types of weapons and 7 weapons (3 primaries, 2 specials and 2 heavies).
 - **Different enemies** - 6 different types of monsters with distinct speed, health and damage.
 
@@ -91,6 +91,10 @@ All planned features were implemented.
 
 ### Design
 
+### UML Diagrams
+
+![](images/UML/umlDiagrams.png)
+
 ### Creating new Enemies and new Weapons
 
 
@@ -123,8 +127,8 @@ These classes can be found in the following files:
 
 The use of the Factory Method Pattern in the current design allows the following benefits:
 
-- It's very easy to add new enemies and new weapons to the game without having to make changes to the main code.
-- Removes the need to recreate the same code every time a new enemy is created.
+- It's very easy to add new enemies and new weapons to the game without having to make changes to the main code;
+- Removes the need to recreate the same code every time a new enemy is created;
 
 
 
@@ -162,9 +166,9 @@ These classes can be found in the following files:
 **Consequences**
 
 The use of the State Pattern in the current design allows the following benefits:
-- The several states of the game become explicit in the code, instead of relying on a series of flags.
-- Easy to add new states to the game during the development
-- A well organized code acknowledging the Single Responsibility Principle.
+- The several states of the game become explicit in the code, instead of relying on a series of flags;
+- Easy to add new states to the game during the development;
+- A well organized code acknowledging the Single Responsibility Principle;
 
 
 
@@ -198,10 +202,9 @@ These classes can be found in the following files:
 
 **Consequences**
 
-- We are able to change the movement strategy of enemies during the game.
-- We can add strategis without having to change the main code, what is in order with the Open/Closed Principle
-- The code of the strategis is isolated from the code that uses it.
-
+- We are able to change the movement strategy of enemies during the game;
+- We can add strategis without having to change the main code, what is in order with the Open/Closed Principal;
+- The code of the strategis is isolated from the code that uses it;
 
 
 ### Menu Bottoms
@@ -232,20 +235,126 @@ These classes can be found in the following files:
 
 **Consequences**
 
-- We can decouple classes that invoke operations from classes that perform these operations (SRP).
-- We can implement undo/redo.
-- We can assemble a set of simple commands into a complex one.
-- The code may become more complicated since you’re introducing a whole new layer between senders and receivers.
+- We can decouple classes that invoke operations from classes that perform these operations (SRP);
+- We can implement undo/redo;
+- We can assemble a set of simple commands into a complex one;
+- The code may become more complicated since you’re introducing a whole new layer between senders and receivers;
 
 
 
 
+### Lanterna GUI
+
+**Problem in Context**
+
+It was getting hard to keep track of everything related to lanterna and all its features spread across all the code.
+
+**The Pattern**
+
+To solve this, we used the Facade Pattern, which is a structural pattern that provides a simplified interface to, in this case, lanterna
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+<br></br>
+![](images/UML/facadePattern.png)
+<br>
+<b><i>Fig 11. Facade Pattern implementation</i></b>
+</br>
+
+These classes can be found in the following files:
+
+- [GUI](../src/main/java/game/gui/GUI.java)
+- [LanternaGUI](../src/main/java/game/gui/LanternaGUI.java)
+
+**Consequences**
+
+- The code related to the Lanterna was isolated from the main code of the game;
+- Testing for the tool has been made easier;
+- Keep track of everything we are using from the framework was facilitated;
+
+
+
+
+### Null Weapon
+
+**Problem in Context**
+
+Since the player can have no weapons equiped, in many places we had the need to check if the player's weapon was null.
+
+**The Pattern**
+
+The Null Object Pattern is a pattern used to avoid all this null checking and giving a default behaviour in case no real object is given.
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+<br></br>
+![](images/UML/nullPattern.png)
+<br>
+<b><i>Fig 12. Null Pattern implementation</i></b>
+</br>
+
+These classes can be found in the following files:
+
+- [Weapon](../src/main/java/game/weapons/Weapon.java)
+- [NullWeapon](../src/main/java/game/weapons/NullWeapon.java)
+- [HandCannon](../src/main/java/game/weapons/HandCannon.java)
+- [MachineGun](../src/main/java/game/weapons/MachineGun.java)
+- [RocketLauncher](../src/main/java/game/weapons/RocketLauncher.java)
+- [ScoutRifle](../src/main/java/game/weapons/ScoutRifle.java)
+- [ShotGun](../src/main/java/game/weapons/ShotGun.java)
+- [SniperRifle](../src/main/java/game/weapons/SniperRifle.java)
+- [AutoRifle](../src/main/java/game/weapons/AutoRifle.java)
+
+
+**Consequences**
+
+- We were able to avoid several "isNull" tests in the code;
+- It is easier to interact with the player's weapon;
+- There is now a default behaviour for player when he is not holding a true weapon;
+
+### Better Code Hub
+- **Automate Tests** is failing because the software cant calculate assert density while we are using Spock to make our tests;
+- **Couple Architecture Components Loosely** started to fail when we organized our project in different folders, this also happens when using MVC pattern;
+- **Separate Concerns in Modules** is a problem we could not solve, because the biggest problems in it are
+the classes Position, Entity and MovingEntity. The Last two are basically a group of classes, so it is normal to be called a lot. Position is called for every Entity in the game
+and that is ok because we do not believe position is a class that would change in future releases;
 
 ### Known Code Smells and Refactoring suggestions
-#### Code Smell 1
-The `PlatformSegment` class is a **Data Class**, as it contains only fields, and no behavior. This is problematic because […].
 
-A way to improve the code would be to move the `isPlatformSegmentSolid()` method to the `PlatformSegment` class, as this logic is purely concerned with the `PlatformSegment` class.
+### Switch Statements
+<br></br>
+![](images/codeSmells/extractMethod1.jpeg)
+<br>
+<b><i>Fig 13. Code Smell 1</i></b>
+</br>
+
+**Problem:** This is problematic because we are creating many ways to be followed by the code.
+
+**Solution:** Extract Method
+
+<br></br>
+![](images/codeSmells/extractMethod2.jpeg)
+<br>
+<b><i>Fig 14. Code Smell 2</i></b>
+</br>
+
+**Problem:** This is problematic because we are creating many ways to be followed by the code.
+
+**Solution:** Extract Method
+
+<br></br>
+![](images/codeSmells/moveMethod.jpeg)
+<br>
+<b><i>Fig 15. Code Smell 3</i></b>
+</br>
+
+**Problem:** This is problematic because we are creating many ways to be followed by the code.
+
+**Solution:** Extract Method and Move Method
+
+
 
 ### Testing
 
@@ -253,56 +362,56 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 ![](images/screenshots/CoverageReport/general.png)
 <br>
-  <b><i>Fig 8. General Code coverage screenshot</i></b>
+  <b><i>Fig 16. General Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 ![](images/screenshots/CoverageReport/game.png)
 <br>
-<b><i>Fig 9. Game Code coverage screenshot</i></b>
+<b><i>Fig 17. Game Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 ![](images/screenshots/CoverageReport/game.enemies.png)
 <br>
-<b><i>Fig 10. Game.enemies Code coverage screenshot</i></b>
+<b><i>Fig 18. Game.enemies Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 ![](images/screenshots/CoverageReport/game.enemies.strategy.png)
 <br>
-<b><i>Fig 11. Game.enemies.strategy Code coverage screenshot</i></b>
+<b><i>Fig 19. Game.enemies.strategy Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 ![](images/screenshots/CoverageReport/game.entities.png)
 <br>
-<b><i>Fig 12. Game.entities Code coverage screenshot</i></b>
+<b><i>Fig 20. Game.entities Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 ![](images/screenshots/CoverageReport/game.gui.png)
 <br>
-<b><i>Fig 13. Game.gui Code coverage screenshot</i></b>
+<b><i>Fig 21. Game.gui Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 ![](images/screenshots/CoverageReport/game.state.command.png)
 <br>
-<b><i>Fig 14. Game.state.command Code coverage screenshot</i></b>
+<b><i>Fig 22. Game.state.command Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 ![](images/screenshots/CoverageReport/game.state.png)
 <br>
-<b><i>Fig 15. Game.state Code coverage screenshot</i></b>
+<b><i>Fig 23. Game.state Code coverage screenshot</i></b>
 </br>
 <p></p>
 
 
 ![](images/screenshots/CoverageReport/game.weapons.png)
 <br>
-<b><i>Fig 16. Game.weapons Code coverage screenshot</i></b>
+<b><i>Fig 24. Game.weapons Code coverage screenshot</i></b>
 </br>
 <p></p>
 
