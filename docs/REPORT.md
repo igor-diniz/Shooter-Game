@@ -146,7 +146,7 @@ The following figure shows how the pattern’s roles were mapped to the applicat
 <br></br>
 ![](images/UML/statePattern.png)
 <br>
-<b><i>Fig 7. Factory Method implementation</i></b>
+<b><i>Fig 8. State Pattern implementation</i></b>
 </br>
 
 These classes can be found in the following files:
@@ -165,6 +165,44 @@ The use of the State Pattern in the current design allows the following benefits
 - The several states of the game become explicit in the code, instead of relying on a series of flags.
 - Easy to add new states to the game during the development
 - A well organized code acknowledging the Single Responsibility Principle.
+
+
+
+
+### Moving Enemies
+
+**Problem in Context**
+
+We wanted to make enemies move in different ways and be able to change the way they move at runtime
+
+**The Pattern**
+
+To solve this problem we used the Strategy Pattern, which is a behavioral pattern that lets we define a family of algorithms put each of them into a separate class, and make their objects interchangeable.
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+<br></br>
+![](images/UML/strategyPattern.png)
+<br>
+<b><i>Fig 9. Strategy Pattern implementation</i></b>
+</br>
+
+These classes can be found in the following files:
+
+- [Enemy](../src/main/java/game/enemies/Enemy.java)
+- [MoveStrategy](../src/main/java/game/enemies/strategy/MoveStrategy.java)
+- [BlindStrategy](../src/main/java/game/enemies/strategy/BlindStrategy.java)
+- [GetInRangeStrategy](../src/main/java/game/enemies/strategy/GetInRangeStrategy.java)
+- [TrackStrategy](../src/main/java/game/enemies/strategy/TrackStrategy.java)
+
+**Consequences**
+
+- We are able to change the movement strategy of enemies during the game.
+- We can add strategis without having to change the main code, what is in order with the Open/Closed Principle
+- The code of the strategis is isolated from the code that uses it.
+
+
 
 
 
