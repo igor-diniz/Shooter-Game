@@ -13,7 +13,7 @@ The game consists of one player and different monsters, which depend on differen
 - **Player control** - The player may move with the keyboard control (keys - a,w,s,d) and shoot his gun when the 'e' is pressed.
 - **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Walls).
 - **Different levels** - 5 different levels with an increasing difficulty were implemented.
-- **Different weapons** - The player is able to earn and collect 3 weapons from different types, classes and rarity.
+- **Different weapons** - Different weapons - 3 different types of weapons and 7 weapons (3 primaries, 2 specials and 2 heavies).
 - **Different enemies** - 6 different types of enemies with distinct speed, health and damage.
 - **Animations** - In this game, damage caused by the player or by the enemies is seen in animated forms.
 

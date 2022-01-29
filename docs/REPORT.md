@@ -14,7 +14,7 @@ This project was developed by Eduardo da Silva (up202004999@fe.up.pt), Ian Gomes
 - **Player control** - The player may move with the keyboard control (keys - a,w,s,d) and shoot his gun when the 'e' is pressed.
 - **Animations** - In this game, damage caused by the player or by the enemies is seen in animated forms.
 - **Connected Menus** - The user has the capability of browsing through the different menus including in game ones. (Ex: Main Menu, Instructions, Play, Pause).
-- **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Obstacles).
+- **Collisions detection** - Collisions between different objects are verified. (Ex: Player, Bullet, Enemies, Walls).
 - **Different levels** - 5 different levels with an increasing difficulty were implemented.
 - **Different weapons** - 3 different types of weapons and 7 weapons (3 primaries, 2 specials and 2 heavies).
 - **Different enemies** - 6 different types of monsters with distinct speed, health and damage.
