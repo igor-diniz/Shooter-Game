@@ -1,5 +1,12 @@
 ## LDTS_T10_G1002 - FATE
 
+### Final grade: 18.5
+
+### Developers:
+- Eduardo Duarte
+- Ian Ítalo
+- Igor Diniz
+
 ### Game Description
 
 This project consists in a 2D looter shooter game, where the inspirations are Destiny and Pokemon.
