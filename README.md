@@ -9,8 +9,7 @@
 
 ### Game Description
 
-This project consists in a 2D looter shooter game, where the inspirations are Destiny and Pokemon.
-The game consists of one player and different monsters, which depend on different levels. The player has 3 types of weapons with their own characteristics, which are used to kill monsters and get to the next level. Monsters can also shoot the player, and depending on which one it is, it may have more health and deal more damage than others.
+This project consists in a 2D looter shooter game, which consists of one player and different monsters depending on different levels. The player has 3 types of weapons with their own characteristics, which are used to kill monsters and get to the next level. Monsters can also shoot the player, and depending on which one it is, it may have more health and deal more damage than others. This project was made in the Design Patterns and Refactoring context learning. The programming languages and frameworks have been used were Java, Groovy, Gradle and Lanterna.
 
 ### Features
 
